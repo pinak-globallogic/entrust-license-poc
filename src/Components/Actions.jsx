@@ -19,20 +19,16 @@ export default function Actions({licenseID}) {
   return (
     <div className="col-md-4 col-12 d-lg-block">
     <ul className="list-group">
-    <div class='inline-block'>
         <Link to={`/editLicense/${licenseID.name}`}>
         <Tooltip title="Edit">
         <Button variant="contained"><EditIcon sx={{ fontSize: 20 }}/></Button>
         </Tooltip>
         </Link>
-     </div>
-     <div class='inline-block'>  
         <Link to="/license" onClick={() => this.deleteBtnClick()}>
         <Tooltip title="Delete">
         <Button variant="outlined" tooltip="delete"><ClearIcon sx={{ fontSize: 20 }}/></Button>
         </Tooltip>
         </Link>
-    </div> 
     </ul>
     </div>
   )
