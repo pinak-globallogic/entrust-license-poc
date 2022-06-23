@@ -41,20 +41,10 @@ const headCells = [
     disablePadding: false,
     label: "Expiration",
   },
-  {
-    id: "description",
-    numeric: false,
-    disablePadding: false,
-    label: "Description",
-  },
-  {  id: "action",
-  numeric: true,
-  disablePadding: false,
-  label: "Action",
-  }
+  { id: "action", numeric: false, disablePadding: false, label: "Action" },
 ];
 
-const License = () => {
+const License = ({ drawer }) => {
   const [licData, setLicData] = useState([]);
 
   const getLicenseData = async () => {
@@ -70,7 +60,7 @@ const License = () => {
   }, []);
 
   return (
-    <Nav>
+    <Nav drawer={drawer}>
       <Content>
         <EnhancedTable headCells={headCells} data={licData} />
       </Content>

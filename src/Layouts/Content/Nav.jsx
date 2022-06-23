@@ -66,23 +66,21 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function Nav({ children }) {
+export default function Nav({ children, drawer }) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    drawer.setOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    drawer.setOpen(false);
   };
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      {/* <AppBar position="fixed" open={open}>
         <Toolbar variant="dense">
           <IconButton
             color="inherit"
@@ -106,7 +104,7 @@ export default function Nav({ children }) {
             </Grid>
           </Grid>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <Drawer
         sx={{
           width: drawerWidth,
@@ -118,7 +116,7 @@ export default function Nav({ children }) {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={drawer.open}
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
@@ -140,7 +138,7 @@ export default function Nav({ children }) {
           ))}
         </List>
       </Drawer>
-      <Main open={open}>
+      <Main open={drawer.open}>
         <DrawerHeader />
         {children}
       </Main>

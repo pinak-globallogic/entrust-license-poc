@@ -19,7 +19,6 @@ import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { visuallyHidden } from "@mui/utils";
-import { Link } from 'react-router-dom';
 import Actions from "./Actions";
 
 function descendingComparator(a, b, orderBy) {
@@ -83,7 +82,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align="left"
+            align={headCell.id === "action" ? "center" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -282,14 +281,30 @@ export default function EnhancedTable({ headCells, data }) {
                       >
                         {row.productKey}
                       </TableCell>
-                      <TableCell>{row.status}</TableCell>
+                      <TableCell>
+                        <span
+                          style={{
+                            height: "2vh",
+                            width: "2vh",
+                            padding: "2px 4px",
+                            borderRadius: "4px",
+                            backgroundColor:
+                              row.status === "Activated" ? "green" : "red",
+                            color: "#fff",
+                            fontSize: "0.75rem",
+                          }}
+                        >
+                          {row.status}
+                        </span>
+                      </TableCell>
                       <TableCell>{row.feature}</TableCell>
                       <TableCell>{row.limit}</TableCell>
                       {/* TODO: bind with actual values */}
                       <TableCell>Dec 31, 2021</TableCell>
                       <TableCell>Dec 31, 2022</TableCell>
-                      <TableCell>{row.description}</TableCell>
-                      <TableCell><Actions licenseID={row}></Actions></TableCell>
+                      <TableCell>
+                        <Actions licenseID={row}></Actions>
+                      </TableCell>
                     </TableRow>
                   );
                 })}
