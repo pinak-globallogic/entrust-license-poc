@@ -19,6 +19,8 @@ import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { visuallyHidden } from "@mui/utils";
+import { Link } from 'react-router-dom';
+import Actions from "./Actions";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -287,6 +289,7 @@ export default function EnhancedTable({ headCells, data }) {
                       <TableCell>Dec 31, 2021</TableCell>
                       <TableCell>Dec 31, 2022</TableCell>
                       <TableCell>{row.description}</TableCell>
+                      <TableCell><Actions licenseID={row}></Actions></TableCell>
                     </TableRow>
                   );
                 })}
