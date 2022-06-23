@@ -34,6 +34,12 @@ const headCells = [
     disablePadding: false,
     label: "Expiration",
   },
+  {
+    id: "action",
+    numeric: true,
+    disablePadding: false,
+    label: "Action",
+  },
 ];
 
 // {
