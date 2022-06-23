@@ -173,7 +173,6 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function EnhancedTable({ headCells, data }) {
-  console.log(headCells, data);
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("productKey");
   const [selected, setSelected] = React.useState([]);
@@ -257,7 +256,7 @@ export default function EnhancedTable({ headCells, data }) {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, row.productKey)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -284,8 +283,9 @@ export default function EnhancedTable({ headCells, data }) {
                       <TableCell>{row.status}</TableCell>
                       <TableCell>{row.feature}</TableCell>
                       <TableCell>{row.limit}</TableCell>
-                      <TableCell>{row.activationDate}</TableCell>
-                      <TableCell>{row.expiration}</TableCell>
+                      {/* TODO: bind with actual values */}
+                      <TableCell>Dec 31, 2021</TableCell>
+                      <TableCell>Dec 31, 2022</TableCell>
                       <TableCell>{row.description}</TableCell>
                     </TableRow>
                   );
