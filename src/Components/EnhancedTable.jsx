@@ -81,7 +81,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            align="left"
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -173,8 +173,9 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function EnhancedTable({ headCells, data }) {
+  console.log(headCells, data);
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("name");
+  const [orderBy, setOrderBy] = React.useState("productKey");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -260,7 +261,7 @@ export default function EnhancedTable({ headCells, data }) {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={row.id}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -278,12 +279,14 @@ export default function EnhancedTable({ headCells, data }) {
                         scope="row"
                         padding="none"
                       >
-                        {row.name}
+                        {row.productKey}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell>{row.status}</TableCell>
+                      <TableCell>{row.feature}</TableCell>
+                      <TableCell>{row.limit}</TableCell>
+                      <TableCell>{row.activationDate}</TableCell>
+                      <TableCell>{row.expiration}</TableCell>
+                      <TableCell>{row.description}</TableCell>
                     </TableRow>
                   );
                 })}
