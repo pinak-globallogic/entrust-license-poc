@@ -2,85 +2,71 @@ import Nav from "../../Layouts/Content/Nav";
 import Content from "./../../Layouts/Content/index";
 import EnhancedTable from "./../../Components/EnhancedTable";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const headCells = [
   {
-    id: "name",
+    id: "productKey",
     numeric: false,
     disablePadding: true,
     label: "Product Key",
   },
   {
-    id: "calories",
-    numeric: true,
+    id: "status",
+    numeric: false,
     disablePadding: false,
     label: "Status",
   },
   {
-    id: "fat",
-    numeric: true,
+    id: "feature",
+    numeric: false,
     disablePadding: false,
     label: "Feature",
   },
   {
-    id: "carbs",
-    numeric: true,
+    id: "limit",
+    numeric: false,
     disablePadding: false,
     label: "Limit",
   },
   {
-    id: "protein",
-    numeric: true,
+    id: "activation",
+    numeric: false,
+    disablePadding: false,
+    label: "Activation",
+  },
+  {
+    id: "expiration",
+    numeric: false,
     disablePadding: false,
     label: "Expiration",
   },
   {
-    id: "action",
-    numeric: true,
+    id: "description",
+    numeric: false,
     disablePadding: false,
-    label: "Action",
+    label: "Description",
   },
-];
-
-// {
-//   id: "description",
-//   numeric: false,
-//   disablePadding: false,
-//   label: "Description",
-// },
-// {
-//   id: "options",
-//   numeric: true,
-//   disablePadding: false,
-//   label: "Options",
-// },
-const createData = (name, calories, fat, carbs, protein) => {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-  };
-};
-
-const data = [
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Donut", 452, 25.0, 51, 4.9),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Honeycomb", 408, 3.2, 87, 6.5),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Jelly Bean", 375, 0.0, 94, 0.0),
-  createData("KitKat", 518, 26.0, 65, 7.0),
+  {  id: "action",
+  numeric: true,
+  disablePadding: false,
+  label: "Action",
+  }
 ];
 
 const License = () => {
   const [licData, setLicData] = useState([]);
 
+  const getLicenseData = async () => {
+    const licenseData = await axios.get(
+      "https://mocki.io/v1/a7fd7ff2-b5b0-4bb6-9295-aa83ab4fb9d2"
+    );
+    console.log(licenseData.data);
+    setLicData(licenseData.data);
+  };
+
   useEffect(() => {
-    setLicData(data);
+    getLicenseData();
   }, []);
 
   return (
