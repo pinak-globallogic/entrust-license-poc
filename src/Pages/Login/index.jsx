@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../Assets/Images/entrust-logo.png";
 import Divider from "@mui/material/Divider";
@@ -11,13 +11,9 @@ const initialState = {
   password: "admin",
 };
 
-const Login = ({ setOpen }) => {
+const Login = () => {
   const [loginData, setLoginData] = useState(initialState);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setOpen(false);
-  }, []);
 
   const handleInputChange = (event, property) => {
     setLoginData({ ...loginData, [property]: event.target.value });
@@ -25,7 +21,6 @@ const Login = ({ setOpen }) => {
 
   const onSubmit = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
-      setOpen(true);
       navigate("/license");
     } else {
       alert("Invalid credentials");
@@ -49,7 +44,7 @@ const Login = ({ setOpen }) => {
         alignItems="center"
         sx={{
           width: "600px",
-          minHeight: "75%",
+          minHeight: "480px",
           background: "#fff",
           boxShadow:
             "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
