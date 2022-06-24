@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Snackbar } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../Assets/Images/entrust-logo.png";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import Customizedsnackbars from "../../Components/Snackbar";
 const initialState = {
   username: "admin",
   password: "admin",
@@ -14,19 +15,24 @@ const initialState = {
 const Login = () => {
   const [loginData, setLoginData] = useState(initialState);
   const navigate = useNavigate();
+  const [openSla, setOpenSla] = useState(false);
+  const [slaMessage, setMessage] = useState('');
 
   const handleInputChange = (event, property) => {
     setLoginData({ ...loginData, [property]: event.target.value });
   };
-
   const onSubmit = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
       navigate("/license");
     } else {
-      alert("Invalid credentials");
+      setMessage("Incorrect user credential.");
+      setOpenSla(true);
     }
   };
 
+  const closeSLA = () => {
+    setOpenSla(false)
+  };
   return (
     <Grid
       item
@@ -88,6 +94,9 @@ const Login = () => {
             xs={6}
           >
             <Grid item mb={2}>
+              <Customizedsnackbars close={closeSLA} openSla={openSla} type="error" message={slaMessage} />
+            </Grid>
+            <Grid item mb={2}>
               <TextField
                 label="Enter User ID"
                 variant="standard"
@@ -122,6 +131,7 @@ const Login = () => {
             <Button variant="contained" onClick={onSubmit}>
               Login
             </Button>
+
           </Grid>
         </Grid>
       </Grid>
