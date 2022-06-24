@@ -11,6 +11,7 @@ import { makeStyles } from "@mui/styles";
 
 // Custom
 import Logo from "../../Assets/Images/entrust-logo.png";
+import Customizedsnackbars from "../../Components/Snackbar";
 
 const useStyles = makeStyles({
   container: { height: "100%" },
@@ -39,18 +40,24 @@ const Login = () => {
   const [loginData, setLoginData] = useState(initialState);
   const navigate = useNavigate();
   const classes = useStyles();
+  const [openSla, setOpenSla] = useState(false);
+  const [slaMessage, setMessage] = useState("");
 
   const handleInputChange = (event, property) => {
     setLoginData({ ...loginData, [property]: event.target.value });
   };
-
   const onSubmit = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
       navigate("/license");
     } else {
+      setMessage("Incorrect user credential.");
+      setOpenSla(true);
     }
   };
 
+  const closeSLA = () => {
+    setOpenSla(false);
+  };
   return (
     <Grid
       item
@@ -92,6 +99,14 @@ const Login = () => {
             direction="column"
             xs={6}
           >
+            <Grid item mb={2}>
+              <Customizedsnackbars
+                close={closeSLA}
+                openSla={openSla}
+                type="error"
+                message={slaMessage}
+              />
+            </Grid>
             <Grid item mb={2}>
               <TextField
                 label="Enter User ID"
