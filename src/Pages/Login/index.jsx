@@ -11,7 +11,8 @@ import { makeStyles } from "@mui/styles";
 
 // Custom
 import Logo from "../../Assets/Images/entrust-logo.png";
-import Customizedsnackbars from "../../Components/Snackbar";
+// import Customizedsnackbars from "../../Components/Snackbar";
+import { withSnackbar } from "./../../Components/SnackbarHOC";
 
 const useStyles = makeStyles({
   container: { height: "100%" },
@@ -36,12 +37,12 @@ const initialState = {
   password: "admin",
 };
 
-const Login = () => {
+const Login = ({ showMessage }) => {
   const [loginData, setLoginData] = useState(initialState);
   const navigate = useNavigate();
   const classes = useStyles();
-  const [openSla, setOpenSla] = useState(false);
-  const [slaMessage, setMessage] = useState("");
+  // const [openSla, setOpenSla] = useState(false);
+  // const [slaMessage, setMessage] = useState("");
 
   const handleInputChange = (event, property) => {
     setLoginData({ ...loginData, [property]: event.target.value });
@@ -50,14 +51,16 @@ const Login = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
       navigate("/license");
     } else {
-      setMessage("Incorrect user credential.");
-      setOpenSla(true);
+      // setMessage("Incorrect user credential.");
+      // setOpenSla(true);
+      showMessage("Incorrect user credential.");
     }
   };
 
-  const closeSLA = () => {
-    setOpenSla(false);
-  };
+  // const closeSLA = () => {
+  //   setOpenSla(false);
+  // };
+
   return (
     <Grid
       item
@@ -99,14 +102,14 @@ const Login = () => {
             direction="column"
             xs={6}
           >
-            <Grid item mb={2}>
+            {/* <Grid item mb={2}>
               <Customizedsnackbars
                 close={closeSLA}
                 openSla={openSla}
                 type="error"
                 message={slaMessage}
               />
-            </Grid>
+            </Grid> */}
             <Grid item mb={2}>
               <TextField
                 label="Enter User ID"
@@ -149,4 +152,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withSnackbar(Login);
