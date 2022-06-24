@@ -19,7 +19,6 @@ import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { visuallyHidden } from "@mui/utils";
-import Actions from "./Actions";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -82,7 +81,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.id === "action" ? "center" : "left"}
+            align="left"
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -302,9 +301,6 @@ export default function EnhancedTable({ headCells, data }) {
                       {/* TODO: bind with actual values */}
                       <TableCell>Dec 31, 2021</TableCell>
                       <TableCell>Dec 31, 2022</TableCell>
-                      <TableCell>
-                        <Actions licenseID={row}></Actions>
-                      </TableCell>
                     </TableRow>
                   );
                 })}

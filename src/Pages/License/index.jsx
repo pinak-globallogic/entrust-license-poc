@@ -40,7 +40,6 @@ const headCells = [
     disablePadding: false,
     label: "Expiration",
   },
-  { id: "action", numeric: false, disablePadding: false, label: "Action" },
 ];
 
 const License = () => {

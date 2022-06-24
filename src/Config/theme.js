@@ -1,4 +1,4 @@
-const { createTheme } = require("@mui/material");
+import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   palette: {
@@ -8,7 +8,7 @@ export const theme = createTheme({
   overrides: {
     MuiButton: {
       raisedPrimary: {
-        color: "white",
+        color: "#fff",
       },
     },
   },

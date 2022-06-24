@@ -1,11 +1,35 @@
-import { Grid } from "@mui/material";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../Assets/Images/entrust-logo.png";
+
+// MUI components
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
+
+// Custom
+import Logo from "../../Assets/Images/entrust-logo.png";
+
+const useStyles = makeStyles({
+  container: { height: "100%" },
+  card: {
+    width: "600px !important",
+    minHeight: "440px",
+    background: "#fff",
+    boxShadow:
+      "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
+    borderRadius: "4px",
+    borderTop: "solid 2px #690070",
+  },
+  content: { padding: "4vh 4vh 0" },
+  divider: {
+    width: "100%",
+    height: "1px",
+  },
+});
+
 const initialState = {
   username: "admin",
   password: "admin",
@@ -14,6 +38,7 @@ const initialState = {
 const Login = () => {
   const [loginData, setLoginData] = useState(initialState);
   const navigate = useNavigate();
+  const classes = useStyles();
 
   const handleInputChange = (event, property) => {
     setLoginData({ ...loginData, [property]: event.target.value });
@@ -23,7 +48,6 @@ const Login = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
       navigate("/license");
     } else {
-      alert("Invalid credentials");
     }
   };
 
@@ -34,7 +58,7 @@ const Login = () => {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      sx={{ height: "100%" }}
+      className={classes.container}
     >
       <Grid
         item
@@ -42,32 +66,13 @@ const Login = () => {
         justifyContent="center"
         direction="column"
         alignItems="center"
-        sx={{
-          width: "600px",
-          minHeight: "440px",
-          background: "#fff",
-          boxShadow:
-            "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
-          borderRadius: "4px",
-          borderTop: "solid 2px #690070",
-        }}
+        className={classes.card}
       >
         <Grid item container justifyContent="center" alignItems="center" xs={3}>
           <img src={Logo} alt="Entrust Logo" width={280} loading="lazy" />
         </Grid>
-        <Divider
-          style={{
-            width: "100%",
-            height: "1px",
-          }}
-        />
-        <Grid
-          xs
-          item
-          container
-          direction="column"
-          sx={{ padding: "4vh 4vh 0" }}
-        >
+        <Divider className={classes.divider} />
+        <Grid xs item container direction="column" className={classes.content}>
           <Grid item container direction="column" xs={3}>
             <Grid item>
               <Typography variant="subtitle1" gutterBottom fontWeight={600}>
