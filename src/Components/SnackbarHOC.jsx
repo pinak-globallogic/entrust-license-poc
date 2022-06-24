@@ -1,5 +1,5 @@
-import { Alert, Slide, Snackbar } from "@mui/material";
 import { useState } from "react";
+import { Alert, Slide, Snackbar } from "@mui/material";
 
 export const withSnackbar = (WrappedComponent) => {
   return (props) => {
