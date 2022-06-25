@@ -1,11 +1,8 @@
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
+import ResponsiveAppBar from "../../Components/ResponsiveAppBar";
 
 const Header = () => {
   return (
-    <AppBar position="fixed">
-      <Toolbar />
-    </AppBar>
+    <ResponsiveAppBar position="fixed" />
   );
 };
 

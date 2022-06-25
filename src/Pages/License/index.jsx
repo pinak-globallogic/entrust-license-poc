@@ -57,9 +57,12 @@ const License = () => {
   }, []);
 
   return (
-    <Content>
-      <EnhancedTable headCells={headCells} data={licData} />
-    </Content>
+    <>
+      <Content>
+        <EnhancedTable headCells={headCells} data={licData} />
+      </Content>
+
+    </>
   );
 };
 
