@@ -1,20 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./../Pages/Login/index";
-import License from "./../Pages/License/index";
-import Header from "./../Layouts/Header/index";
-import CssBaseline from "@mui/material/CssBaseline";
+import DashboardWrapper from "./../Pages/Dashboard/index";
+import GenerateLicenseWrapper from "./../Pages/License/Generate/index";
 
 const Router = () => {
   return (
-    <>
-      <Header />
-      <CssBaseline />
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="license" element={<License />} />
-        <Route path="/*" element={<h1>Page not found</h1>} />
-      </Routes>
-    </>
+    <Routes>
+      <Route exact path="/" element={<Login />} />
+      <Route path="/dashboard" element={<DashboardWrapper />} />
+      <Route path="/license/generate" element={<GenerateLicenseWrapper />} />
+      <Route element={<h1>Page not found</h1>} />
+    </Routes>
   );
 };
 

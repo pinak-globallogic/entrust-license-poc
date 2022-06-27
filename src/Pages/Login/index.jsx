@@ -11,11 +11,10 @@ import { makeStyles } from "@mui/styles";
 
 // Custom
 import Logo from "../../Assets/Images/entrust-logo.png";
-// import Customizedsnackbars from "../../Components/Snackbar";
 import { withSnackbar } from "./../../Components/SnackbarHOC";
+import Content from "../../Layouts/Main/Content";
 
 const useStyles = makeStyles({
-  container: { height: "100%" },
   card: {
     width: "600px !important",
     minHeight: "440px",
@@ -41,34 +40,25 @@ const Login = ({ showMessage }) => {
   const [loginData, setLoginData] = useState(initialState);
   const navigate = useNavigate();
   const classes = useStyles();
-  // const [openSla, setOpenSla] = useState(false);
-  // const [slaMessage, setMessage] = useState("");
 
   const handleInputChange = (event, property) => {
     setLoginData({ ...loginData, [property]: event.target.value });
   };
+
   const onSubmit = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
-      navigate("/license");
+      navigate("/dashboard");
     } else {
-      // setMessage("Incorrect user credential.");
-      // setOpenSla(true);
-      showMessage("Incorrect user credential.");
+      showMessage("Incorrect user credentials.");
     }
   };
 
-  // const closeSLA = () => {
-  //   setOpenSla(false);
-  // };
-
   return (
-    <Grid
-      item
-      container
+    <Content
       direction="column"
       justifyContent="center"
       alignItems="center"
-      className={classes.container}
+      pt={5}
     >
       <Grid
         item
@@ -102,14 +92,6 @@ const Login = ({ showMessage }) => {
             direction="column"
             xs={6}
           >
-            {/* <Grid item mb={2}>
-              <Customizedsnackbars
-                close={closeSLA}
-                openSla={openSla}
-                type="error"
-                message={slaMessage}
-              />
-            </Grid> */}
             <Grid item mb={2}>
               <TextField
                 label="Enter User ID"
@@ -148,7 +130,7 @@ const Login = ({ showMessage }) => {
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </Content>
   );
 };
 
