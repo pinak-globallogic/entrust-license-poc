@@ -27,13 +27,8 @@ const CardWrapper = ({ data, onSubmitButton, ...props }) => {
           <Typography variant="body2">{data.content.subtitle}</Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">
-            <Typography
-              variant="button"
-              fontWeight={600}
-              fontSize="small"
-              onClick={onSubmitButton}
-            >
+          <Button size="small" onClick={onSubmitButton}>
+            <Typography variant="button" fontWeight={600} fontSize="small">
               {data.action.buttonText}
             </Typography>
           </Button>
