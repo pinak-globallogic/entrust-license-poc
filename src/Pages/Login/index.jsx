@@ -81,7 +81,7 @@ const Login = ({ showMessage }) => {
             </Grid>
             <Grid item>
               <Typography variant="subtitle1" gutterBottom>
-                Login to access license POC.
+                Login to access licensing system.
               </Typography>
             </Grid>
           </Grid>
