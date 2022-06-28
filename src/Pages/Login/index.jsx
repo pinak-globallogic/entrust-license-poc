@@ -8,6 +8,8 @@ import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
+import { useContext } from "react";
+import { AppContext } from "./../../App";
 
 // Custom
 import Logo from "../../Assets/Images/entrust-logo.png";
@@ -37,6 +39,7 @@ const initialState = {
 };
 
 const Login = ({ showMessage }) => {
+  const { state, setState } = useContext(AppContext);
   const [loginData, setLoginData] = useState(initialState);
   const navigate = useNavigate();
   const classes = useStyles();
@@ -47,6 +50,9 @@ const Login = ({ showMessage }) => {
 
   const onSubmit = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
+      localStorage.setItem("name", loginData.username);
+      localStorage.setItem("role", "Fulfillment");
+      setState({ ...state, user: { name: loginData.username, role: "Fulfillment" } });
       navigate("/dashboard");
     } else {
       showMessage("Incorrect user credentials.");

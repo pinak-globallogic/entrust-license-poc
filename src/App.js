@@ -15,8 +15,17 @@ const App = () => {
       lineItemNo: "1.1",
       productItemNo: "654123879",
     },
-    features: {},
-    limitations: {},
+    feature: {
+      edition: "Professional",
+    },
+    limitation: {
+      limitCount: "Site License",
+      expiration: "365 days",
+    },
+    user: {
+      name: "",
+      role: "",
+    },
   });
 
   return (

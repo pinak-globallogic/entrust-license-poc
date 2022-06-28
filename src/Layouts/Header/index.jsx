@@ -1,13 +1,10 @@
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
+import AppBar from "../Header/Appbar";
 import Grid from "@mui/material/Grid";
 
 const Header = () => {
   return (
     <Grid item mb={8}>
-      <AppBar position="fixed">
-        <Toolbar />
-      </AppBar>
+      <AppBar position="fixed" />
     </Grid>
   );
 };
