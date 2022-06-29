@@ -9,7 +9,8 @@ const FeatureCard = ({ data }) => {
       <CustomCardContent>
         <CustomCardHeader title="Features" />
         <Grid item container xs direction="column">
-          <CustomCardRow title="Edition" value={data.edition} mb={0} />
+          <CustomCardRow title="Edition" value={data.edition} />
+          <Grid item>{/* TODO: Add table */}</Grid>
         </Grid>
       </CustomCardContent>
     </CustomCard>
