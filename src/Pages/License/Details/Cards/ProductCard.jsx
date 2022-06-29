@@ -1,49 +1,21 @@
 import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import Chip from "@mui/material/Chip";
 import { CustomCard, CustomCardContent } from "..";
+import CustomCardHeader from "./../../../../Components/CustomCard/CustomCardHeader";
+import CustomCardRow from "./../../../../Components/CustomCard/CustomCardRow";
 
 const ProductCard = ({ data }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <Grid item xs>
-          <Chip label="Product" color="secondary" />
-        </Grid>
-        <Grid item xs pt={2}>
-          <TextField
-            label="SALES ORDER NUMBER"
-            disabled
-            variant="standard"
-            fullWidth
-            value={data.salesOrderNo}
-          />
-        </Grid>
-        <Grid item xs pt={2}>
-          <TextField
-            label="LINE ITEM NUMBER"
-            disabled
-            variant="standard"
-            fullWidth
+        <CustomCardHeader title="Product" />
+        <Grid item container xs direction="column">
+          <CustomCardRow title="FeatureID" value={data.productItemNo} />
+          <CustomCardRow title="Product Name" value={data.name} />
+          <CustomCardRow title="Order Number" value={data.salesOrderNo} />
+          <CustomCardRow
+            title="List Item Number"
             value={data.lineItemNo}
-          />
-        </Grid>
-        <Grid item xs pt={2}>
-          <TextField
-            label="PRODUCT ITEM NUMBER"
-            disabled
-            variant="standard"
-            fullWidth
-            value={data.productItemNo}
-          />
-        </Grid>
-        <Grid item xs pt={2}>
-          <TextField
-            label="PRODUCT NAME"
-            disabled
-            variant="standard"
-            fullWidth
-            value={data.name}
+            mb={0}
           />
         </Grid>
       </CustomCardContent>

@@ -1,17 +1,15 @@
 import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import Chip from "@mui/material/Chip";
 import { CustomCard, CustomCardContent } from "..";
+import CustomCardHeader from "./../../../../Components/CustomCard/CustomCardHeader";
+import CustomCardRow from "./../../../../Components/CustomCard/CustomCardRow";
 
 const CustomerCard = ({ data }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <Grid item xs>
-          <Chip label="Customer" color="secondary" />
-        </Grid>
-        <Grid item xs pt={2}>
-          <TextField disabled variant="standard" fullWidth value={data.name} />
+        <CustomCardHeader title="Customer" />
+        <Grid item container xs direction="column">
+          <CustomCardRow title="Name" value={data.name} mb={0} />
         </Grid>
       </CustomCardContent>
     </CustomCard>

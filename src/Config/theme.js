@@ -12,4 +12,22 @@ export const theme = createTheme({
       },
     },
   },
+  components: {
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          ".MuiChip-label": {
+            marginRight: "2vh",
+          },
+          ".MuiSvgIcon-root": {
+            color: "#F3DEF3 !important",
+            position: "absolute",
+            right: 0,
+            cursor: "auto",
+            marginRight: "1vh",
+          },
+        },
+      },
+    },
+  },
 });
