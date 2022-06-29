@@ -9,6 +9,7 @@ import CustomerDetails from "./CustomerDetails";
 import ProductDetails from "./ProductDetails";
 import FeatureDetails from "./FeatureDetails";
 import LimitationDetails from "./LimitationDetails";
+import ExpirationDetails from "./ExpirationDetails";
 
 export const CustomCard = styled(Card)(() => ({
   marginBottom: "1vh",
@@ -32,6 +33,8 @@ const renderSwitch = (count) => {
     return <FeatureDetails />;
   case 3:
     return <LimitationDetails />;
+  case 4:
+    return <ExpirationDetails />;
   }
 };
 
@@ -51,7 +54,7 @@ const GenerateLicense = (props) => {
           ) : (
             <div style={{ display: "block" }} />
           )}
-          {count < 3 && (
+          {count < 4 && (
             <Button variant="contained" onClick={() => setCount(count + 1)}>
               Continue
             </Button>
