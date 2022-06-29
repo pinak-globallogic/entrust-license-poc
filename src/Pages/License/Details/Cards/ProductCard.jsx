@@ -12,7 +12,7 @@ const ProductCard = ({ data }) => {
         </Grid>
         <Grid item xs pt={2}>
           <TextField
-            label="SALES ORDER NUMBER"
+            label="SALES ORDER NUMBER2"
             disabled
             variant="standard"
             fullWidth
