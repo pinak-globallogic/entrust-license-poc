@@ -8,7 +8,13 @@ import Grid from "@mui/material/Grid";
 const CustomCardRow = ({
   title,
   value,
-  icon = <CheckCircleIcon />,
+  icon = (
+    <CheckCircleIcon
+      sx={{
+        color: "#F3DEF3 !important",
+      }}
+    />
+  ),
   disabled = false,
   ...props
 }) => {

@@ -20,7 +20,6 @@ export const theme = createTheme({
             marginRight: "2vh",
           },
           ".MuiSvgIcon-root": {
-            color: "#F3DEF3 !important",
             position: "absolute",
             right: 0,
             cursor: "auto",
