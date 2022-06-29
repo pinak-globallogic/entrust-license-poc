@@ -12,10 +12,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Switch from "@mui/material/Switch";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { AppContext } from "./../../../App";
+import NativeSelect from "@mui/material/NativeSelect";
+import TextField from "@mui/material/TextField";
+
 
 export const CustomCard = styled(Card)(() => ({
   marginBottom: "1vh",
@@ -29,20 +31,19 @@ export const CustomCardContent = styled(CardContent)(() => ({
   justifyContent: "center",
 }));
 
-function createData(feature, currentSetting, originalSetting) {
-  return { feature, currentSetting, originalSetting };
+function createData(feature, currentSetting, originalSetting, fieldType) {
+  return { feature, currentSetting, originalSetting, fieldType };
 }
 
 const rows = [
-  createData("Central Issuance Smart Card", "Off", "Off"),
-  createData("Ice cream sandwich", "Off", "Off"),
-  createData("Eclair", "Off", "Off"),
-  createData("Cupcake", "Off", "Off"),
-  createData("Gingerbread", "Off", "Off"),
+  createData("Central Issuance Smart Card", "On", "Off", "Select"),
+  createData("Ice cream sandwich", "235", "9", "Input"),
+  createData("Eclair", "123", "16", "Input"),
+  createData("Cupcake", "7543", "3.7", "Input"),
+  createData("Gingerbread", "2", "16", "Input"),
 ];
 
 const licenseKeys = ["Plus", "Professional", "Enterprise"];
-const label = { inputProps: { "aria-label": "Switch demo" } };
 
 const FeatureDetails = (props) => {
   const { state, setState } = useContext(AppContext);
@@ -64,10 +65,7 @@ const FeatureDetails = (props) => {
             </Typography>
           </Grid>
 
-          <ToggleButtonGroup
-            exclusive
-            aria-label="text alignment"
-          >
+          <ToggleButtonGroup exclusive aria-label="text alignment">
             <Stack spacing={3} direction="row">
               {licenseKeys.map((key) => (
                 <ToggleButton
@@ -75,8 +73,9 @@ const FeatureDetails = (props) => {
                   aria-label="centered"
                   key={key}
                   selected={key === alignment}
+                  style={{ color: "#87189D", borderColor: "#87189D" }}
                   onClick={(e) => {
-                    changeProductKey(e.target.value)
+                    changeProductKey(e.target.value);
                     setState({
                       ...state,
                       feature: { edition: e.target.value },
@@ -115,9 +114,32 @@ const FeatureDetails = (props) => {
                       {row.feature}
                     </TableCell>
                     <TableCell align="left">
-                      <Switch {...label} />
+                      {row.fieldType === "Select" && (
+                        <NativeSelect id="demo-customized-select-native">
+                          <option
+                            value={0}
+                            selected={row.currentSetting === "Off"}
+                          >
+                            Off
+                          </option>
+                          <option
+                            value={1}
+                            selected={row.currentSetting === "On"}
+                          >
+                            On
+                          </option>
+                        </NativeSelect>
+                      )}
+                      {row.fieldType === "Input" && (
+                        <TextField
+                          sx={{ width: "10ch", m: "0" }}
+                          size="small"
+                          style={{ borderColor: "red" }}
+                          value={row.currentSetting}
+                        />
+                      )}
                     </TableCell>
-                    <TableCell align="left">{row.originalSetting}</TableCell>
+                    <TableCell align="center">{row.originalSetting}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
