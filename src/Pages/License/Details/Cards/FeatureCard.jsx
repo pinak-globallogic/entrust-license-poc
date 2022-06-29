@@ -5,16 +5,14 @@ import CustomCardRow from "./../../../../Components/CustomCard/CustomCardRow";
 
 const FeatureCard = ({ data }) => {
   return (
-    <div>
-      <CustomCard>
-        <CustomCardContent>
-          <CustomCardHeader title="Features" />
-          <Grid item container xs direction="column">
-            <CustomCardRow title="Edition" value={data.edition} mb={0} />
-          </Grid>
-        </CustomCardContent>
-      </CustomCard>
-    </div>
+    <CustomCard>
+      <CustomCardContent>
+        <CustomCardHeader title="Features" />
+        <Grid item container xs direction="column">
+          <CustomCardRow title="Edition" value={data.edition} mb={0} />
+        </Grid>
+      </CustomCardContent>
+    </CustomCard>
   );
 };
 
