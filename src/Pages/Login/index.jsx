@@ -13,8 +13,8 @@ import { AppContext } from "./../../App";
 
 // Custom
 import Logo from "../../Assets/Images/entrust-logo.png";
-import { withSnackbar } from "./../../Components/SnackbarHOC";
-import Content from "../../Layouts/Main/Content";
+import { withSnackbar } from "../../Components/Snackbar";
+import Content from "../../Layouts/Content/Content";
 
 const useStyles = makeStyles({
   card: {
@@ -52,7 +52,10 @@ const Login = ({ showMessage }) => {
     if (loginData.username === "admin" && loginData.password === "admin") {
       localStorage.setItem("name", loginData.username);
       localStorage.setItem("role", "Fulfillment");
-      setState({ ...state, user: { name: loginData.username, role: "Fulfillment" } });
+      setState({
+        ...state,
+        user: { name: loginData.username, role: "Fulfillment" },
+      });
       navigate("/dashboard");
     } else {
       showMessage("Incorrect user credentials.");
