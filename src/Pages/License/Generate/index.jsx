@@ -1,4 +1,4 @@
-import Content from "../../../Layouts/Content/Content";
+import Content from "Layouts/Content/Content";
 import LicenseDetails from "../Details";
 import GenerateLicense from "./GenerateLicense";
 

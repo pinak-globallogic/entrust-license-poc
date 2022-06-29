@@ -1,5 +1,5 @@
 import Dashboard from "./Dashboard";
-import Content from "../../Layouts/Content/Content";
+import Content from "Layouts/Content/Content";
 
 const DashboardWrapper = () => {
   return (

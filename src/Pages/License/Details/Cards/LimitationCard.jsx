@@ -1,7 +1,8 @@
 import Grid from "@mui/material/Grid";
-import { CustomCard, CustomCardContent } from "..";
-import CustomCardHeader from "./../../../../Components/CustomCard/CustomCardHeader";
-import CustomCardRow from "./../../../../Components/CustomCard/CustomCardRow";
+import CustomCard from "Components/CustomCard/CustomCard";
+import CustomCardContent from "Components/CustomCard/CustomCardContent";
+import CustomCardHeader from "Components/CustomCard/CustomCardHeader";
+import CustomCardRow from "Components/CustomCard/CustomCardRow";
 import LockIcon from "@mui/icons-material/Lock";
 import EditOffIcon from "@mui/icons-material/EditOff";
 
