@@ -1,12 +1,60 @@
+import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { useContext } from "react";
+import { AppContext } from "./../../../App";
 import { CustomCard, CustomCardContent } from "./GenerateLicense";
-import { AppContext } from "App";
+
+const customerNameList = [
+  { name: "Datacard LLC" },
+  { name: "Entrust Datacard Inc." },
+  { name: "Datacard Germany GmbH" },
+];
+
+const filter = createFilterOptions();
+
+var newCustomerAddedMsg;
+
+const addNewCustomer = (customerName) => {
+  if (customerName) {
+    newCustomerAddedMsg = (
+      <Typography variant="caption">
+        You have chosen a new customer that is not yet in database.
+        <br /> {customerName} will be added.
+      </Typography>
+    );
+    //ToDo : how to store new customer names, just add in option on this screen
+    // and add in db only on submit of entire form. For Now, adding in options only.
+  } else newCustomerAddedMsg = null;
+};
 
 const CustomerDetails = () => {
   const { state, setState } = useContext(AppContext);
+  const [value, setValue] = React.useState(state.customer.name);
+  const [inputValue, setInputValue] = React.useState("");
+  const options = customerNameList;
+
+  const onChange = (event, value) => {
+    if (value) {
+      setValue(value.name);
+      if (value.inputValue) {
+        addNewCustomer(value.name);
+        options.push({ name: value.name });
+      } else {
+        addNewCustomer(null);
+      }
+
+      setState({
+        ...state,
+        customer: {
+          name: value.name,
+        },
+      });
+    }
+  };
+
   return (
     <div>
       <CustomCard>
@@ -23,16 +71,56 @@ const CustomerDetails = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <TextField
-              label="Customer name"
-              variant="outlined"
-              size="small"
-              required
-              value={state.customer.name}
-              onChange={(e) =>
-                setState({ ...state, customer: { name: e.target.value } })
-              }
+            <Autocomplete
+              freeSolo
+              value={value}
+              inputValue={inputValue}
+              onInputChange={(event, newInputValue) => {
+                setInputValue(newInputValue);
+              }}
+              onChange={onChange}
+              filterOptions={(options, params) => {
+                const filtered = filter(options, params);
+
+                // Suggest the creation of a new value
+                if (params.inputValue !== "") {
+                  filtered.push({
+                    name: params.inputValue,
+                    inputValue: `Add "${params.inputValue}"`,
+                  });
+                }
+
+                return filtered;
+              }}
+              options={options}
+              getOptionLabel={(option) => {
+                // Value selected with enter, right from the input
+                if (typeof option === "string") {
+                  return option;
+                }
+                // Add "xxx" option created dynamically
+                if (option.inputValue) {
+                  return option.inputValue;
+                }
+                // Regular option
+                return option.name;
+              }}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Customer name"
+                  variant="outlined"
+                  size="small"
+                  required
+                  value={inputValue}
+                />
+              )}
             />
+          </Grid>
+          <br />
+          <Grid item mb={2}>
+            {newCustomerAddedMsg}
           </Grid>
         </CustomCardContent>
       </CustomCard>

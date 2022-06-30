@@ -96,6 +96,7 @@ const ProductDetails = () => {
           <Grid item>
             <Autocomplete
               disablePortal
+              value={state.product.name +", "+state.product.productItemNo}
               options={productIdentifierList.map(
                 (option) => option.name + ", " + option.itemNo
               )}
