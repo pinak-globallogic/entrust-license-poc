@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
 import { CustomCard } from "./../License/Generate/GenerateLicense";
+import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 
 const cards = [
   {
@@ -41,7 +42,7 @@ const Dashboard = (props) => {
   };
 
   const onSearchProductKey = () => {
-    navigate("/license/search");
+    navigate(LICENSE_SEARCH_PAGE_ROUTE);
   };
 
   return (

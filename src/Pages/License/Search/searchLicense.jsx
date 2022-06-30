@@ -12,14 +12,22 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Stack from "@mui/material/Stack";
 
+const formatDateFromMilliSeconds = (dateMilliSeconds) => {
+  var date = new Date(Number(dateMilliSeconds)), month = "" + (date.getMonth() + 1),
+    day = "" + date.getDate(),
+    year = date.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+}
+
 const SearchLicense = () => {
   const [data, setData] = useState([]);
   const [pageSize, setPageSizeState] = useState(10);
   const [selectionModel, setSelectionModel] = useState([]);
   const [value, setValue] = useState(new Date());
-
-  const activeIcon = <CheckCircleOutlineIcon color="success" />;
-  const inActiveIcon = <DoNotDisturbIcon color="disabled" />;
 
   useEffect(() => {
     //Comment loadLicense method call from here if not need to fetch on load
@@ -30,14 +38,12 @@ const SearchLicense = () => {
     axios
       .get("https://mocki.io/v1/2c5fde10-c234-488f-b8a0-dde7b5cc2d69")
       .then((response) => {
-        console.log(JSON.stringify(response.data));
         setSelectionModel([response.data[0].id]);
         setData(response.data);
       });
   };
 
   const setSelectionModelInDataGrid = (newSelectedModel) => {
-    console.log(newSelectedModel);
     setSelectionModel(newSelectedModel);
   };
 
@@ -86,7 +92,7 @@ const SearchLicense = () => {
       width: 75,
       editable: false,
       renderCell: (params) =>
-        params.row.status === "Activated" ? activeIcon : inActiveIcon,
+        params.row.status === "Activated" ? <CheckCircleOutlineIcon color="success" /> : <DoNotDisturbIcon color="disabled" />,
     },
     {
       field: "user",
@@ -99,24 +105,13 @@ const SearchLicense = () => {
       headerName: "Created",
       width: 120,
       editable: false,
-      renderCell: (params) => formatDate(params.row.createdOn),
+      renderCell: (params) => formatDateFromMilliSeconds(params.row.createdOn),
     },
   ];
 
   const handleGetRowId = (e) => {
     return e.licenseId;
   };
-  
-  function formatDate(dateMilliSeconds) {
-    var date = new Date(Number(dateMilliSeconds)), month = "" + (date.getMonth() + 1),
-      day = "" + date.getDate(),
-      year = date.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-  }
 
   return (
     <Grid container xs={6}>

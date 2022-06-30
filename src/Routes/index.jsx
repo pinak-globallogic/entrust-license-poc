@@ -15,5 +15,5 @@ const Router = () => {
     </Routes>
   );
 };
-
 export default Router;
+export const LICENSE_SEARCH_PAGE_ROUTE = "/license/search";
