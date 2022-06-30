@@ -9,6 +9,10 @@ import { RadioGroup } from "@mui/material";
 import { useContext, useState } from "react";
 import { AppContext } from "App";
 
+const EXPIRYDAYS = "Expiry in days:";
+const NOEXPIRY = "No expiry Date";
+const SPECIFICDATE = "Specific date";
+
 const LimitationDetails = () => {
   const { state, setState } = useContext(AppContext);
   const [radioValue, setRadioValue] = useState("No expiry Date");
@@ -17,11 +21,7 @@ const LimitationDetails = () => {
     setRadioValue(e.target.value);
   };
 
-  const EXPIRYDAYS = "Expiry in days:";
-  const NOEXPIRY = "No expiry Date";
-  const SPECIFICDATE = "Specific date";
-
-  const limitCountValue = (e) => {
+  const onLimitCountChange = (e) => {
     setState({
       ...state,
       limitation: {
@@ -31,7 +31,7 @@ const LimitationDetails = () => {
     });
   };
 
-  const expirationValue = (e) => {
+  const onExpirationChange = (e) => {
     setState({
       ...state,
       limitation: {
@@ -62,11 +62,11 @@ const LimitationDetails = () => {
                 type="number"
                 InputProps={{
                   type: "number",
-                  inputProps: { min: 1, max: 40 }
+                  inputProps: { min: 1, max: 40 },
                 }}
                 required
                 value={state.limitation.limitCount}
-                onChange={limitCountValue}
+                onChange={onLimitCountChange}
               />
             </Grid>
             <Grid item pr={1}>
@@ -117,7 +117,7 @@ const LimitationDetails = () => {
                     type="number"
                     required
                     value={state.limitation.expiration}
-                    onChange={expirationValue}
+                    onChange={onExpirationChange}
                   />
                 </Grid>
               </Grid>
@@ -144,6 +144,8 @@ const LimitationDetails = () => {
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    value={state.limitation.expiration}
+                    onChange={onExpirationChange}
                   />
                 </Grid>
               </Grid>
