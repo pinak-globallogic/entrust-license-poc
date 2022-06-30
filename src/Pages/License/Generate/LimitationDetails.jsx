@@ -7,7 +7,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 import { RadioGroup } from "@mui/material";
 import { useContext, useState } from "react";
-import { AppContext } from "./../../../App";
+import { AppContext } from "App";
 
 const LimitationDetails = () => {
   const { state, setState } = useContext(AppContext);
@@ -15,8 +15,11 @@ const LimitationDetails = () => {
 
   const radioHandler = (e) => {
     setRadioValue(e.target.value);
-    console.log(e.target.value);
   };
+
+  const EXPIRYINDAYS = "Expiry in days:";
+  const NOEXPIRY = "No expiry Date";
+  const SPECIFICDATE = "Specific date";
 
   return (
     <div>
@@ -71,26 +74,26 @@ const LimitationDetails = () => {
           <Grid item mb={2}>
             <RadioGroup
               name="use-radio-group"
-              defaultValue="No expiry Date"
+              defaultValue={NOEXPIRY}
               onChange={radioHandler}
               value={radioValue}
             >
               <FormControlLabel
-                value="No expiry Date"
-                label="No expiry Date"
+                value={NOEXPIRY}
+                label={NOEXPIRY}
                 control={<Radio />}
               />
               <Grid item container xs pt={1}>
                 <Grid item xs pr={2}>
                   <FormControlLabel
-                    value="Expiry in days:"
-                    label="Expiry in days:"
+                    value={EXPIRYINDAYS}
+                    label={EXPIRYINDAYS}
                     control={<Radio />}
                   />
                 </Grid>
                 <Grid item xs pr={2}>
                   <TextField
-                    disabled={radioValue !== "Expiry in days:"}
+                    disabled={radioValue !== { EXPIRYINDAYS }}
                     label="Number of days"
                     variant="outlined"
                     size="small"
@@ -111,25 +114,25 @@ const LimitationDetails = () => {
               <Grid item container xs pt={1}>
                 <Grid item xs pr={2}>
                   <FormControlLabel
-                    value="Specific date"
-                    label="Specific date"
+                    value={SPECIFICDATE}
+                    label={SPECIFICDATE}
                     control={<Radio />}
                   />
                 </Grid>
 
                 <Grid item xs pr={2}>
                   <TextField
-                    disabled={radioValue !== "Specific date"}
+                    disabled={radioValue !== { SPECIFICDATE }}
                     defaultValue={new Date().toISOString()}
                     inputProps={{
-                      min: new Date().toISOString().slice(0, 16)
+                      min: new Date().toISOString().slice(0, 16),
                     }}
                     variant="outlined"
                     label="Birthday"
                     placeholder="Birthday"
                     type="datetime-local"
                     InputLabelProps={{
-                      shrink: true
+                      shrink: true,
                     }}
                   />
                 </Grid>
