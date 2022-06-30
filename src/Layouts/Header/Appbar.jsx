@@ -89,7 +89,7 @@ export default function AppBar() {
     <>
       {data.nav && data.content && (
         <ResponsiveAppBar>
-          <Container maxWidth="xl">
+          <Container maxWidth>
             <Toolbar disableGutters>
               <Link to="/dashboard" style={{ textDecoration: "none" }}>
                 <img
@@ -148,13 +148,16 @@ export default function AppBar() {
                       "aria-labelledby": "basic-button",
                     }}
                   >
-                    <MenuItem className={classes.heading2} >
+                    <MenuItem className={classes.heading2}>
                       <Link
                         to="/"
                         onClick={handleLogout}
                         style={{ textDecoration: "none" }}
                       >
-                        <LogoutIcon fontSize="small" style={{ verticalAlign: "sub" }} />
+                        <LogoutIcon
+                          fontSize="small"
+                          style={{ verticalAlign: "sub" }}
+                        />
                         &ensp; Logout
                       </Link>
                     </MenuItem>

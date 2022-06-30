@@ -4,8 +4,8 @@ import Sidenav from "../Nav/index";
 
 const ContentLayout = (props) => {
   return (
-    <Grid item container direction="row">
-      <Sidenav xs={1.5}/>
+    <Grid item container>
+      <Sidenav xs={1.5} />
       <Content xs {...props} />
     </Grid>
   );

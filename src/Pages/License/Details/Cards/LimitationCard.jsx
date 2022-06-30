@@ -1,32 +1,31 @@
 import Grid from "@mui/material/Grid";
-import Chip from "@mui/material/Chip";
-import TextField from "@mui/material/TextField";
-import { CustomCard, CustomCardContent } from "..";
+import CustomCard from "Components/CustomCard/CustomCard";
+import CustomCardContent from "Components/CustomCard/CustomCardContent";
+import CustomCardHeader from "Components/CustomCard/CustomCardHeader";
+import CustomCardRow from "Components/CustomCard/CustomCardRow";
+import LockIcon from "@mui/icons-material/Lock";
+import EditOffIcon from "@mui/icons-material/EditOff";
 
 const LimitationCard = ({ data }) => {
   return (
     <div>
       <CustomCard>
         <CustomCardContent>
-          <Grid item xs>
-            <Chip label="Limitations" />
-          </Grid>
-          <Grid item xs pt={2}>
-            <TextField
-              label="LIMIT COUNT"
+          <CustomCardHeader title="Limitations" />
+          <Grid item container xs direction="column">
+            <CustomCardRow title="Limit Count" value={data.limitCount} />
+            <CustomCardRow
+              title="Expiration"
+              value={data.expiration || "Not available"}
               disabled
-              variant="standard"
-              fullWidth
-              value={data.limitCount}
+              icon={<EditOffIcon />}
             />
-          </Grid>
-          <Grid item xs pt={2}>
-            <TextField
-              label="EXPIRATION"
+            <CustomCardRow
+              title="Site license"
+              value={data.siteLicense}
+              mb={0}
               disabled
-              variant="standard"
-              fullWidth
-              value={data.expiration}
+              icon={<LockIcon />}
             />
           </Grid>
         </CustomCardContent>

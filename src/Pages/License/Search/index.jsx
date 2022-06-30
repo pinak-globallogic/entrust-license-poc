@@ -1,8 +1,6 @@
-import Content from "../../../Layouts/Main/Content";
+
+import Content from "Layouts/Content/Content";
 import SearchLicense from "./searchLicense";
-
-
-
 const SearchLicenseWrapper = () => {
   return (
     <Content pt={5}>

@@ -1,48 +1,46 @@
-import * as React from "react";
-import Stack from "@mui/material/Stack";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+import { useState } from "react";
+import { Alert, Slide, Snackbar } from "@mui/material";
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+export const withSnackbar = (WrappedComponent) => {
+  return (props) => {
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState();
+    const [duration, setDuration] = useState(3000);
+    const [severity, setSeverity] =
+      useState("success"); /** error | warning | info */
 
-const Customizedsnackbars = (props) => {
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    props.close();
-  };
+    const showMessage = (message, severity = "success", duration = 2000) => {
+      setMessage(message);
+      setSeverity(severity);
+      setDuration(duration);
+      setOpen(true);
+    };
 
-  return (
-    <Stack
-      sx={{ width: "100%", position: "relative", bottom: "0px !important" }}
-    >
-      <Snackbar
-        sx={{
-          position: "relative",
-          left: "auto !important",
-          bottom: "0px !important",
-        }}
-        open={props.openSla}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert
-          sx={{
-            position: "relative",
-            left: "auto !important",
-            bottom: "0px !important",
-            width: "100%",
+    const handleClose = (event, reason) => {
+      if (reason === "clickaway") {
+        return;
+      }
+      setOpen(false);
+    };
+
+    return (
+      <>
+        <WrappedComponent {...props} showMessage={showMessage} />
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
           }}
+          autoHideDuration={duration}
+          open={open}
           onClose={handleClose}
-          severity={props.type}
+          TransitionComponent={Slide}
         >
-          {props.message}
-        </Alert>
-      </Snackbar>
-    </Stack>
-  );
+          <Alert variant="filled" onClose={handleClose} severity={severity}>
+            {message}
+          </Alert>
+        </Snackbar>
+      </>
+    );
+  };
 };
-export default Customizedsnackbars;
