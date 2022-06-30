@@ -6,11 +6,17 @@ import { FormControlLabel } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 import { RadioGroup } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./../../../App";
 
 const LimitationDetails = () => {
   const { state, setState } = useContext(AppContext);
+  const [radioValue, setRadioValue] = useState("No expiry Date");
+
+  const radioHandler = (e) => {
+    setRadioValue(e.target.value);
+    console.log(e.target.value);
+  };
 
   return (
     <div>
@@ -63,7 +69,12 @@ const LimitationDetails = () => {
             </Typography>
           </Grid>
           <Grid item mb={2}>
-            <RadioGroup name="use-radio-group" defaultValue="No expiry Date">
+            <RadioGroup
+              name="use-radio-group"
+              defaultValue="No expiry Date"
+              onChange={radioHandler}
+              value={radioValue}
+            >
               <FormControlLabel
                 value="No expiry Date"
                 label="No expiry Date"
@@ -79,6 +90,7 @@ const LimitationDetails = () => {
                 </Grid>
                 <Grid item xs pr={2}>
                   <TextField
+                    disabled={radioValue !== "Expiry in days:"}
                     label="Number of days"
                     variant="outlined"
                     size="small"
@@ -107,12 +119,17 @@ const LimitationDetails = () => {
 
                 <Grid item xs pr={2}>
                   <TextField
-                    id="date"
+                    disabled={radioValue !== "Specific date"}
+                    defaultValue={new Date().toISOString()}
+                    inputProps={{
+                      min: new Date().toISOString().slice(0, 16)
+                    }}
+                    variant="outlined"
                     label="Birthday"
-                    type="date"
-                    defaultValue="2022-05-24"
+                    placeholder="Birthday"
+                    type="datetime-local"
                     InputLabelProps={{
-                      shrink: true,
+                      shrink: true
                     }}
                   />
                 </Grid>
