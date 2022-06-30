@@ -2,9 +2,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useContext } from "react";
-import { AppContext } from "./../../../App";
 import { CustomCard, CustomCardContent } from "./GenerateLicense";
-
+import { AppContext } from "App";
 
 const CustomerDetails = () => {
   const { state, setState } = useContext(AppContext);

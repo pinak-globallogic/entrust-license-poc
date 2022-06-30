@@ -1,5 +1,5 @@
 import Router from "./Routes/index";
-import LayoutWrapper from "./Layouts/Main/index";
+import LayoutWrapper from "./Layouts/index";
 import { createContext, useState } from "react";
 
 export const AppContext = createContext();
@@ -19,8 +19,9 @@ const App = () => {
       edition: "Professional",
     },
     limitation: {
-      limitCount: "Site License",
-      expiration: "365 days",
+      siteLicense: "false",
+      limitCount: "",
+      expiration: "",
     },
     user: {
       name: "",

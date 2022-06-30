@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./../Pages/Login/index";
-import DashboardWrapper from "./../Pages/Dashboard/index";
-import GenerateLicenseWrapper from "./../Pages/License/Generate/index";
+import Login from "Pages/Login/index";
+import DashboardWrapper from "Pages/Dashboard/index";
+import GenerateLicenseWrapper from "Pages/License/Generate/index";
 
 const Router = () => {
   return (

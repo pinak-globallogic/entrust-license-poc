@@ -31,7 +31,7 @@ const LimitationDetails = () => {
             </Typography>
           </Grid>
           <Grid item container xs pt={1}>
-            <Grid item>
+            <Grid item mr={3}>
               <TextField
                 label="Limit Count"
                 variant="outlined"
