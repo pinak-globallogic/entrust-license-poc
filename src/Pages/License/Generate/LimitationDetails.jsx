@@ -17,9 +17,29 @@ const LimitationDetails = () => {
     setRadioValue(e.target.value);
   };
 
-  const EXPIRYINDAYS = "Expiry in days:";
+  const EXPIRYDAYS = "Expiry in days:";
   const NOEXPIRY = "No expiry Date";
   const SPECIFICDATE = "Specific date";
+
+  const limitCountValue = (e) => {
+    setState({
+      ...state,
+      limitation: {
+        ...state.limitation,
+        limitCount: e.target.value,
+      },
+    });
+  };
+
+  const expirationValue = (e) => {
+    setState({
+      ...state,
+      limitation: {
+        ...state.limitation,
+        expiration: e.target.value,
+      },
+    });
+  };
 
   return (
     <div>
@@ -39,17 +59,14 @@ const LimitationDetails = () => {
                 label="Limit Count"
                 variant="outlined"
                 size="small"
+                type="number"
+                InputProps={{
+                  type: "number",
+                  inputProps: { min: 1, max: 40 }
+                }}
                 required
                 value={state.limitation.limitCount}
-                onChange={(e) =>
-                  setState({
-                    ...state,
-                    limitation: {
-                      ...state.limitation,
-                      limitCount: e.target.value,
-                    },
-                  })
-                }
+                onChange={limitCountValue}
               />
             </Grid>
             <Grid item pr={1}>
@@ -86,28 +103,21 @@ const LimitationDetails = () => {
               <Grid item container xs pt={1}>
                 <Grid item xs pr={2}>
                   <FormControlLabel
-                    value={EXPIRYINDAYS}
-                    label={EXPIRYINDAYS}
+                    value={EXPIRYDAYS}
+                    label={EXPIRYDAYS}
                     control={<Radio />}
                   />
                 </Grid>
                 <Grid item xs pr={2}>
                   <TextField
-                    disabled={radioValue !== { EXPIRYINDAYS }}
+                    disabled={radioValue !== EXPIRYDAYS}
                     label="Number of days"
                     variant="outlined"
                     size="small"
+                    type="number"
                     required
                     value={state.limitation.expiration}
-                    onChange={(e) =>
-                      setState({
-                        ...state,
-                        limitation: {
-                          ...state.limitation,
-                          expiration: e.target.value,
-                        },
-                      })
-                    }
+                    onChange={expirationValue}
                   />
                 </Grid>
               </Grid>
@@ -122,7 +132,7 @@ const LimitationDetails = () => {
 
                 <Grid item xs pr={2}>
                   <TextField
-                    disabled={radioValue !== { SPECIFICDATE }}
+                    disabled={radioValue !== SPECIFICDATE}
                     defaultValue={new Date().toISOString()}
                     inputProps={{
                       min: new Date().toISOString().slice(0, 16),
