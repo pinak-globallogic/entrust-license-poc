@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "./../../../App";
+import { AppContext } from "App";
 import CustomerDetails from "./CustomerDetails";
 import ProductDetails from "./ProductDetails";
 import FeatureDetails from "./FeatureDetails";

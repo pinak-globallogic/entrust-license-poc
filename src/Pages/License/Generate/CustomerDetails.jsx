@@ -4,8 +4,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { useContext } from "react";
-import { AppContext } from "./../../../App";
 import { CustomCard, CustomCardContent } from "./GenerateLicense";
+import { AppContext } from "App";
 
 const customerNameList = [
   { name: "Datacard LLC" },
