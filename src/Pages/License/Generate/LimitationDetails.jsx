@@ -15,7 +15,7 @@ const SPECIFICDATE = "Specific date";
 
 const LimitationDetails = () => {
   const { state, setState } = useContext(AppContext);
-  const [radioValue, setRadioValue] = useState("No expiry Date");
+  const [radioValue, setRadioValue] = useState(NOEXPIRY);
 
   const radioHandler = (e) => {
     setRadioValue(e.target.value);
