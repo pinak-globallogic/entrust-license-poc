@@ -40,6 +40,10 @@ const Dashboard = (props) => {
     navigate("/license/generate");
   };
 
+  const onSearchProductKey = () => {
+    navigate("/license/search");
+  };
+
   return (
     <Grid item container direction="column" pb={10} {...props}>
       <CustomCard>
@@ -59,7 +63,11 @@ const Dashboard = (props) => {
             <CardWrapper
               key={card.key}
               mb={5}
-              onSubmitButton={onGenerateProductKeyClick}
+              onSubmitButton={
+                card.action.buttonText === "EXPLORE THE DATABASE"
+                  ? onSearchProductKey
+                  : onGenerateProductKeyClick
+              }
               data={card}
             />
           ))}

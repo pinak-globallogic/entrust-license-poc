@@ -20,6 +20,12 @@ navMap.set("/license/generate", {
   title: "Generate Product Key"
 });
 
+navMap.set("/license/search", {
+  nav: true,
+  content: true,
+  title: "License Key Explorer"
+});
+
 
 export default function CustomSeparator() {
   const location = useLocation();

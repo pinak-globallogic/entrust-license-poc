@@ -21,6 +21,12 @@ navMap.set("/license/generate", {
   title,
   link,
 });
+navMap.set("/license/search", {
+  nav: true,
+  content: true,
+  title,
+  link,
+});
 
 const Sidenav = (props) => {
   const location = useLocation();
@@ -54,9 +60,7 @@ const Sidenav = (props) => {
                     color="primary"
                     fontWeight={600}
                     lineHeight={0}
-                  >
-                    CANCEL AND GO <br />
-                    BACK TO DASHBOARD
+                  > &nbsp;&nbsp; BACK TO <br />DASHBOARD
                   </Typography>
                 </Grid>
               </Grid>

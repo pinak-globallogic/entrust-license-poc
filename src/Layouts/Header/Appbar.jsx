@@ -55,6 +55,11 @@ navMap.set("/license/generate", {
   content: true,
 });
 
+navMap.set("/license/search", {
+  nav: true,
+  content: true,
+});
+
 export default function AppBar() {
   const { state, setState } = useContext(AppContext);
   const location = useLocation();
