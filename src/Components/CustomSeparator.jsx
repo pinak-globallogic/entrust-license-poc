@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 
 const navMap = new Map();
 navMap.set("/", {
@@ -18,6 +19,12 @@ navMap.set("/license/generate", {
   nav: true,
   content: true,
   title: "Generate Product Key"
+});
+
+navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
+  nav: true,
+  content: true,
+  title: "License Key Explorer"
 });
 
 
