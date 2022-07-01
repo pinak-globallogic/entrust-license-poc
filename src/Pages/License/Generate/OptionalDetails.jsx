@@ -35,16 +35,16 @@ const OptionalDetails = () => {
       <CustomCard>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="h6">Optional comment</Typography>
+            <Typography id="optional-comment-title" variant="h6">Optional comment</Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="optional-comment-subtitle" variant="caption">
               If you want, you can set a comment or leave it blank.
             </Typography>
           </Grid>
           <Grid item>
             <TextField
-              id="optional-comment"
+              id="optional-comment-field"
               label="Optional comment"
               variant="outlined"
               size="small"
@@ -61,19 +61,19 @@ const OptionalDetails = () => {
         </CustomCardContent>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="h6">Amount of keys</Typography>
+            <Typography id="key-amount-title" variant="h6">Amount of keys</Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="key-amount-subtitle2" variant="caption">
               In some instances you might need to generate multiple keys with
               identical settings. <br />
-              Hence, you can specify amount of key generated. The default value
+              Here you can specify the amount of keys being generated. The default value
               is 1.
             </Typography>
           </Grid>
           <Grid item>
             <TextField
-              id="key-amount"
+              id="key-amount-field"
               label="Amount of Keys"
               variant="outlined"
               size="small"
@@ -91,7 +91,7 @@ const OptionalDetails = () => {
         </CustomCardContent>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="caption">
+            <Typography id="key-amount-subtitle2" variant="caption">
               You have now completed the key generator form. Please carefully
               review the settings on the right. <br />
               If you are happy with the settings, proceed to next screen to

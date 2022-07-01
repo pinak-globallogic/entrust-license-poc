@@ -32,13 +32,13 @@ export default function CustomSeparator() {
   }, [location]);
 
   const breadcrumbs = [
-    <Typography key="1">
+    <Typography id="header-nav1" key="1">
       <Link to="/dashboard" style={{ color:"white", textDecoration: "none" }}>
         Internal Licensing Tools
       </Link>
     </Typography>,
     data.nav && data.content && (
-      <Typography key="2" color="white">
+      <Typography id="header-nav2" key="2" color="white">
         {data.title} 
       </Typography>
     ),

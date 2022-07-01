@@ -23,16 +23,16 @@ const ProductDetails = () => {
       <CustomCard>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="h6">Sales Order Number</Typography>
+            <Typography id="sales-order-title" variant="h6">Sales Order Number</Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="sales-order-subtitle" variant="caption">
               Usually associated with the sales order in Oracle.
             </Typography>
           </Grid>
           <Grid>
             <TextField
-              id="sales-order-no"
+              id="sales-order-field"
               label="Sales Order Number"
               variant="outlined"
               size="small"
@@ -56,16 +56,16 @@ const ProductDetails = () => {
       <CustomCard>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="h6">Line Item Number</Typography>
+            <Typography id="line-item-title" variant="h6">Line Item Number</Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="line-item-subtitle" variant="caption">
               The line item number from the Oracle order sheet.
             </Typography>
           </Grid>
           <Grid item>
             <TextField
-              id="line-item-no"
+              id="line-item-field"
               label="Line Item Number"
               variant="outlined"
               size="small"
@@ -89,10 +89,10 @@ const ProductDetails = () => {
       <CustomCard>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="h6">Specify product</Typography>
+            <Typography id="product-info-title" variant="h6">Specify product</Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="product-info-subtitle" variant="caption">
               Insert either the product name, the product item number, or other
               product identifiers. Choose the product in question from the
               dropdown menu.
@@ -100,6 +100,7 @@ const ProductDetails = () => {
           </Grid>
           <Grid item>
             <Autocomplete
+              id="product-info-autocomplete"
               disablePortal
               value={`${state.product.name}, ${state.product.productItemNo}`}
               options={productIdentifierList.map(
@@ -119,7 +120,7 @@ const ProductDetails = () => {
               renderInput={(params, value) => (
                 <TextField
                   {...params}
-                  id="product-identifier"
+                  id="product-info-field"
                   label="Product identifier"
                   variant="outlined"
                   size="small"

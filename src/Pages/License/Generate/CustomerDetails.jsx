@@ -50,16 +50,17 @@ const CustomerDetails = () => {
       <CustomCard>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="h6">Select or create customer</Typography>
+            <Typography id="customer-title" variant="h6">Select or create customer</Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="customer-subtitle" variant="caption">
               When typing below, you can search the database for existing
               customers.
             </Typography>
           </Grid>
           <Grid item>
             <Autocomplete
+              id="customer-name-autocomplete"
               freeSolo
               value={value}
               inputValue={inputValue}
@@ -97,7 +98,7 @@ const CustomerDetails = () => {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  id="customer-name"
+                  id="customer-name-field"
                   label="Customer name"
                   variant="outlined"
                   size="small"
@@ -110,7 +111,7 @@ const CustomerDetails = () => {
           <br />
           <Grid item mb={2}>
             {isNewCustomer && (
-              <Typography variant="caption">
+              <Typography id="new-customer-msg" variant="caption">
                 You have chosen a new customer that is not yet in database.
                 <br /> <q>{value}</q> will be added.
               </Typography>

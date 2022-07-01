@@ -1,11 +1,10 @@
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import { styled } from "@mui/styles";
-import CardContent from "@mui/material/CardContent";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+
 import { AppContext } from "App";
 import CustomerDetails from "./CustomerDetails";
 import ProductDetails from "./ProductDetails";
@@ -13,79 +12,84 @@ import FeatureDetails from "./FeatureDetails";
 import LimitationDetails from "./LimitationDetails";
 import OptionalDetails from "./OptionalDetails";
 
-export const CustomCard = styled(Card)(() => ({
-  marginBottom: "1vh",
-  backgroundColor: "transparent !important",
-  boxShadow: "none !important",
-}));
-
-export const CustomCardContent = styled(CardContent)(() => ({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-}));
-
-const renderSwitch = (count) => {
-  switch (count) {
-  case 0:
-    return <CustomerDetails />;
-  case 1:
-    return <ProductDetails />;
-  case 2:
-    return <FeatureDetails />;
-  case 3:
-    return <LimitationDetails />;
-  case 4:
-    return <OptionalDetails />;
-  }
-};
-
 const noOfKeys = (keyAmount) => {
-  if(keyAmount < 1){
+  if (keyAmount < 1) {
     return 1;
   }
   return keyAmount;
-}
+};
 
 const GenerateLicense = (props) => {
   const [count, setCount] = useState(0);
-  const detailsPage = renderSwitch(count);
   const navigate = useNavigate();
   const { state } = useContext(AppContext);
   const btnDisabled = state.error;
 
+  const renderSwitch = (count) => {
+    let obj = {
+      btn:{
+      text: "continue",
+      variant: "contained",
+      action: () => setCount(count + 1),
+      },
+      page: null
+    };
+    switch (count) {
+    case 0:
+      obj.page = <CustomerDetails />;
+      break;
+    case 1:
+      obj.page = <ProductDetails />;
+      break;
+    case 2:
+      obj.page = <FeatureDetails />;
+      break;
+    case 3:
+      obj.page = <LimitationDetails />;
+      break;
+    case 4:
+      obj.btn.text = `Commit setting and generate ${noOfKeys(state.keyAmount)} key(s)`;
+      obj.page= <OptionalDetails />;
+      break;
+    case 5:
+      obj.btn.text = "Finish and go back to dashboard";
+      obj.btn.variant = "outlined";
+      obj.btn.action = () => navigate("/dashboard");
+      obj.page =  null;
+      break;
+    }
+
+    return obj;
+  };
+
+  const details = renderSwitch(count);
+
   return (
     <>
       <Grid item container direction="column" {...props}>
-        {detailsPage}
-        <Stack direction="row" justifyContent="space-between">
-          {count > 0 && count < 5 ? (
-            <Button variant="text" disabled={btnDisabled} onClick={() => {setCount(count - 1)}}>
+        {details.page}
+        <Stack direction="row-reverse" justifyContent="space-between">
+          <Button
+            id="continue-btn"
+            variant={details.btn.variant}
+            disabled={btnDisabled}
+            style={{ maxWidth: "25vh" }}
+            onClick={details.btn.action}
+          >
+            {details.btn.text}
+          </Button>
+          {count > 0 && count < 5 && (
+            <Button
+              id="back-btn"
+              variant="text"
+              disabled={btnDisabled}
+              onClick={() => {
+                setCount(count - 1);
+              }}
+            >
               Go Back
             </Button>
-          ) : (
-            <div style={{ display: "block" }} />
           )}
-          {(count <= 3 && (
-            <Button variant="contained" disabled={btnDisabled} onClick={() => setCount(count + 1)}>
-              Continue
-            </Button>
-          )) ||
-            (count == 4 && (
-              <Button
-                variant="contained"
-                disabled={btnDisabled}
-                style={{ maxWidth: "25vh" }}
-                onClick={() => setCount(count + 1)}
-              >
-                Commit setting and generate {noOfKeys(state.optional.keyAmount)} key(s)
-              </Button>
-            )) ||
-            (count == 5 && (
-              <Button variant="outlined" onClick={() => navigate("/dashboard")}>
-                Finish and go back to dashboard
-              </Button>
-            ))}
         </Stack>
       </Grid>
     </>
