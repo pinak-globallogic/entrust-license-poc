@@ -19,6 +19,9 @@ const initialState = {
     expiration: "",
     select: "No expiry Date",
   },
+  optionalComment: "",
+  keyAmount: "1",
+  error: "",
 };
 
 export const generateLicenseSlice = createSlice({
@@ -41,6 +44,11 @@ export const generateLicenseSlice = createSlice({
     updateLimitation: (state, action) => {
       state.limitation = action.payload;
     },
+    updateOptionalDetails: (state, action) => {
+      state.keyAmount = action.payload.keyAmount;
+      state.optionalComment = action.payload.optionalComment;
+      state.error = action.payload.error;
+    },
   },
 });
 
@@ -50,6 +58,7 @@ export const {
   updateProduct,
   updateFeature,
   updateLimitation,
+  updateOptionalDetails,
 } = generateLicenseSlice.actions;
 
 export default generateLicenseSlice.reducer;
