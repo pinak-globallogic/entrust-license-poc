@@ -27,12 +27,12 @@ const GenerateLicense = (props) => {
 
   const renderSwitch = (count) => {
     let obj = {
-      btn:{
-      text: "continue",
-      variant: "contained",
-      action: () => setCount(count + 1),
+      btn: {
+        text: "continue",
+        variant: "contained",
+        action: () => setCount(count + 1),
       },
-      page: null
+      page: null,
     };
     switch (count) {
     case 0:
@@ -48,14 +48,16 @@ const GenerateLicense = (props) => {
       obj.page = <LimitationDetails />;
       break;
     case 4:
-      obj.btn.text = `Commit setting and generate ${noOfKeys(state.keyAmount)} key(s)`;
-      obj.page= <OptionalDetails />;
+      obj.btn.text = `Commit setting and generate ${noOfKeys(
+        state.keyAmount
+      )} key(s)`;
+      obj.page = <OptionalDetails />;
       break;
     case 5:
       obj.btn.text = "Finish and go back to dashboard";
       obj.btn.variant = "outlined";
       obj.btn.action = () => navigate("/dashboard");
-      obj.page =  null;
+      obj.page = null;
       break;
     }
 
