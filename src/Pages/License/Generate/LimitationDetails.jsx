@@ -41,6 +41,25 @@ const LimitationDetails = () => {
     });
   };
 
+  //function getDifferenceInDays(date1, date2) {
+  //  const diffInMs = Math.abs(date2 - date1);
+  //  return diffInMs / (1000 * 60 * 60 * 24);
+  //}
+
+  //const onExpirationChangeDays = (e) => {
+  //  let current = new Date().toISOString().slice(0, 10);
+  //  const date1 = new Date(current);
+  //  const date2 = new Date(e.target.value);
+  //  const days = getDifferenceInDays(date1, date2);
+  //  setState({
+  //    ...state,
+  //    limitation: {
+  //      ...state.limitation,
+  //      expiration: days,
+  //    },
+  //  });
+  //};
+
   return (
     <div>
       <CustomCard>
@@ -140,13 +159,18 @@ const LimitationDetails = () => {
                     variant="outlined"
                     label="Birthday"
                     placeholder="Birthday"
-                    type="datetime-local"
+                    type="date"
                     InputLabelProps={{
                       shrink: true,
                     }}
                     value={state.limitation.expiration}
                     onChange={onExpirationChange}
                   />
+                  {console.log(
+                    "sdsd ",
+                    state.limitation.expiration,
+                    new Date().toISOString().slice(0, 10)
+                  )}
                 </Grid>
               </Grid>
             </RadioGroup>

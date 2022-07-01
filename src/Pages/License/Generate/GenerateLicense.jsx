@@ -9,6 +9,7 @@ import CustomerDetails from "./CustomerDetails";
 import ProductDetails from "./ProductDetails";
 import FeatureDetails from "./FeatureDetails";
 import LimitationDetails from "./LimitationDetails";
+import GeneratrProductKeyDetails from "./GenerateProductKeyDetails";
 
 export const CustomCard = styled(Card)(() => ({
   marginBottom: "1vh",
@@ -24,21 +25,23 @@ export const CustomCardContent = styled(CardContent)(() => ({
 
 const renderSwitch = (count) => {
   switch (count) {
-  case 0:
-    return <CustomerDetails />;
-  case 1:
-    return <ProductDetails />;
-  case 2:
-    return <FeatureDetails />;
-  case 3:
-    return <LimitationDetails />;
+    case 0:
+      return <CustomerDetails />;
+    case 1:
+      return <ProductDetails />;
+    case 2:
+      return <FeatureDetails />;
+    case 3:
+      return <LimitationDetails />;
+    case 4:
+      return <GeneratrProductKeyDetails />;
   }
 };
 
 const GenerateLicense = (props) => {
   const [count, setCount] = useState(0);
   const detailsPage = renderSwitch(count);
-  
+
   return (
     <>
       <Grid item container direction="column" {...props}>
@@ -51,7 +54,7 @@ const GenerateLicense = (props) => {
           ) : (
             <div style={{ display: "block" }} />
           )}
-          {count < 3 && (
+          {count < 4 && (
             <Button variant="contained" onClick={() => setCount(count + 1)}>
               Continue
             </Button>
