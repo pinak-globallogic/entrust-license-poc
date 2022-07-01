@@ -14,9 +14,9 @@ import { makeStyles } from "@mui/styles";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CustomSeparator from "../../Components/CustomSeparator";
-import { useContext } from "react";
-import { AppContext } from "./../../App";
 import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import { useSelector, useDispatch } from "react-redux";
+import { setLoginDetails } from "Redux/Slices/loginSlice";
 
 const useStyles = makeStyles({
   logo: {
@@ -63,7 +63,6 @@ navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
 
 export default function AppBar() {
   const loginDetails = useSelector((state) => state.login);
-  console.log(loginDetails);
   const dispatch = useDispatch();
   const location = useLocation();
   const [data, setData] = useState(navMap.get("/"));

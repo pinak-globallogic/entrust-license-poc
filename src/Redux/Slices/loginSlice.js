@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "",
-  role: "",
+  name: "admin",
+  role: "Fulfillment",
 };
 
 export const loginSlice = createSlice({
@@ -10,7 +10,6 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     setLoginDetails: (state, action) => {
-      console.log("action", action.payload);
       state.name = action.payload.name;
       state.role = action.payload.role;
     },

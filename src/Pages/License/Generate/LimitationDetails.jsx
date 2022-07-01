@@ -6,39 +6,27 @@ import { FormControlLabel } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 import { RadioGroup } from "@mui/material";
-import { useContext, useState } from "react";
-import { AppContext } from "App";
+import { useSelector, useDispatch } from "react-redux";
+import { updateLimitation } from "Redux/Slices/generateLicenseSlice";
 
 const EXPIRYDAYS = "Expiry in days:";
 const NOEXPIRY = "No expiry Date";
 const SPECIFICDATE = "Specific date";
 
 const LimitationDetails = () => {
-  const { state, setState } = useContext(AppContext);
-  const [radioValue, setRadioValue] = useState(NOEXPIRY);
+  const limitation = useSelector((state) => state.generateLicense.limitation);
+  const dispatch = useDispatch();
 
   const radioHandler = (e) => {
-    setRadioValue(e.target.value);
+    dispatch(updateLimitation({ ...limitation, select: e.target.value }));
   };
 
   const onLimitCountChange = (e) => {
-    setState({
-      ...state,
-      limitation: {
-        ...state.limitation,
-        limitCount: e.target.value,
-      },
-    });
+    dispatch(updateLimitation({ ...limitation, limitCount: e.target.value }));
   };
 
   const onExpirationChange = (e) => {
-    setState({
-      ...state,
-      limitation: {
-        ...state.limitation,
-        expiration: e.target.value,
-      },
-    });
+    dispatch(updateLimitation({ ...limitation, expiration: e.target.value }));
   };
 
   return (
@@ -54,7 +42,7 @@ const LimitationDetails = () => {
             </Typography>
           </Grid>
           <Grid item container xs pt={1}>
-            <Grid item mr={3}>
+            <Grid item mr={5}>
               <TextField
                 label="Limit Count"
                 variant="outlined"
@@ -65,7 +53,7 @@ const LimitationDetails = () => {
                   inputProps: { min: 1, max: 40 },
                 }}
                 required
-                value={state.limitation.limitCount}
+                value={limitation.limitCount}
                 onChange={onLimitCountChange}
               />
             </Grid>
@@ -76,10 +64,7 @@ const LimitationDetails = () => {
               />
             </Grid>
           </Grid>
-        </CustomCardContent>
-
-        <CustomCardContent>
-          <Grid item mb={1}>
+          <Grid item mb={1} mt={8}>
             <Typography variant="h6">Expiration date</Typography>
           </Grid>
           <Grid item mb={2}>
@@ -93,7 +78,7 @@ const LimitationDetails = () => {
               name="use-radio-group"
               defaultValue={NOEXPIRY}
               onChange={radioHandler}
-              value={radioValue}
+              value={limitation.select}
             >
               <FormControlLabel
                 value={NOEXPIRY}
@@ -110,13 +95,13 @@ const LimitationDetails = () => {
                 </Grid>
                 <Grid item xs pr={2}>
                   <TextField
-                    disabled={radioValue !== EXPIRYDAYS}
+                    disabled={limitation.select !== EXPIRYDAYS}
                     label="Number of days"
                     variant="outlined"
                     size="small"
                     type="number"
                     required
-                    value={state.limitation.expiration}
+                    value={limitation.expiration}
                     onChange={onExpirationChange}
                   />
                 </Grid>
@@ -132,7 +117,7 @@ const LimitationDetails = () => {
 
                 <Grid item xs pr={2}>
                   <TextField
-                    disabled={radioValue !== SPECIFICDATE}
+                    disabled={limitation.select !== SPECIFICDATE}
                     defaultValue={new Date().toISOString()}
                     inputProps={{
                       min: new Date().toISOString().slice(0, 16),
@@ -141,10 +126,11 @@ const LimitationDetails = () => {
                     label="Birthday"
                     placeholder="Birthday"
                     type="datetime-local"
+                    size="small"
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    value={state.limitation.expiration}
+                    value={limitation.expiration}
                     onChange={onExpirationChange}
                   />
                 </Grid>

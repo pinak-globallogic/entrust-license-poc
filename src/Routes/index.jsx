@@ -4,6 +4,8 @@ import DashboardWrapper from "Pages/Dashboard/index";
 import GenerateLicenseWrapper from "Pages/License/Generate/index";
 import SearchLicenseWrapper from "Pages/License/Search";
 
+export const LICENSE_SEARCH_PAGE_ROUTE = "/license/search";
+
 const Router = () => {
   return (
     <Routes>
@@ -16,4 +18,3 @@ const Router = () => {
   );
 };
 export default Router;
-export const LICENSE_SEARCH_PAGE_ROUTE = "/license/search";

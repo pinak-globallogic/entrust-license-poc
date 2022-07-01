@@ -15,8 +15,9 @@ const initialState = {
   },
   limitation: {
     siteLicense: "false",
-    limitCount: "",
+    limitCount: 1,
     expiration: "",
+    select: "No expiry Date",
   },
 };
 
@@ -38,7 +39,7 @@ export const generateLicenseSlice = createSlice({
       state.feature = action.payload;
     },
     updateLimitation: (state, action) => {
-      state.feature = action.payload;
+      state.limitation = action.payload;
     },
   },
 });

@@ -8,7 +8,7 @@ const ProductCard = ({ data }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <CustomCardHeader title="Product" />
+        <CustomCardHeader title="Order Information" />
         <Grid item container xs direction="column">
           <CustomCardRow title="FeatureID" value={data.productItemNo} />
           <CustomCardRow title="Product Name" value={data.name} />
