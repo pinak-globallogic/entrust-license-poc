@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 import ResponsiveAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,11 +14,9 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { makeStyles } from "@mui/styles";
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+
 import CustomSeparator from "../../Components/CustomSeparator";
 import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
-import { useSelector, useDispatch } from "react-redux";
 import { setLoginDetails } from "Redux/Slices/loginSlice";
 
 const useStyles = makeStyles({

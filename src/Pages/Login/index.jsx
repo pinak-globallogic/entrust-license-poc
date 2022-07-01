@@ -96,7 +96,7 @@ const Login = ({ showMessage }) => {
         <Grid item container justifyContent="center" alignItems="center" xs={3}>
           <img src={Logo} alt="Entrust Logo" width={210} loading="lazy"/>
         </Grid>
-        <Divider className={classes.divider} sx={{ borderBottomWidth: 2 }} />
+        <Divider className={classes.divider} sx={{ borderBottomWidth: 1, borderColor:"#87189D" }} />
         <Typography id="login-title" variant="h5" gutterBottom component="div" className={classes.title}>
           Internal Licensing App
         </Typography>
