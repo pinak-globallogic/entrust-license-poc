@@ -13,7 +13,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Stack from "@mui/material/Stack";
 
 const formatDateFromMilliSeconds = (dateMilliSeconds) => {
-  var date = new Date(Number(dateMilliSeconds)), month = "" + (date.getMonth() + 1),
+  var date = new Date(Number(dateMilliSeconds)),
+    month = "" + (date.getMonth() + 1),
     day = "" + date.getDate(),
     year = date.getFullYear();
 
@@ -21,13 +22,12 @@ const formatDateFromMilliSeconds = (dateMilliSeconds) => {
   if (day.length < 2) day = "0" + day;
 
   return [year, month, day].join("-");
-}
+};
 
 const SearchLicense = () => {
   const [data, setData] = useState([]);
-  const [pageSize, setPageSizeState] = useState(10);
   const [selectionModel, setSelectionModel] = useState([]);
-  const [value, setValue] = useState(new Date());
+  const [dateValue, setDateValue] = useState(new Date());
 
   useEffect(() => {
     //Comment loadLicense method call from here if not need to fetch on load
@@ -45,10 +45,6 @@ const SearchLicense = () => {
 
   const setSelectionModelInDataGrid = (newSelectedModel) => {
     setSelectionModel(newSelectedModel);
-  };
-
-  const setPageSize = (newPageSize) => {
-    setPageSizeState(newPageSize);
   };
 
   const columns = [
@@ -92,7 +88,11 @@ const SearchLicense = () => {
       width: 75,
       editable: false,
       renderCell: (params) =>
-        params.row.status === "Activated" ? <CheckCircleOutlineIcon color="success" /> : <DoNotDisturbIcon color="disabled" />,
+        params.row.status === "Activated" ? (
+          <CheckCircleOutlineIcon color="success" />
+        ) : (
+          <DoNotDisturbIcon color="disabled" />
+        ),
     },
     {
       field: "user",
@@ -109,19 +109,16 @@ const SearchLicense = () => {
     },
   ];
 
-  const handleGetRowId = (e) => {
-    return e.licenseId;
-  };
-
   return (
     <Grid container xs={6}>
       <Grid item xs={12}>
-        Input keyworkds to filter the database. Click Search and find the
-        results below.<br></br> You can filter the database for one or more
-        parameters. At least one parameter must be set
+        Input keywords to filter the database. Click Search and find the results
+        below.<br></br> You can filter the database for one or more parameters.
+        At least one parameter must be set
       </Grid>
       <Grid xs={4} pt={2}>
         <TextField
+          id="productKey"
           label="Product Key"
           variant="outlined"
           fullWidth
@@ -132,6 +129,7 @@ const SearchLicense = () => {
 
       <Grid xs={4} pt={2}>
         <TextField
+          id="customerName"
           label="Customer Name"
           variant="outlined"
           fullWidth
@@ -142,6 +140,7 @@ const SearchLicense = () => {
 
       <Grid xs={4} pt={2}>
         <TextField
+          id="licenseServerId"
           label="License Server ID"
           variant="outlined"
           fullWidth
@@ -152,6 +151,7 @@ const SearchLicense = () => {
 
       <Grid xs={4} pt={2}>
         <TextField
+          id="salesOrderNo"
           label="Sales Order No."
           variant="outlined"
           fullWidth
@@ -171,13 +171,14 @@ const SearchLicense = () => {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Stack spacing={3}>
             <DatePicker
+              id="createdDate"
               disableFuture
               label="Only show results before"
               openTo="day"
               views={["year", "month", "day"]}
-              value={value}
+              value={dateValue}
               onChange={(newValue) => {
-                setValue(newValue);
+                setDateValue(newValue);
               }}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -194,13 +195,10 @@ const SearchLicense = () => {
       </Grid>
       <Grid xs={12} marginTop={5}>
         <DataGridCustom
-          setPageSize={setPageSize}
           columns={columns}
           rows={data}
-          pageSize={pageSize}
           selectionModel={selectionModel}
           setSelectionModel={setSelectionModelInDataGrid}
-          handleGetRowId={handleGetRowId}
         ></DataGridCustom>
       </Grid>
     </Grid>
