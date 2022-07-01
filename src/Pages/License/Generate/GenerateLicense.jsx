@@ -72,7 +72,7 @@ const GenerateLicense = (props) => {
     <>
       <Grid item container direction="column" {...props}>
         {details.page}
-        <Stack direction="row-reverse" justifyContent="space-between">
+        <Stack direction="row-reverse" justifyContent="space-between" mt={10}>
           <Button
             id="continue-btn"
             variant={details.btn.variant}
