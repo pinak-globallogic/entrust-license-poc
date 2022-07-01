@@ -54,14 +54,23 @@ const Sidenav = (props) => {
                 <Grid item xs={1} sx={{ fontWeight: 600 }}>
                   {"<"}
                 </Grid>
-                <Grid item xs>
+                <Grid item xs marginLeft={1}>
+                  <Typography
+                    variant="caption"
+                    pr={4}
+                    marginLeft={1.5}
+                    color="primary"
+                    fontWeight={600}
+                    lineHeight={0}
+                  > BACK TO
+                  </Typography>
                   <Typography
                     variant="caption"
                     pr={4}
                     color="primary"
                     fontWeight={600}
                     lineHeight={0}
-                  > &nbsp;&nbsp; BACK TO <br />DASHBOARD
+                  > DASHBOARD
                   </Typography>
                 </Grid>
               </Grid>

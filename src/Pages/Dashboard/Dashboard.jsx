@@ -65,9 +65,7 @@ const Dashboard = (props) => {
               key={card.key}
               mb={5}
               onSubmitButton={
-                card.action.buttonText === "EXPLORE THE DATABASE"
-                  ? onSearchProductKey
-                  : onGenerateProductKeyClick
+                card.key === 2 ? onSearchProductKey : onGenerateProductKeyClick
               }
               data={card}
             />
