@@ -23,15 +23,13 @@ const App = () => {
       limitCount: "",
       expiration: "",
     },
-    optional: {
-      comment: "",
-      keyAmount: "1",
-    },
+    optionalComment: "",
+    keyAmount: "1",
     user: {
       name: "",
       role: "",
     },
-    error: false
+    error: false,
   });
 
   return (

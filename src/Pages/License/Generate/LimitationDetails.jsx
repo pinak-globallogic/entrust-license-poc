@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { CustomCard, CustomCardContent } from "./GenerateLicense";
+import { CustomCard, CustomCardContent } from "./../../../Utilty";
 
 
 const LimitationDetails = () => {

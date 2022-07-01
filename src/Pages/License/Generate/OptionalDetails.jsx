@@ -1,29 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { useContext } from "react";
+
 import { AppContext } from "App";
-import { CustomCard, CustomCardContent } from "./GenerateLicense";
+import { CustomCard, CustomCardContent } from "./../../../Utilty";
 
 const OptionalDetails = () => {
   const { state, setState } = useContext(AppContext);
   const [errorText, setErrorText] = React.useState();
-  let keyAmount = state.optional.keyAmount;
+  let keyAmount = state.keyAmount;
 
   const onChange = (event) => {
     if (event.target.value === "" || event.target.value < 1) {
       setErrorText("Field cannot be empty or less than 1");
       setState({
         ...state,
-        optional: { ...state.optional, keyAmount: event.target.value },
+        keyAmount: event.target.value,
         error: true,
       });
     } else {
       setErrorText("");
       setState({
         ...state,
-        optional: { ...state.optional, keyAmount: event.target.value },
+        keyAmount: event.target.value,
         error: false,
       });
     }
@@ -43,15 +44,16 @@ const OptionalDetails = () => {
           </Grid>
           <Grid item>
             <TextField
+              id="optional-comment"
               label="Optional comment"
               variant="outlined"
               size="small"
               required
-              value={state.optional.comment}
+              value={state.optionalComment}
               onChange={(e) =>
                 setState({
                   ...state,
-                  optional: { ...state.optional, comment: e.target.value },
+                  optionalComment: e.target.value,
                 })
               }
             />
@@ -71,6 +73,7 @@ const OptionalDetails = () => {
           </Grid>
           <Grid item>
             <TextField
+              id="key-amount"
               label="Amount of Keys"
               variant="outlined"
               size="small"

@@ -1,11 +1,14 @@
+import { useContext } from "react";
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useContext } from "react";
-import { AppContext } from "App";
-import { CustomCard, CustomCardContent } from "./GenerateLicense";
 
+import { AppContext } from "App";
+import { CustomCard, CustomCardContent } from "./../../../Utilty";
+
+//ToDo: Hard coded data should be removed once API is available
 const productIdentifierList = [
   { name: "KMS Site License", itemNo: "4567898" },
   { name: "Some other product", itemNo: "2343421" },
@@ -29,6 +32,7 @@ const ProductDetails = () => {
           </Grid>
           <Grid>
             <TextField
+              id="sales-order-no"
               label="Sales Order Number"
               variant="outlined"
               size="small"
@@ -61,6 +65,7 @@ const ProductDetails = () => {
           </Grid>
           <Grid item>
             <TextField
+              id="line-item-no"
               label="Line Item Number"
               variant="outlined"
               size="small"
@@ -96,7 +101,7 @@ const ProductDetails = () => {
           <Grid item>
             <Autocomplete
               disablePortal
-              value={state.product.name +", "+state.product.productItemNo}
+              value={`${state.product.name}, ${state.product.productItemNo}`}
               options={productIdentifierList.map(
                 (option) => option.name + ", " + option.itemNo
               )}
@@ -114,6 +119,7 @@ const ProductDetails = () => {
               renderInput={(params, value) => (
                 <TextField
                   {...params}
+                  id="product-identifier"
                   label="Product identifier"
                   variant="outlined"
                   size="small"

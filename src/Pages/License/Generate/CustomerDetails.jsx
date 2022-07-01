@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-import { useContext } from "react";
-import { CustomCard, CustomCardContent } from "./GenerateLicense";
+
+import { CustomCard, CustomCardContent } from "./../../../Utilty";
 import { AppContext } from "App";
 
+
+//ToDo: Hard coded data should be removed once API are available
 const customerNameList = [
   { name: "Datacard LLC" },
   { name: "Entrust Datacard Inc." },
@@ -15,35 +18,22 @@ const customerNameList = [
 
 const filter = createFilterOptions();
 
-var newCustomerAddedMsg;
-
-const addNewCustomer = (customerName) => {
-  if (customerName) {
-    newCustomerAddedMsg = (
-      <Typography variant="caption">
-        You have chosen a new customer that is not yet in database.
-        <br /> {customerName} will be added.
-      </Typography>
-    );
-    //ToDo : how to store new customer names, just add in option on this screen
-    // and add in db only on submit of entire form. For Now, adding in options only.
-  } else newCustomerAddedMsg = null;
-};
-
 const CustomerDetails = () => {
   const { state, setState } = useContext(AppContext);
   const [value, setValue] = React.useState(state.customer.name);
   const [inputValue, setInputValue] = React.useState("");
   const options = customerNameList;
+  const [isNewCustomer, setNewCustomer] = React.useState(false);
 
   const onChange = (event, value) => {
     if (value) {
       setValue(value.name);
       if (value.inputValue) {
-        addNewCustomer(value.name);
+        setNewCustomer(true);
         options.push({ name: value.name });
+        //ToDo: Store new customer names when form is submitted, when API are available.
       } else {
-        addNewCustomer(null);
+        setNewCustomer(false);
       }
 
       setState({
@@ -64,10 +54,8 @@ const CustomerDetails = () => {
           </Grid>
           <Grid item mb={2}>
             <Typography variant="caption">
-              To generate a license key, you need to set the customer. When
-              typing below, you can search the database for existing customers.
-              If the customer is not yet in the database, you can type in the
-              new name, as well.
+              When typing below, you can search the database for existing
+              customers.
             </Typography>
           </Grid>
           <Grid item>
@@ -109,6 +97,7 @@ const CustomerDetails = () => {
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  id="customer-name"
                   label="Customer name"
                   variant="outlined"
                   size="small"
@@ -120,7 +109,12 @@ const CustomerDetails = () => {
           </Grid>
           <br />
           <Grid item mb={2}>
-            {newCustomerAddedMsg}
+            {isNewCustomer && (
+              <Typography variant="caption">
+                You have chosen a new customer that is not yet in database.
+                <br /> <q>{value}</q> will be added.
+              </Typography>
+            )}
           </Grid>
         </CustomCardContent>
       </CustomCard>
