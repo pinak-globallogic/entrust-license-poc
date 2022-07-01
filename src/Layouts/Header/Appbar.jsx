@@ -13,9 +13,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { makeStyles } from "@mui/styles";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import CustomSeparator from "Components/CustomSeparator";
-import { useSelector, useDispatch } from "react-redux";
-import { setLoginDetails } from "Redux/Slices/loginSlice";
+import CustomSeparator from "../../Components/CustomSeparator";
+import { useContext } from "react";
+import { AppContext } from "./../../App";
+import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 
 const useStyles = makeStyles({
   logo: {
@@ -51,6 +52,11 @@ navMap.set("/dashboard", {
   content: true,
 });
 navMap.set("/license/generate", {
+  nav: true,
+  content: true,
+});
+
+navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,
   content: true,
 });
