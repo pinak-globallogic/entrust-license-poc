@@ -2,9 +2,9 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useContext } from "react";
-import { AppContext } from "App";
+import { useSelector, useDispatch } from "react-redux";
 import { CustomCard, CustomCardContent } from "./GenerateLicense";
+import { updateProduct } from "Redux/Slices/generateLicenseSlice";
 
 const productIdentifierList = [
   { name: "KMS Site License", itemNo: "4567898" },
@@ -13,10 +13,31 @@ const productIdentifierList = [
 ];
 
 const ProductDetails = () => {
-  const { state, setState } = useContext(AppContext);
+  const product = useSelector((state) => state.generateLicense.product);
+  const dispatch = useDispatch();
+
+  const onChangeProductDetails = (e, property) => {
+    let changedValues;
+    const value = e.target.value;
+    if ("name" === property) {
+      changedValues = {
+        name: value.split(", ")[0],
+        productItemNo: value.split(", ")[1],
+      };
+    } else {
+      changedValues = { [property]: value };
+    }
+
+    dispatch(
+      updateProduct({
+        ...product,
+        ...changedValues,
+      })
+    );
+  };
 
   return (
-    <div>
+    <>
       <CustomCard>
         <CustomCardContent>
           <Grid item mb={1}>
@@ -34,16 +55,8 @@ const ProductDetails = () => {
               size="small"
               required
               type="number"
-              value={state.product.salesOrderNo}
-              onChange={(e) =>
-                setState({
-                  ...state,
-                  product: {
-                    ...state.product,
-                    salesOrderNo: e.target.value,
-                  },
-                })
-              }
+              value={product.salesOrderNo}
+              onChange={(e) => onChangeProductDetails(e, "salesOrderNo")}
             />
           </Grid>
         </CustomCardContent>
@@ -66,16 +79,8 @@ const ProductDetails = () => {
               size="small"
               required
               type="number"
-              value={state.product.lineItemNo}
-              onChange={(e) =>
-                setState({
-                  ...state,
-                  product: {
-                    ...state.product,
-                    lineItemNo: e.target.value,
-                  },
-                })
-              }
+              value={product.lineItemNo}
+              onChange={(e) => onChangeProductDetails(e, "lineItemNo")}
             />
           </Grid>
         </CustomCardContent>
@@ -99,16 +104,7 @@ const ProductDetails = () => {
               options={productIdentifierList.map(
                 (option) => option.name + ", " + option.itemNo
               )}
-              onChange={(event, value) =>
-                setState({
-                  ...state,
-                  product: {
-                    ...state.product,
-                    name: value.split(", ")[0],
-                    productItemNo: value.split(", ")[1],
-                  },
-                })
-              }
+              onChange={(event) => onChangeProductDetails(event, "name")}
               sx={{ width: 300 }}
               renderInput={(params, value) => (
                 <TextField
@@ -124,7 +120,7 @@ const ProductDetails = () => {
           </Grid>
         </CustomCardContent>
       </CustomCard>
-    </div>
+    </>
   );
 };
 

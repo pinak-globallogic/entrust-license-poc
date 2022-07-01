@@ -1,13 +1,12 @@
 import Grid from "@mui/material/Grid";
-import { useContext } from "react";
-import { AppContext } from "App";
 import CustomerCard from "./Cards/CustomerCard";
 import ProductCard from "./Cards/ProductCard";
 import FeatureCard from "./Cards/FeatureCard";
 import LimitationCard from "./Cards/LimitationCard";
+import { useSelector } from "react-redux";
 
 const LicenseDetails = (props) => {
-  const { state } = useContext(AppContext);
+  const state = useSelector((state) => state.generateLicense);
 
   return (
     <Grid

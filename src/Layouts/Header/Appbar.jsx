@@ -13,9 +13,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { makeStyles } from "@mui/styles";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import CustomSeparator from "../../Components/CustomSeparator";
-import { useContext } from "react";
-import { AppContext } from "./../../App";
+import CustomSeparator from "Components/CustomSeparator";
+import { useSelector, useDispatch } from "react-redux";
+import { setLoginDetails } from "Redux/Slices/loginSlice";
 
 const useStyles = makeStyles({
   logo: {
@@ -56,11 +56,14 @@ navMap.set("/license/generate", {
 });
 
 export default function AppBar() {
-  const { state, setState } = useContext(AppContext);
+  const loginDetails = useSelector((state) => state.login);
+  console.log(loginDetails);
+  const dispatch = useDispatch();
   const location = useLocation();
   const [data, setData] = useState(navMap.get("/"));
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const classes = useStyles();
 
   useEffect(() => {
     setData(navMap.get(location.pathname) || navMap.get("/"));
@@ -69,16 +72,14 @@ export default function AppBar() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleLogout = () => {
-    localStorage.setItem("name", "");
-    localStorage.setItem("role", "");
-    setState({ ...state, user: { name: "", role: "" } });
-  };
 
-  const classes = useStyles();
+  const handleLogout = () => {
+    dispatch(setLoginDetails({ name: "", role: "" }));
+  };
 
   return (
     <>
@@ -111,11 +112,9 @@ export default function AppBar() {
                   fontSize="large"
                 />
                 <div className={classes.avatarElement}>
-                  <div className={classes.heading1}>
-                    {state.user.name || localStorage.getItem("name")}
-                  </div>
+                  <div className={classes.heading1}>{loginDetails.name}</div>
                   <div className={classes.heading2}>
-                    Role: {state.user.role || localStorage.getItem("role")}
+                    Role: {loginDetails.role}
                   </div>
                 </div>
                 <div

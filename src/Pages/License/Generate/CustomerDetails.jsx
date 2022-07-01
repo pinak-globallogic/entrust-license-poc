@@ -1,12 +1,14 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { useContext } from "react";
 import { CustomCard, CustomCardContent } from "./GenerateLicense";
-import { AppContext } from "App";
+import { useSelector, useDispatch } from "react-redux";
+import { updateCustomer } from "Redux/Slices/generateLicenseSlice";
 
 const CustomerDetails = () => {
-  const { state, setState } = useContext(AppContext);
+  const customer = useSelector((state) => state.generateLicense.customer);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <CustomCard>
@@ -28,9 +30,9 @@ const CustomerDetails = () => {
               variant="outlined"
               size="small"
               required
-              value={state.customer.name}
+              value={customer.name}
               onChange={(e) =>
-                setState({ ...state, customer: { name: e.target.value } })
+                dispatch(updateCustomer({ ...customer, name: e.target.value }))
               }
             />
           </Grid>
