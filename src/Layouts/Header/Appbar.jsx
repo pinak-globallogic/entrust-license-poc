@@ -44,7 +44,7 @@ const useStyles = makeStyles({
 
 const navMap = new Map();
 navMap.set("/", {
-  nav: false,
+  nav: true,
   content: false,
 });
 navMap.set("/dashboard", {
@@ -88,81 +88,87 @@ export default function AppBar() {
 
   return (
     <>
-      {data.nav && data.content && (
+      {data.nav && (
         <ResponsiveAppBar>
           <Container maxWidth>
             <Toolbar disableGutters>
-              <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                <img
-                  src={logo}
-                  alt="entrust-logo.png"
-                  className={classes.logo}
-                />
-              </Link>
+              {data.content && (
+                <>
+                  <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                    <img
+                      src={logo}
+                      alt="entrust-logo.png"
+                      className={classes.logo}
+                    />
+                  </Link>
 
-              <Typography
-                variant="h5"
-                gutterBottom
-                component="div"
-                className={classes.pipe}
-              >
-                |
-              </Typography>
-
-              <CustomSeparator className={classes.heading1} />
-
-              <div className={classes.avatar}>
-                <AccountCircleIcon
-                  className={classes.avatarElement}
-                  fontSize="large"
-                />
-                <div className={classes.avatarElement}>
-                  <div className={classes.heading1}>{loginDetails.name}</div>
-                  <div className={classes.heading2}>
-                    Role: {loginDetails.role}
-                  </div>
-                </div>
-                <div
-                  className={classes.avatarElement}
-                  style={{ verticalAlign: "top" }}
-                >
-                  <Button
-                    id="basic-button"
-                    aria-controls={open ? "basic-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}
-                    onClick={handleClick}
-                    variant="contained"
-                    disableElevation
-                    size="small"
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    component="div"
+                    className={classes.pipe}
                   >
-                    <ArrowDropDownIcon />
-                  </Button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      "aria-labelledby": "basic-button",
-                    }}
-                  >
-                    <MenuItem className={classes.heading2}>
-                      <Link
-                        to="/"
-                        onClick={handleLogout}
-                        style={{ textDecoration: "none" }}
+                    |
+                  </Typography>
+
+                  <CustomSeparator className={classes.heading1} />
+
+                  <div className={classes.avatar}>
+                    <AccountCircleIcon
+                      className={classes.avatarElement}
+                      fontSize="large"
+                    />
+                    <div className={classes.avatarElement}>
+                      <div className={classes.heading1}>
+                        {loginDetails.name}
+                      </div>
+                      <div className={classes.heading2}>
+                        Role: {loginDetails.role}
+                      </div>
+                    </div>
+                    <div
+                      className={classes.avatarElement}
+                      style={{ verticalAlign: "top" }}
+                    >
+                      <Button
+                        id="basic-button"
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClick}
+                        variant="contained"
+                        disableElevation
+                        size="small"
                       >
-                        <LogoutIcon
-                          fontSize="small"
-                          style={{ verticalAlign: "sub" }}
-                        />
-                        &ensp; Logout
-                      </Link>
-                    </MenuItem>
-                  </Menu>
-                </div>
-              </div>
+                        <ArrowDropDownIcon />
+                      </Button>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        <MenuItem className={classes.heading2}>
+                          <Link
+                            to="/"
+                            onClick={handleLogout}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <LogoutIcon
+                              fontSize="small"
+                              style={{ verticalAlign: "sub" }}
+                            />
+                            &ensp; Logout
+                          </Link>
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                  </div>
+                </>
+              )}
             </Toolbar>
           </Container>
         </ResponsiveAppBar>
