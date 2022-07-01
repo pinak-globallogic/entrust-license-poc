@@ -2,7 +2,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
-import { CustomCard } from "./../../Utilty";
+import { CustomCard } from "../../Utilty";
+import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 
 const cards = [
   {
@@ -40,6 +41,10 @@ const Dashboard = (props) => {
     navigate("/license/generate");
   };
 
+  const onSearchProductKey = () => {
+    navigate(LICENSE_SEARCH_PAGE_ROUTE);
+  };
+
   return (
     <Grid item container direction="column" pb={10} {...props}>
       <CustomCard>
@@ -59,7 +64,9 @@ const Dashboard = (props) => {
             <CardWrapper
               key={card.key}
               mb={5}
-              onSubmitButton={onGenerateProductKeyClick}
+              onSubmitButton={
+                card.key === 2 ? onSearchProductKey : onGenerateProductKeyClick
+              }
               data={card}
             />
           ))}
