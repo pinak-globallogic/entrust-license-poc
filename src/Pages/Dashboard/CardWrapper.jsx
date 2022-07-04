@@ -8,14 +8,19 @@ import { styled } from "@mui/styles";
 import { Grid, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyIcon from "@mui/icons-material/Key";
+import { grey } from "@mui/material/colors";
 
 const CustomBox = styled(Box)(() => ({
-  maxWidth: "300px",  
+  maxWidth: "300px",
 }));
 
 const CardWrapper = ({ data, onSubmitButton, ...props }) => {
   return (
-    <Grid item xs={4}>
+    <Grid
+      item
+      xs={4}
+      sx={!data.enable ? { opacity: 0.5, pointerEvents: "none" } : {}}
+    >
       <CustomBox sx={{}} {...props}>
         <Card sx={{ height: 300 }} variant="outlined">
           <CardContent sx={{ mb: 3, height: 200 }}>
@@ -45,7 +50,6 @@ const CardWrapper = ({ data, onSubmitButton, ...props }) => {
                 </Grid>
               </Grid>
             </Grid>
-
             <Typography variant="body2" sx={{ mb: 3, mt: 3 }}>
               {data.content.title}
             </Typography>
@@ -53,7 +57,7 @@ const CardWrapper = ({ data, onSubmitButton, ...props }) => {
           </CardContent>
           <CardActions>
             <Button size="small" onClick={onSubmitButton}>
-              <Typography variant="button" fontWeight={600} fontSize="small">
+              <Typography variant="button" fontWeight={600} fontSize="small" color={data.enable ? "" : "gray"}>
                 {data.action.buttonText}
               </Typography>
             </Button>
