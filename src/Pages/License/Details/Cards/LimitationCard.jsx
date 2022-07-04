@@ -13,11 +13,14 @@ const LimitationCard = ({ data }) => {
         <CustomCardContent>
           <CustomCardHeader title="Limitations" />
           <Grid item container xs direction="column">
-            <CustomCardRow title="Limit Count" value={data.limitCount} />
             <CustomCardRow
               title="Expiration"
               value={data.expiration || "Not available"}
-              disabled
+              disabled={!data.expiration || false}
+            />
+            <CustomCardRow
+              title="Limit Count"
+              value={data.limitCount}
               icon={<EditOffIcon />}
             />
             <CustomCardRow

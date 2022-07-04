@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
-import { CustomCard } from "./../License/Generate/GenerateLicense";
+import { CustomCard } from "../../Utilty";
 import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 
 const cards = [

@@ -1,13 +1,13 @@
-//import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 
 const DataGridCustom = (props) => {
   const [pageSize, setPageSizeState] = useState(10);
-  
+
   const setPageSize = (newPageSize) => {
     setPageSizeState(newPageSize);
   };
+
   return (
     <DataGrid
       rows={props.rows}

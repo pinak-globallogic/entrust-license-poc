@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
-import DataGridCustom from "../../../Components/DataGrid";
+import DataGridCustom from "Components/DataGrid";
 
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
