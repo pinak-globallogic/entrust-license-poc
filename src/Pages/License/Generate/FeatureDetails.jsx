@@ -138,7 +138,6 @@ const FeatureDetails = (props) => {
                         <TextField
                           sx={{ width: "10ch", m: "0" }}
                           size="small"
-                          style={{ borderColor: "red" }}
                           value={row.currentSetting}
                           id={`inputField_${row.id}`}
                         />
