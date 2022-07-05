@@ -35,7 +35,7 @@ const CustomCardRow = ({
           <Chip
             label={value}
             deleteIcon={icon}
-            onDelete
+            onDelete={() => ""}
             variant={disabled ? "filled" : "outlined"}
             size="small"
             sx={{

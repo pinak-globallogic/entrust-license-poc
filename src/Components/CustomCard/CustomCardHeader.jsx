@@ -3,16 +3,24 @@ import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 const CustomCardHeader = ({ title, ...props }) => {
   return (
     <Box mb={2}>
       <Grid item container xs alignItems="center" {...props} mb={0.5}>
         <Grid item xs>
-          <Typography variant="body1">{title}</Typography>
+          <Typography variant="caption">{title}</Typography>
         </Grid>
         <Grid item xs display="flex" justifyContent="end">
-          <EditIcon />
+          <Button
+            variant="contained"
+            size="small"
+            color="secondary"
+            sx={{ minWidth: "2rem" }}
+          >
+            <EditIcon sx={{ fontSize: "1rem" }} />
+          </Button>
         </Grid>
       </Grid>
       <Divider sx={{ borderBottomWidth: 2 }} />
