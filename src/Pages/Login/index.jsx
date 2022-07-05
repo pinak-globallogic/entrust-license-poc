@@ -5,10 +5,16 @@ import { useDispatch } from "react-redux";
 // MUI components
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import IconButton from "@mui/material/IconButton";
+import FilledInput from "@mui/material/FilledInput";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 
 // Custom
 import Logo from "Assets/Images/entrust-logo.png";
@@ -18,24 +24,30 @@ import { setLoginDetails } from "Redux/Slices/loginSlice";
 
 const useStyles = makeStyles({
   card: {
-    width: "600px !important",
-    minHeight: "440px",
+    width: "500px !important",
+    minHeight: "460px",
     background: "#fff",
     boxShadow:
       "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
     borderRadius: "4px",
-    borderTop: "solid 2px #690070",
+    padding: "30px 0px",
   },
-  content: { padding: "4vh 4vh 0" },
+  title: { padding: "2vh 4vh" },
+  content: { padding: "2vh 4vh 0" },
   divider: {
-    width: "100%",
+    width: "60%",
     height: "1px",
+  },
+  inputBox: {
+    maxHeight: "45px",
+    maxWidth: "220px",
   },
 });
 
 const initialState = {
   username: "admin",
   password: "admin",
+  showPassword: false,
 };
 
 const Login = ({ showMessage }) => {
@@ -46,6 +58,13 @@ const Login = ({ showMessage }) => {
 
   const handleInputChange = (event, property) => {
     setLoginData({ ...loginData, [property]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setLoginData({
+      ...loginData,
+      showPassword: !loginData.showPassword,
+    });
   };
 
   const onSubmit = () => {
@@ -64,7 +83,7 @@ const Login = ({ showMessage }) => {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      pt={5}
+      pt={10}
     >
       <Grid
         item
@@ -75,19 +94,18 @@ const Login = ({ showMessage }) => {
         className={classes.card}
       >
         <Grid item container justifyContent="center" alignItems="center" xs={3}>
-          <img src={Logo} alt="Entrust Logo" width={280} loading="lazy" />
+          <img src={Logo} alt="Entrust Logo" width={210} loading="lazy"/>
         </Grid>
-        <Divider className={classes.divider} />
+        <Divider className={classes.divider} sx={{ borderBottomWidth: 1, borderColor:"#87189D" }} />
+        <Typography id="login-title" variant="h5" gutterBottom component="div" className={classes.title}>
+          Internal Licensing App
+        </Typography>
+
         <Grid xs item container direction="column" className={classes.content}>
-          <Grid item container direction="column" xs={3}>
+          <Grid item container direction="column" justifyContent="center" alignItems="center" xs={3}>
             <Grid item>
-              <Typography variant="subtitle1" gutterBottom fontWeight={600}>
-                Login
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" gutterBottom>
-                Login to access licensing system.
+              <Typography id="login-subtitle" variant="subtitle2" gutterBottom>
+                Sign in into your account
               </Typography>
             </Grid>
           </Grid>
@@ -95,43 +113,58 @@ const Login = ({ showMessage }) => {
             item
             container
             justifyContent="center"
+            alignItems="center"
             direction="column"
             xs={6}
           >
             <Grid item mb={2}>
-              <TextField
-                label="Enter User ID"
-                variant="standard"
-                size="small"
-                required
-                fullWidth
-                value={loginData.username}
-                onChange={(e) => handleInputChange(e, "username")}
-              />
+              <FormControl variant="filled">
+                <InputLabel htmlFor="filled-adornment-username"> User Name </InputLabel>
+                <FilledInput
+                  id="username"
+                  className={classes.inputBox}
+                  type="text"
+                  value={loginData.username}
+                  onChange={(e) => handleInputChange(e, "username")}
+                />
+              </FormControl>
             </Grid>
             <Grid item>
-              <TextField
-                label="Enter Password"
-                variant="standard"
-                size="small"
-                required
-                fullWidth
-                type="password"
-                value={loginData.password}
-                onChange={(e) => handleInputChange(e, "password")}
-              />
+              <FormControl variant="filled">
+                <InputLabel htmlFor="filled-adornment-password"> Password </InputLabel>
+                <FilledInput
+                  id="password"
+                  className={classes.inputBox}
+                  type={loginData.showPassword ? "text" : "password"}
+                  value={loginData.password}
+                  onChange={(e) => handleInputChange(e, "password")}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        id="toggle-eye"
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                      >
+                        {loginData.showPassword ? (<VisibilityOff />) : (<Visibility />)}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
             </Grid>
           </Grid>
           <Grid
             xs
             item
             container
+            marginTop="10px"
             direction="column"
-            justifyContent="start"
-            alignItems="stretch"
+            justifyContent="center"
+            alignItems="center"
           >
-            <Button variant="contained" onClick={onSubmit}>
-              Login
+            <Button id="login" variant="contained" size="small" onClick={onSubmit} >
+              Log in
             </Button>
           </Grid>
         </Grid>
