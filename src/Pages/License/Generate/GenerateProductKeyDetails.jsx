@@ -1,9 +1,9 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { CustomCard, CustomCardContent } from "./GenerateLicense";
-import CheckIcon from "@mui/icons-material/Check";
+import { CustomCard, CustomCardContent } from "Utilty";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const GeneratrProductKeyDetails = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -26,42 +26,35 @@ const GeneratrProductKeyDetails = () => {
     {
       id: "02",
       key: "2222-3333-4444",
-    },
+      },
   ];
 
   return (
     <div>
       <CustomCard>
         <CustomCardContent>
-          <Grid item mb={1}>
-            <Typography id = "productKey" variant="h3">Geneate Product Key</Typography>
-          </Grid>
-
-          <Grid item mb={4}>
-            <Typography variant="h6">
-              <CheckIcon />
-              Key successfully created.
-            </Typography>
-          </Grid>
-          <Grid>
-            <Typography variant="caption">
-              You can copy the individual key by clicking on the copy indicator
-              on the right.
-            </Typography>
+          <Grid item container xs pt={2}>
+            <Grid item mb={1} marginRight="10px">
+              <CheckCircleIcon color="primary" fontSize="large"/>
+            </Grid>
+            <Grid item mb={3}>
+              <Typography variant="h5">Key successfully created.</Typography>
+            </Grid>
+            <Grid item mb={4}>
+              <Typography variant="caption">
+                You can copy the individual key by clicking on the copy
+                indicator on the right.
+              </Typography>
+            </Grid>
           </Grid>
           <br />
-          <br />
           <Grid>
-            <table>
+            <table bgcolor="white" cellSpacing="35">
               <tbody>
                 {data.map((item, i) => (
                   <tr key={i}>
                     <td>{item.id}</td>
-                    <td></td>
-                    <td></td>
                     <td>{item.key}</td>
-                    <td></td>
-                    <td></td>
                     <td>
                       <ContentCopyIcon
                         onClick={() => copyToClipBoard(item.key)}

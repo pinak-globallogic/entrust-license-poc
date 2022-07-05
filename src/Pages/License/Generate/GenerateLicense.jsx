@@ -12,6 +12,7 @@ import FeatureDetails from "./FeatureDetails";
 import LimitationDetails from "./LimitationDetails";
 import OptionalDetails from "./OptionalDetails";
 import { Typography } from "@mui/material";
+import GenerateProductKeyDetails from "./GenerateProductKeyDetails";
 
 const noOfKeys = (keyAmount) => {
   if (keyAmount < 1) {
@@ -48,6 +49,7 @@ const GenerateLicense = (props) => {
         break;
       case 3:
         obj.page = <LimitationDetails />;
+        //obj.page = <GenerateProductKeyDetails />;
         break;
       case 4:
         obj.btn.text = `Commit setting and generate ${noOfKeys(
@@ -59,9 +61,6 @@ const GenerateLicense = (props) => {
         obj.btn.text = "Finish and go back to dashboard";
         obj.btn.variant = "outlined";
         obj.btn.action = () => navigate("/dashboard");
-        obj.page = null;
-        break;
-      case 4:
         obj.page = <GenerateProductKeyDetails />;
         break;
     }
