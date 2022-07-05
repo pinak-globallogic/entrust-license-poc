@@ -9,9 +9,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { makeStyles } from "@mui/styles";
 
-function createData(name, calories) {
-  return { name, calories };
+function createData(name, value) {
+  return { name, value };
 }
 
 const rows = [
@@ -25,8 +26,13 @@ const rows = [
   createData("Eclair", 262),
   createData("Cupcake", 305),
   createData("Gingerbread", 356),
-]; 
+];
 const FeatureCard = ({ data }) => {
+  const useStyles = makeStyles({
+    tableCell: {
+      border: 0,
+    },
+  });
   return (
     <CustomCard>
       <CustomCardContent>
@@ -34,21 +40,19 @@ const FeatureCard = ({ data }) => {
         <Grid item container xs direction="column">
           <CustomCardRow title="Edition" value={data.edition} />
           <Grid item>
-            <TableContainer component={Paper} sx={{height: 200}}>
+            <TableContainer component={Paper} sx={{ height: 200 }}>
               <Table
-                sx={{ minWidth: 280}}
+                sx={{ minWidth: 280 }}
                 arialabel="simple table"
+                size="small"
               >
                 <TableBody>
                   {rows.map((row) => (
-                    <TableRow
-                      key={row.name}
-                      sx={{ "&:lastchild td, &:lastchild th": { border: 0 } }}
-                    >
+                    <TableRow key={row.name} className={useStyles.tableCell}>
                       <TableCell component="th" scope="row">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
+                      <TableCell align="right">{row.value}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

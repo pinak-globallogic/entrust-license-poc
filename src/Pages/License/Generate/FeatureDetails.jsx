@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import {  useState } from "react";
+import { useState } from "react";
 import Card from "@mui/material/Card";
 import { styled } from "@mui/styles";
 import CardContent from "@mui/material/CardContent";
@@ -16,6 +16,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import NativeSelect from "@mui/material/NativeSelect";
 import TextField from "@mui/material/TextField";
+import { makeStyles } from "@mui/styles";
 
 export const CustomCard = styled(Card)(() => ({
   marginBottom: "1vh",
@@ -29,24 +30,30 @@ export const CustomCardContent = styled(CardContent)(() => ({
   justifyContent: "center",
 }));
 
-function createData(feature, currentSetting, originalSetting, fieldType) {
-  return { feature, currentSetting, originalSetting, fieldType };
+function createData(id, feature, currentSetting, originalSetting, fieldType) {
+  return { id, feature, currentSetting, originalSetting, fieldType };
 }
 
 const rows = [
-  createData("Central Issuance Smart Card", "On", "Off", "Select"),
-  createData("Ice cream sandwich", "235", "9", "Input"),
-  createData("Eclair", "123", "16", "Input"),
-  createData("Cupcake", "7543", "3.7", "Input"),
-  createData("Gingerbread", "2", "16", "Input"),
+  createData(1, "Central Issuance Smart Card", "On", "Off", "Select"),
+  createData(2, "Ice cream sandwich", "235", "9", "Input"),
+  createData(3, "Eclair", "123", "16", "Input"),
+  createData(4, "Cupcake", "7543", "3.7", "Input"),
+  createData(5, "Gingerbread", "2", "16", "Input"),
 ];
 
 const licenseKeys = ["Plus", "Professional", "Enterprise"];
 
+const useStyles = makeStyles({
+  tableCell: {
+    border: 0,
+  },
+});
+
 const FeatureDetails = (props) => {
   const [alignment, setAlignment] = useState("Professional");
-  const changeProductKey = (newAlignment) => {
-    setAlignment(newAlignment);
+  const changeProductKey = (event) => {
+    setAlignment(event.target.value);
   };
 
   return (
@@ -66,14 +73,13 @@ const FeatureDetails = (props) => {
             <Stack spacing={3} direction="row">
               {licenseKeys.map((key) => (
                 <ToggleButton
+                  id={key}
                   value={key}
                   aria-label="centered"
                   key={key}
                   selected={key === alignment}
                   style={{ color: "#87189D", borderColor: "#87189D" }}
-                  onClick={(e) => {
-                    changeProductKey(e.target.value);
-                  }}
+                  onClick={changeProductKey}
                 >
                   {key}
                 </ToggleButton>
@@ -100,15 +106,15 @@ const FeatureDetails = (props) => {
               <TableBody>
                 {rows.map((row) => (
                   <TableRow
-                    key={row.feature}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    key={row.id}
+                    className={useStyles.tableCell}
                   >
                     <TableCell component="th" scope="row">
                       {row.feature}
                     </TableCell>
                     <TableCell align="left">
                       {row.fieldType === "Select" && (
-                        <NativeSelect id="demo-customized-select-native">
+                        <NativeSelect id={`selectField_${row.id}`}>
                           <option
                             value={0}
                             selected={row.currentSetting === "Off"}
@@ -129,6 +135,7 @@ const FeatureDetails = (props) => {
                           size="small"
                           style={{ borderColor: "red" }}
                           value={row.currentSetting}
+                          id={`inputField_${row.id}`}
                         />
                       )}
                     </TableCell>
