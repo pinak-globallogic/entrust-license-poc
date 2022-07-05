@@ -32,7 +32,14 @@ const FeatureCard = ({ data }) => {
     tableCell: {
       border: 0,
     },
+    outerContainer: {
+      height: 200,
+    },
+    innerContainer: {
+      minWidth: 280,
+    },
   });
+  const classes = useStyles();
   return (
     <CustomCard>
       <CustomCardContent>
@@ -40,15 +47,18 @@ const FeatureCard = ({ data }) => {
         <Grid item container xs direction="column">
           <CustomCardRow title="Edition" value={data.edition} />
           <Grid item>
-            <TableContainer component={Paper} sx={{ height: 200 }}>
+            <TableContainer
+              component={Paper}
+              className={classes.outerContainer}
+            >
               <Table
-                sx={{ minWidth: 280 }}
+                className={classes.innerContainer}
                 arialabel="simple table"
                 size="small"
               >
                 <TableBody>
                   {rows.map((row) => (
-                    <TableRow key={row.name} className={useStyles.tableCell}>
+                    <TableRow key={row.name} className={classes.tableCell}>
                       <TableCell component="th" scope="row">
                         {row.name}
                       </TableCell>

@@ -19,12 +19,14 @@ import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
- tableCell: {
-  border: 0,
- },
- button: { color: "#87189D !important",
-  borderColor: "#87189D !important" 
-}
+  tableCell: {
+    border: 0,
+  },
+  button: { color: "#87189D !important", borderColor: "#87189D !important" },
+  textField: {
+    width: "10ch",
+    m: "0",
+  },
 });
 
 export const CustomCard = styled(Card)(() => ({
@@ -54,8 +56,7 @@ const rows = [
 const licenseKeys = ["Plus", "Professional", "Enterprise"];
 
 const FeatureDetails = (props) => {
-  
-  const classes = useStyles();  
+  const classes = useStyles();
   const [alignment, setAlignment] = useState("Professional");
   const changeProductKey = (event) => {
     setAlignment(event.target.value);
@@ -96,24 +97,17 @@ const FeatureDetails = (props) => {
       <CustomCard>
         <CustomCardContent>
           <TableContainer component={Paper}>
-            <Table
-              sx={{ minWidth: 600 }}
-              aria-label="simple table"
-              size="small"
-            >
+            <Table aria-label="simple table" size="small">
               <TableHead>
                 <TableRow>
                   <TableCell>Feature</TableCell>
                   <TableCell>Current Setting</TableCell>
-                  <TableCell>Original Setting</TableCell>
+                  <TableCell align="left">Original Setting</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    className={classes.tableCell}
-                  >
+                  <TableRow key={row.id} className={classes.tableCell}>
                     <TableCell component="th" scope="row">
                       {row.feature}
                     </TableCell>
@@ -136,14 +130,14 @@ const FeatureDetails = (props) => {
                       )}
                       {row.fieldType === "Input" && (
                         <TextField
-                          sx={{ width: "10ch", m: "0" }}
+                          className={classes.textField}
                           size="small"
                           value={row.currentSetting}
                           id={`inputField_${row.id}`}
                         />
                       )}
                     </TableCell>
-                    <TableCell align="center">{row.originalSetting}</TableCell>
+                    <TableCell align="left">{row.originalSetting}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
