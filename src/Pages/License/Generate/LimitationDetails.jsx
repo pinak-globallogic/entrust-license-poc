@@ -166,11 +166,6 @@ const LimitationDetails = () => {
                     value={state.limitation.expiration}
                     onChange={onExpirationChange}
                   />
-                  {console.log(
-                    "sdsd ",
-                    state.limitation.expiration,
-                    new Date().toISOString().slice(0, 10)
-                  )}
                 </Grid>
               </Grid>
             </RadioGroup>
