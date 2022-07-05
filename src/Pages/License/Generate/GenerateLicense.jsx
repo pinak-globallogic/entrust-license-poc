@@ -49,7 +49,6 @@ const GenerateLicense = (props) => {
         break;
       case 3:
         obj.page = <LimitationDetails />;
-        //obj.page = <GenerateProductKeyDetails />;
         break;
       case 4:
         obj.btn.text = `Commit setting and generate ${noOfKeys(

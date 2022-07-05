@@ -5,7 +5,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-const GeneratrProductKeyDetails = () => {
+const GenerateProductKeyDetails = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const copyToClipBoard = async (copyMe) => {
     try {
@@ -71,4 +71,4 @@ const GeneratrProductKeyDetails = () => {
   );
 };
 
-export default GeneratrProductKeyDetails;
+export default GenerateProductKeyDetails;
