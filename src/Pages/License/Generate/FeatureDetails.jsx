@@ -18,6 +18,15 @@ import NativeSelect from "@mui/material/NativeSelect";
 import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
 
+const useStyles = makeStyles({
+ tableCell: {
+  border: 0,
+ },
+ button: { color: "#87189D !important",
+  borderColor: "#87189D !important" 
+}
+});
+
 export const CustomCard = styled(Card)(() => ({
   marginBottom: "1vh",
   backgroundColor: "transparent !important",
@@ -44,13 +53,9 @@ const rows = [
 
 const licenseKeys = ["Plus", "Professional", "Enterprise"];
 
-const useStyles = makeStyles({
-  tableCell: {
-    border: 0,
-  },
-});
-
 const FeatureDetails = (props) => {
+  
+  const classes = useStyles();  
   const [alignment, setAlignment] = useState("Professional");
   const changeProductKey = (event) => {
     setAlignment(event.target.value);
@@ -73,12 +78,12 @@ const FeatureDetails = (props) => {
             <Stack spacing={3} direction="row">
               {licenseKeys.map((key) => (
                 <ToggleButton
+                  className={classes.button}
                   id={key}
                   value={key}
                   aria-label="centered"
                   key={key}
                   selected={key === alignment}
-                  style={{ color: "#87189D", borderColor: "#87189D" }}
                   onClick={changeProductKey}
                 >
                   {key}
@@ -107,7 +112,7 @@ const FeatureDetails = (props) => {
                 {rows.map((row) => (
                   <TableRow
                     key={row.id}
-                    className={useStyles.tableCell}
+                    className={classes.tableCell}
                   >
                     <TableCell component="th" scope="row">
                       {row.feature}
