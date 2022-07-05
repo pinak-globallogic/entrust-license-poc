@@ -8,7 +8,6 @@ import { styled } from "@mui/styles";
 import { Grid, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyIcon from "@mui/icons-material/Key";
-import { grey } from "@mui/material/colors";
 
 const CustomBox = styled(Box)(() => ({
   maxWidth: "300px",
