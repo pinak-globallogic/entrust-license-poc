@@ -41,25 +41,6 @@ const LimitationDetails = () => {
     });
   };
 
-  //function getDifferenceInDays(date1, date2) {
-  //  const diffInMs = Math.abs(date2 - date1);
-  //  return diffInMs / (1000 * 60 * 60 * 24);
-  //}
-
-  //const onExpirationChangeDays = (e) => {
-  //  let current = new Date().toISOString().slice(0, 10);
-  //  const date1 = new Date(current);
-  //  const date2 = new Date(e.target.value);
-  //  const days = getDifferenceInDays(date1, date2);
-  //  setState({
-  //    ...state,
-  //    limitation: {
-  //      ...state.limitation,
-  //      expiration: days,
-  //    },
-  //  });
-  //};
-
   return (
     <div>
       <CustomCard>
@@ -152,9 +133,9 @@ const LimitationDetails = () => {
                 <Grid item xs pr={2}>
                   <TextField
                     disabled={radioValue !== SPECIFICDATE}
-                    defaultValue={new Date().toISOString()}
+                    defaultValue={new Date().toISOString().slice(0,10)}
                     inputProps={{
-                      min: new Date().toISOString().slice(0, 16),
+                      min: new Date().toISOString().slice(0, 10),
                     }}
                     variant="outlined"
                     label="Birthday"
