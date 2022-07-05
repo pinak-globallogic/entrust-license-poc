@@ -12,6 +12,7 @@ import FeatureDetails from "./FeatureDetails";
 import LimitationDetails from "./LimitationDetails";
 import OptionalDetails from "./OptionalDetails";
 import { Typography } from "@mui/material";
+import GenerateProductKeyDetails from "./GenerateProductKeyDetails";
 
 const noOfKeys = (keyAmount) => {
   if (keyAmount < 1) {
@@ -59,7 +60,7 @@ const GenerateLicense = (props) => {
         obj.btn.text = "Finish and go back to dashboard";
         obj.btn.variant = "outlined";
         obj.btn.action = () => navigate("/dashboard");
-        obj.page = null;
+        obj.page = <GenerateProductKeyDetails />;
         break;
     }
 
