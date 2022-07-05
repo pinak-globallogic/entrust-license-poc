@@ -6,34 +6,32 @@ import DoneIcon from "@mui/icons-material/Done";
 import { makeStyles } from "@mui/styles";
 import ContentCopySharpIcon from "@mui/icons-material/ContentCopySharp";
 
-const useStyles = makeStyles({
-  chip: {
-    border: "1px solid #e8e8e8",
-    borderRadius: "20px",
-    display: "flex",
-    alignItems: "center",
-    minHeight: "1vh",
-    minWidth: "120px",
-    fontSize: "12px",
-    paddingLeft: "1vh",
-    color: "black",
-  },
-});
-
 function CustomChip(props) {
+
+  const useStyles = makeStyles({
+    chip: {
+      border: "1px solid #e8e8e8",
+      borderRadius: "20px",
+      display: "flex",
+      alignItems: "center",
+      minHeight: "1vh",
+      minWidth: "120px",
+      fontSize: "12px",
+      paddingLeft: "1vh",
+      color: "black",
+      backgroundColor: props.color ? props.color : "#e8e8e8",
+    },
+  });
   const classes = useStyles();
 
   const copyClipboardContent = () => {
-    if (props.icon === "copy") {
+    if (props.id === "licenseServerId") {
       navigator.clipboard.writeText(props.value);
     }
   };
 
   return (
-    <Grid
-      className={classes.chip}
-      style={{ backgroundColor: props.color ? props.color : "#e8e8e8" }}
-    >
+    <Grid className={classes.chip} >
       <Grid>
         {props.icon === "error" && <ErrorIcon fontSize="small"></ErrorIcon>}
         {props.icon === "done" && <DoneIcon fontSize="small"></DoneIcon>}

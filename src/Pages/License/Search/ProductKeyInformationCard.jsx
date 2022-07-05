@@ -15,8 +15,8 @@ import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
 import CustomCardContent from "Components/CustomCard/CustomCardContent";
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(fieldName, intVal, stringVal) {
+  return { fieldName, intVal, stringVal};
 }
 
 const rows = [
@@ -74,7 +74,7 @@ function a11yProps(index) {
 const ProductKeyInformationCard = () => {
   const [value, setValue] = React.useState(2);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event,newValue) => {
     setValue(newValue);
   };
   return (
@@ -119,10 +119,10 @@ const ProductKeyInformationCard = () => {
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
-                        {row.name}
+                        {row.fieldName}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
+                      <TableCell align="right">{row.intVal}</TableCell>
+                      <TableCell align="right">{row.stringVal}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

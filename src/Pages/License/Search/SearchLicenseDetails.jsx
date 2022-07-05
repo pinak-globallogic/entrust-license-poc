@@ -20,28 +20,32 @@ const SearchLicenseDetails = () => {
             <Grid item sx={{ m: 1 }}>
               <Stack spacing={1} direction="row">
                 <CustomChip
-                  label={"Product Key"}
+                  label="Product Key"
                   value="1x83-5684-c832-1b5744"
-                  chipWidth={"200px"}
+                  chipWidth="200px"
+                  id="productKey"
                 ></CustomChip>
                 <CustomChip
-                  label={"Feature ID"}
+                  label="Feature ID"
                   value="CC_PHOPT"
-                  chipWidth={"200px"}
+                  chipWidth="200px"
+                  id="featureId"
                 ></CustomChip>
                 <CustomChip
-                  label={"Order No"}
+                  label="Order No"
                   value="213456-2.1"
-                  chipWidth={"200px"}
+                  chipWidth="200px"
+                  id="orderNo"
                 ></CustomChip>
               </Stack>
             </Grid>
             <Grid item sx={{ m: 2 }}>
               <Stack spacing={1} direction="row">
                 <CustomChip
-                  label={"Company"}
+                  label="Company"
                   value="Obrien"
-                  chipWidth={"200px"}
+                  chipWidth="200px"
+                  id="company"
                 ></CustomChip>
               </Stack>
             </Grid>
@@ -52,23 +56,26 @@ const SearchLicenseDetails = () => {
             <Grid item sx={{ m: 1 }}>
               <Stack spacing={1} direction="row">
                 <CustomChip
-                  label={"Expiration Date"}
+                  label="Expiration Date"
                   value="2022/01/02"
-                  chipWidth={"200px"}
+                  chipWidth="200px"
                   icon="error"
                   color="#EE4B2B"
+                  id="expirationDate"
                 ></CustomChip>
                 <CustomChip
-                  label={"Rehost Count"}
+                  label="Rehost Count"
                   value="1"
-                  chipWidth={"200px"}
+                  chipWidth="200px"
                   icon="refresh"
+                  id="rehostCount"
                 ></CustomChip>
                 <CustomChip
-                  label={"Limit"}
+                  label="Limit"
                   value="40"
-                  chipWidth={"200px"}
+                  chipWidth="200px"
                   icon="done"
+                  id="limit"
                 ></CustomChip>
               </Stack>
             </Grid>
@@ -76,10 +83,11 @@ const SearchLicenseDetails = () => {
             <Grid item sx={{ m: 2 }}>
               <Grid xs>
                 <CustomChip
-                  label={"License Server ID"}
+                  label="License Server ID"
                   value="1x83-5684-c832-1b57441x83-5684-c832-1b57441x83-5684-c832"
-                  chipWidth={"500px"}
-                  icon={"copy"}
+                  chipWidth="500px"
+                  icon="copy"
+                  id="licenseServerId"
                 ></CustomChip>
               </Grid>
             </Grid>
