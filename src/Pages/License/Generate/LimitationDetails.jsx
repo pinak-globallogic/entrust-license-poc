@@ -116,14 +116,14 @@ const LimitationDetails = () => {
               <Grid item xs pr={2}>
                 <TextField
                   disabled={limitation.select !== SPECIFICDATE}
-                  defaultValue={new Date().toISOString()}
+                  defaultValue={new Date().toISOString().slice(0,10)}
                   inputProps={{
-                    min: new Date().toISOString().slice(0, 16),
+                    min: new Date().toISOString().slice(0, 10),
                   }}
                   variant="outlined"
                   label="Birthday"
                   placeholder="Birthday"
-                  type="datetime-local"
+                  type="date"
                   size="small"
                   InputLabelProps={{
                     shrink: true,
