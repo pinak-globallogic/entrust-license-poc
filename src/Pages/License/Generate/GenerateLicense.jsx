@@ -9,7 +9,7 @@ import CustomerDetails from "./CustomerDetails";
 import ProductDetails from "./ProductDetails";
 import FeatureDetails from "./FeatureDetails";
 import LimitationDetails from "./LimitationDetails";
-import GeneratrProductKeyDetails from "./GenerateProductKeyDetails";
+import GenerateProductKeyDetails from "./GenerateProductKeyDetails";
 
 export const CustomCard = styled(Card)(() => ({
   marginBottom: "1vh",
@@ -25,16 +25,16 @@ export const CustomCardContent = styled(CardContent)(() => ({
 
 const renderSwitch = (count) => {
   switch (count) {
-    case 0:
-      return <CustomerDetails />;
-    case 1:
-      return <ProductDetails />;
-    case 2:
-      return <FeatureDetails />;
-    case 3:
-      return <LimitationDetails />;
-    case 4:
-      return <GeneratrProductKeyDetails />;
+  case 0:
+    return <CustomerDetails />;
+  case 1:
+    return <ProductDetails />;
+  case 2:
+    return <FeatureDetails />;
+  case 3:
+    return <LimitationDetails />;
+  case 4:
+    return <GenerateProductKeyDetails />;
   }
 };
 

@@ -35,8 +35,6 @@ const App = () => {
         <Router />
       </LayoutWrapper>
       </AppContext.Provider>
-    //  <h1>Hello Geeks!!!</h1>
-    //  <JsonDataDisplay/>
   );
 };
 

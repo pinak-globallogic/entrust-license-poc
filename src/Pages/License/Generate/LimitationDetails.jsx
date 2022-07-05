@@ -46,16 +46,19 @@ const LimitationDetails = () => {
       <CustomCard>
         <CustomCardContent>
           <Grid item mb={1}>
-            <Typography variant="h6">Limitations</Typography>
+            <Typography id="limit" variant="h6">
+              Limitations
+            </Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="countLimit" variant="caption">
               The limit count needs to be between 1 and 40
             </Typography>
           </Grid>
           <Grid item container xs pt={1}>
             <Grid item mr={3}>
               <TextField
+                id="limitCount"
                 label="Limit Count"
                 variant="outlined"
                 size="small"
@@ -72,6 +75,7 @@ const LimitationDetails = () => {
             <Grid item pr={1}>
               <FormControlLabel
                 control={<Checkbox defaultChecked />}
+                id="license"
                 label="Site license or unlimited"
               />
             </Grid>
@@ -83,19 +87,21 @@ const LimitationDetails = () => {
             <Typography variant="h6">Expiration date</Typography>
           </Grid>
           <Grid item mb={2}>
-            <Typography variant="caption">
+            <Typography id="expiration" variant="caption">
               The expiration date can be set to none, a specific day count from
               today on, or a set date.
             </Typography>
           </Grid>
           <Grid item mb={2}>
             <RadioGroup
+              id="expiryLicense"
               name="use-radio-group"
               defaultValue={NOEXPIRY}
               onChange={radioHandler}
               value={radioValue}
             >
               <FormControlLabel
+                id="noExpiry"
                 value={NOEXPIRY}
                 label={NOEXPIRY}
                 control={<Radio />}
@@ -103,6 +109,7 @@ const LimitationDetails = () => {
               <Grid item container xs pt={1}>
                 <Grid item xs pr={2}>
                   <FormControlLabel
+                    id="expiryInDays"
                     value={EXPIRYDAYS}
                     label={EXPIRYDAYS}
                     control={<Radio />}
@@ -110,6 +117,7 @@ const LimitationDetails = () => {
                 </Grid>
                 <Grid item xs pr={2}>
                   <TextField
+                    id="expireDays"
                     disabled={radioValue !== EXPIRYDAYS}
                     label="Number of days"
                     variant="outlined"
@@ -124,6 +132,7 @@ const LimitationDetails = () => {
               <Grid item container xs pt={1}>
                 <Grid item xs pr={2}>
                   <FormControlLabel
+                    id="specificExppiryDate"
                     value={SPECIFICDATE}
                     label={SPECIFICDATE}
                     control={<Radio />}
@@ -132,8 +141,9 @@ const LimitationDetails = () => {
 
                 <Grid item xs pr={2}>
                   <TextField
+                    id="specificDate"
                     disabled={radioValue !== SPECIFICDATE}
-                    defaultValue={new Date().toISOString().slice(0,10)}
+                    defaultValue={new Date().toISOString().slice(0, 10)}
                     inputProps={{
                       min: new Date().toISOString().slice(0, 10),
                     }}
