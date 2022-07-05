@@ -20,7 +20,7 @@ const DataGridCustom = (props) => {
       onSelectionModelChange={(newSelectionModel) => {
         props.setSelectionModel(newSelectionModel);
       }}
-      hideFooterSelectedRowCount="true"
+      hideFooterSelectedRowCount
     />
   );
 };
