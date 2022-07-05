@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import ErrorIcon from "@mui/icons-material/Error";
 import CachedIcon from "@mui/icons-material/Cached";
@@ -23,6 +23,12 @@ const useStyles = makeStyles({
 function CustomChip(props) {
   const classes = useStyles();
 
+  const copyClipboardContent = () => {
+    if (props.icon === "copy") {
+      navigator.clipboard.writeText(props.value);
+    }
+  };
+
   return (
     <Grid
       className={classes.chip}
@@ -34,7 +40,12 @@ function CustomChip(props) {
         {props.icon === "refresh" && <CachedIcon fontSize="small"></CachedIcon>}
       </Grid>
       <Grid
-        style={{ alignItems: "center", minHeight: "4vh", paddingTop: "1vh", paddingRight: "2px"}}
+        style={{
+          alignItems: "center",
+          minHeight: "4vh",
+          paddingTop: "1vh",
+          paddingRight: "2px",
+        }}
       >
         <Typography variant="span">{props.label}</Typography>
       </Grid>
@@ -45,8 +56,7 @@ function CustomChip(props) {
           minHeight: "4vh",
           paddingTop: "1vh",
           minWidth: "68px",
-          paddingLeft: "4px"
-          
+          paddingLeft: "4px",
         }}
       >
         {props.value}
@@ -57,7 +67,9 @@ function CustomChip(props) {
         }}
       >
         {props.icon === "copy" && (
-          <ContentCopySharpIcon fontSize="small"></ContentCopySharpIcon>
+          <IconButton onClick={copyClipboardContent}>
+            <ContentCopySharpIcon fontSize="small"></ContentCopySharpIcon>
+          </IconButton>
         )}
       </Grid>
     </Grid>
