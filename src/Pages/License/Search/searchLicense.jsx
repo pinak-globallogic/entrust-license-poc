@@ -2,7 +2,7 @@ import { Box, Button, Grid, TextField } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import axios from "axios";
 
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 import DataGridCustom from "Components/DataGrid";
@@ -60,7 +60,7 @@ const SearchLicense = () => {
       width: 50,
       sortable: false,
       renderCell: (params) => (
-        <Radio checked={selectionModel[0] === params.id} value={params.id} />
+        <Radio checked={selectionModel[0] === params.id} value={params.id}/>
       ),
     },
     {
@@ -245,7 +245,7 @@ const SearchLicense = () => {
           </Button>
         </Box>
       </Grid>
-      <Grid xs={12} marginTop={5}>
+      <Grid xs={12} marginTop={5} style={{ height: 500}}>
         <DataGridCustom
           columns={columns}
           rows={gridData}
