@@ -119,12 +119,12 @@ const SearchLicense = () => {
     var filteredData = respData;
     if (productKey) {
       filteredData = filteredData.filter(
-        (licObj) => licObj.productKey.indexOf(productKey) !== -1
+        (licObj) => licObj.productKey.indexOf(productKey.trim()) !== -1
       );
     }
     if (customerName) {
       filteredData = filteredData.filter(
-        (licObj) => licObj.company.indexOf(customerName) !== -1
+        (licObj) => licObj.company.indexOf(customerName.trim()) !== -1
       );
     }
     if (licenseServerId) {
@@ -133,7 +133,7 @@ const SearchLicense = () => {
     }
     if (salesOrderNo) {
       filteredData = filteredData.filter(
-        (licObj) => licObj.orderId.indexOf(salesOrderNo) !== -1
+        (licObj) => licObj.orderId.indexOf(salesOrderNo.trim()) !== -1
       );
     }
 
@@ -164,7 +164,7 @@ const SearchLicense = () => {
           fullWidth
           name="productKey"
           onChange={(e) => {
-            setProductKey(e.target.value.trim());
+            setProductKey(e.target.value);
           }}
         />
       </Grid>
@@ -177,7 +177,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="customerName"
-          onChange={(e) => setCustomerName(e.target.value.trim())}
+          onChange={(e) => setCustomerName(e.target.value)}
         />
       </Grid>
       <Grid xs={3}></Grid>
@@ -189,7 +189,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="licenseServerId"
-          onChange={(e) => setLicenseServerId(e.target.value.trim())}
+          onChange={(e) => setLicenseServerId(e.target.value)}
         />
       </Grid>
       <Grid xs={1}></Grid>
@@ -201,7 +201,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="orderNo"
-          onChange={(e) => setSalesOrderNo(e.target.value.trim())}
+          onChange={(e) => setSalesOrderNo(e.target.value)}
         />
       </Grid>
       <Grid xs={3}></Grid>
@@ -238,6 +238,8 @@ const SearchLicense = () => {
             variant="contained"
             onClick={filterRecordFromGrid}
             label="SEARCH"
+            id="searchLicense"
+            name="searchLicense"
           >
             SEARCH
           </Button>
