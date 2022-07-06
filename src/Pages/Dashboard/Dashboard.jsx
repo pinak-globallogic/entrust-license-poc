@@ -185,7 +185,7 @@ const Dashboard = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12}>
+        <Grid container xs={12} columnSpacing={4}>
           {cards.map((card) => (
             <CardWrapper
               key={card.key}

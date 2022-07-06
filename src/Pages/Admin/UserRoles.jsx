@@ -337,7 +337,6 @@ const UserRoles = () => {
                 rowsPerPageOptions={[10, 20, 50, 100]}
                 pageSize={pageSize}
                 onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                getRowId={(row) => row.id}
                 loading={loading}
               />
             </div>
@@ -348,7 +347,7 @@ const UserRoles = () => {
         <Button variant="contained" color="primary">
           Save
         </Button>
-      </Grid>	  
+      </Grid>
     </Grid>
   );
 };
