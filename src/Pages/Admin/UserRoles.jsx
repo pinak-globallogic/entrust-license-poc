@@ -21,7 +21,7 @@ const UserRoles = () => {
   const columns = [
     {
       field: "role",
-      renderHeader: () => <strong>{"Role"}</strong>,
+      renderHeader: () => <strong>Role</strong>,
       width: 230,
       sortable: false,
     },
@@ -30,14 +30,14 @@ const UserRoles = () => {
       width: 85,
       headerAlign: "center",
       sortable: false,
-      renderHeader: () => <strong>{"AD Group"}</strong>,
+      renderHeader: () => <strong>AD Group</strong>,
     },
     {
       field: "generation",
       width: 90,
       align: "center",
       sortable: false,
-      renderHeader: () => <strong>{"Generation"}</strong>,
+      renderHeader: () => <strong>Generation</strong>,
       headerAlign: "center",
       renderCell: (params) =>
         params.row.generation === true ? (
@@ -52,7 +52,7 @@ const UserRoles = () => {
       align: "center",
       width: 85,
       sortable: false,
-      renderHeader: () => <strong>{"Activation"}</strong>,
+      renderHeader: () => <strong>Activation</strong>,
       description: "This column has a value getter and is not sortable.",
       renderCell: (params) =>
         params.row.generation === true ? (
@@ -66,7 +66,7 @@ const UserRoles = () => {
       width: 100,
       align: "center",
       sortable: false,
-      renderHeader: () => <strong>{"Reactivation"}</strong>,
+      renderHeader: () => <strong>Reactivation</strong>,
       headerAlign: "center",
       renderCell: (params) =>
         params.row.generation === true ? (
@@ -80,7 +80,7 @@ const UserRoles = () => {
       width: 65,
       align: "center",
       sortable: false,
-      renderHeader: () => <strong>{"Rehost"}</strong>,
+      renderHeader: () => <strong>Rehost</strong>,
       headerAlign: "center",
       renderCell: (params) =>
         params.row.generation === true ? (
@@ -94,7 +94,7 @@ const UserRoles = () => {
       width: 155,
       align: "center",
       sortable: false,
-      renderHeader: () => <strong>{"Feature Modification"}</strong>,
+      renderHeader: () => <strong>Feature Modification</strong>,
       headerAlign: "center",
       renderCell: (params) =>
         params.row.generation === true ? (
@@ -108,7 +108,7 @@ const UserRoles = () => {
       width: 110,
       align: "center",
       sortable: false,
-      renderHeader: () => <strong>{"Update Expiry"}</strong>,
+      renderHeader: () => <strong>Update Expiry</strong>,
       headerAlign: "center",
       renderCell: (params) =>
         params.row.generation === true ? (
@@ -122,7 +122,7 @@ const UserRoles = () => {
       width: 155,
       align: "center",
       sortable: false,
-      renderHeader: () => <strong>{"License Tool Access"}</strong>,
+      renderHeader: () => <strong>License Tool Access</strong>,
       headerAlign: "center",
       renderCell: (params) =>
         params.row.generation === true ? (
@@ -135,7 +135,7 @@ const UserRoles = () => {
       field: "licenseToolAdmin",
       width: 150,
       sortable: false,
-      renderHeader: () => <strong>{"License Tool Admin"}</strong>,
+      renderHeader: () => <strong>License Tool Admin</strong>,
       headerAlign: "center",
       align: "center",
       renderCell: (params) =>
@@ -298,9 +298,7 @@ const UserRoles = () => {
         setLoading(false);
         setGridData(response.data);
       })
-      .catch((err) => {
-        // Handle error
-        console.log(err);
+      .catch(() => {
         setLoading(false);
         setGridData(sampleGridData);
       });
