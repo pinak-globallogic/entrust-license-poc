@@ -56,6 +56,10 @@ navMap.set("/license/generate", {
   nav: true,
   content: true,
 });
+navMap.set("/key/modify", {
+    nav: true,
+    content: true,
+  });
 
 navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,

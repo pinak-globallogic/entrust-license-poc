@@ -125,8 +125,7 @@ const Dashboard = (props) => {
   };
 
   const onModifyProductKey = () => {
-    window.alert("Feature not implemented yet..");
-    //navigate("/");
+    navigate("/key/modify");
   };
 
   const onAdminPanel = () => {

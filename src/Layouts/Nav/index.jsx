@@ -22,6 +22,10 @@ navMap.set("/license/generate", {
   title,
   link,
 });
+navMap.set("/key/modify", {
+  nav: true,
+  content: true,
+});
 navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,
   content: true,
@@ -62,7 +66,9 @@ const Sidenav = (props) => {
                     color="primary"
                     fontWeight={600}
                     lineHeight={0}
-                  > BACK TO
+                  >
+                    {" "}
+                    BACK TO
                   </Typography>
                   <Typography
                     variant="caption"
@@ -70,7 +76,9 @@ const Sidenav = (props) => {
                     color="primary"
                     fontWeight={600}
                     lineHeight={0}
-                  > DASHBOARD
+                  >
+                    {" "}
+                    DASHBOARD
                   </Typography>
                 </Grid>
               </Grid>
