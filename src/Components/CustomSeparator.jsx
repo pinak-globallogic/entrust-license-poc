@@ -21,6 +21,11 @@ navMap.set("/license/generate", {
   content: true,
   title: "Generate Product Key",
 });
+navMap.set("/key/activate", {
+  nav: true,
+  content: true,
+  title: "License Key Activation",
+});
 
 navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,

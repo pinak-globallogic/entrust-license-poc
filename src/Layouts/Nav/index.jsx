@@ -22,6 +22,10 @@ navMap.set("/license/generate", {
   title,
   link,
 });
+navMap.set("/key/activate", {
+  nav: true,
+  content: true,
+});
 navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,
   content: true,
