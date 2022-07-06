@@ -62,7 +62,6 @@ const SearchLicense = () => {
    let selectedData = gridData.filter((value)=>{
     return value.id == event.target.value;
   })
-  console.log(gridData);
   dispatch(
     updateLicenseDetails(
       {...licenseDetails,
