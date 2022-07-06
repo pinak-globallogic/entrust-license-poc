@@ -341,7 +341,7 @@ const UserRoles = () => {
           </Card>
         </Box>
       </Grid>
-      <Grid container item justifyContent="flex-end" xs={10}>
+      <Grid container item justifyContent="flex-end" xs={10} sx={{ mb: 3 }}>
         <Button variant="contained" color="primary">
           Save
         </Button>

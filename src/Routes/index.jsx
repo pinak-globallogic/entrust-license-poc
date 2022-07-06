@@ -17,7 +17,7 @@ const Router = () => {
       <Route path="/license/generate" element={<GenerateLicenseWrapper />} />
       <Route path="/license/search" element={<SearchLicenseWrapper />} />
       <Route path="/system-configuration" element={<FirstRunWrapper />} />
-	  <Route path={ADMIN_PANEL_PAGE_ROUTE} element={<AdminPanelWrapper />} />
+      <Route path={ADMIN_PANEL_PAGE_ROUTE} element={<AdminPanelWrapper />} />
       <Route element={<h1>Page not found</h1>} />
     </Routes>
   );
