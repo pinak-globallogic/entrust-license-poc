@@ -2,7 +2,7 @@ import { Box, Button, Grid, TextField } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import axios from "axios";
 
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 import DataGridCustom from "Components/DataGrid";
@@ -25,12 +25,17 @@ const formatDateFromMilliSeconds = (dateMilliSeconds) => {
 };
 
 const SearchLicense = () => {
-  const [data, setData] = useState([]);
+  const [respData, setResponseData] = useState([]);
+  const [gridData, setGridData] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
   const [dateValue, setDateValue] = useState(new Date());
 
+  const [productKey, setProductKey] = useState("");
+  const [customerName, setCustomerName] = useState("");
+  const [licenseServerId, setLicenseServerId] = useState("");
+  const [salesOrderNo, setSalesOrderNo] = useState("");
+
   useEffect(() => {
-    //Comment loadLicense method call from here if not need to fetch on load
     loadLicense();
   }, []);
 
@@ -39,7 +44,8 @@ const SearchLicense = () => {
       .get("https://mocki.io/v1/2c5fde10-c234-488f-b8a0-dde7b5cc2d69")
       .then((response) => {
         setSelectionModel([response.data[0].id]);
-        setData(response.data);
+        setGridData(response.data);
+        setResponseData(response.data);
       });
   };
 
@@ -54,7 +60,7 @@ const SearchLicense = () => {
       width: 50,
       sortable: false,
       renderCell: (params) => (
-        <Radio checked={selectionModel[0] === params.id} value={params.id} />
+        <Radio checked={selectionModel[0] === params.id} value={params.id}/>
       ),
     },
     {
@@ -109,6 +115,40 @@ const SearchLicense = () => {
     },
   ];
 
+  const filterRecordFromGrid = () => {
+    var filteredData = respData;
+    if (productKey) {
+      filteredData = filteredData.filter(
+        (licObj) => licObj.productKey.indexOf(productKey.trim()) !== -1
+      );
+    }
+    if (customerName) {
+      filteredData = filteredData.filter(
+        (licObj) => licObj.company.indexOf(customerName.trim()) !== -1
+      );
+    }
+    if (licenseServerId) {
+      // filteredData = filteredData.filter(
+      //   (licObj) => licObj.licenseServerId === licenseServerId);
+    }
+    if (salesOrderNo) {
+      filteredData = filteredData.filter(
+        (licObj) => licObj.orderId.indexOf(salesOrderNo.trim()) !== -1
+      );
+    }
+
+    if (dateValue) {
+      filteredData = filteredData.filter(
+        (licObj) =>
+          new Date(Number(licObj.createdOn)).getTime() <= dateValue.getTime()
+      );
+    }
+    setGridData(filteredData);
+    if (filteredData.length > 0) {
+      setSelectionModel([filteredData[0].id]);
+    }
+  };
+
   return (
     <Grid container xs={6}>
       <Grid item xs={12}>
@@ -123,6 +163,9 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="productKey"
+          onChange={(e) => {
+            setProductKey(e.target.value);
+          }}
         />
       </Grid>
       <Grid xs={1}></Grid>
@@ -134,6 +177,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="customerName"
+          onChange={(e) => setCustomerName(e.target.value)}
         />
       </Grid>
       <Grid xs={3}></Grid>
@@ -145,6 +189,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="licenseServerId"
+          onChange={(e) => setLicenseServerId(e.target.value)}
         />
       </Grid>
       <Grid xs={1}></Grid>
@@ -156,6 +201,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="orderNo"
+          onChange={(e) => setSalesOrderNo(e.target.value)}
         />
       </Grid>
       <Grid xs={3}></Grid>
@@ -188,15 +234,21 @@ const SearchLicense = () => {
       <Grid xs={4} />
       <Grid xs={3} alignSelf="self-end">
         <Box display="flex" justifyContent="flex-end">
-          <Button variant="contained" onClick={loadLicense} label="SEARCH">
+          <Button
+            variant="contained"
+            onClick={filterRecordFromGrid}
+            label="SEARCH"
+            id="searchLicense"
+            name="searchLicense"
+          >
             SEARCH
           </Button>
         </Box>
       </Grid>
-      <Grid xs={12} marginTop={5}>
+      <Grid xs={12} marginTop={5} style={{ height: 500}}>
         <DataGridCustom
           columns={columns}
-          rows={data}
+          rows={gridData}
           selectionModel={selectionModel}
           setSelectionModel={setSelectionModelInDataGrid}
         ></DataGridCustom>
