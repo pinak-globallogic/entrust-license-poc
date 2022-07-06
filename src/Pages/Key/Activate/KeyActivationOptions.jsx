@@ -4,7 +4,12 @@ import { FileUpload } from "Components/FileUpload";
 
 import { CustomCard, CustomCardContent } from "Utilty";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setActivateKeyDetails } from "Redux/Slices/activateKey";
+
 const KeyActivationOptions = ({ countSetter }) => {
+  const dispatch = useDispatch();
+  const activateKey = useSelector((state) => state.activateKey);
 
   const fileUploadProp = {
     accept: "image/*",
@@ -12,11 +17,23 @@ const KeyActivationOptions = ({ countSetter }) => {
       if (event.target.files !== null && event.target?.files?.length > 0) {
         console.log(`Saving ${event.target.value}`);
         countSetter(1);
+        dispatch(
+          setActivateKeyDetails({
+            ...activateKey,
+            uploadFile: event.target.files[0].name,
+          })
+        );
       }
     },
     onDrop: () => {
       console.log(`Drop ${event.dataTransfer.files[0].name}`);
       countSetter(1);
+      dispatch(
+        setActivateKeyDetails({
+          ...activateKey,
+          uploadFile: event.dataTransfer.files[0].name,
+        })
+      );
     },
   };
 

@@ -21,6 +21,7 @@ const DataGridCustom = (props) => {
         props.setSelectionModel(newSelectionModel);
       }}
       hideFooterSelectedRowCount
+      style={{backgroundColor:"#fff"}}
     />
   );
 };

@@ -111,8 +111,7 @@ const Dashboard = (props) => {
   };
 
   const onActivateKey = () => {
-    window.alert("Feature not implemented yet..");
-    // navigate("/");
+    navigate("/key/activate");
   };
 
   const onGenerateNewProductKey = () => {

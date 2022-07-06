@@ -4,10 +4,17 @@ import Chip from "@mui/material/Chip";
 
 import { CustomCard, CustomCardContent } from "Utilty";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setActivateKeyDetails } from "Redux/Slices/activateKey";
+
 const FileUploadDetail = ({ countSetter }) => {
+  const dispatch = useDispatch();
+  const activateKey = useSelector((state) => state.activateKey);
+
   const handleDelete = () => {
     console.info("You clicked the delete icon.");
     countSetter(0);
+    dispatch(setActivateKeyDetails({ ...activateKey, uploadFile: null }));
   };
 
   return (
@@ -30,9 +37,9 @@ const FileUploadDetail = ({ countSetter }) => {
         </Grid>
         <Grid item mb={10}>
           <Chip
-            label="activation-request-file.txt"
+            label={activateKey.uploadFile}
             variant="outlined"
-            style={{backgroundColor:"white"}}
+            style={{ backgroundColor: "white" }}
             onDelete={handleDelete}
           />
         </Grid>

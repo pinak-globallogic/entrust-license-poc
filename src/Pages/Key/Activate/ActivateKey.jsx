@@ -6,21 +6,21 @@ import DisplayKeys from "./DisplayKeys";
 import FileUploadDetail from "./FileUploadDetail";
 import KeyActivationOptions from "./KeyActivationOptions";
 
-import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-
 const ActivateKey = (props) => {
-
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
   // make wrapper function to give child
-  const wrapperSetCount = useCallback(val => {
-    setCount(val);
-  }, [setCount]);
+  const wrapperSetCount = useCallback(
+    (val) => {
+      setCount(val);
+    },
+    [setCount]
+  );
 
   const renderSwitch = (count) => {
     let obj = {
@@ -32,24 +32,24 @@ const ActivateKey = (props) => {
       page: null,
     };
     switch (count) {
-    case 0:
-      obj.page = <KeyActivationOptions countSetter={wrapperSetCount}/>;
-      obj.btn.text = "Continue manualy without activation file";
-      obj.btn.variant = "outlined";
-      obj.btn.action = () => setCount(2);
-      break;
-    case 1:
-      obj.page = <FileUploadDetail countSetter={wrapperSetCount}/>;
-      break;
-    case 2:
-      obj.page = <DisplayKeys />;
-      break;
-    case 3:
-      obj.page = <ActivationSuccess />;
-      obj.btn.text = "Finish and go back to dashboard";
-      obj.btn.variant = "outlined";
-      obj.btn.action = () => navigate("/dashboard");
-      break;
+      case 0:
+        obj.page = <KeyActivationOptions countSetter={wrapperSetCount} />;
+        obj.btn.text = "Continue manualy without activation file";
+        obj.btn.variant = "outlined";
+        obj.btn.action = () => setCount(2);
+        break;
+      case 1:
+        obj.page = <FileUploadDetail countSetter={wrapperSetCount} />;
+        break;
+      case 2:
+        obj.page = <DisplayKeys />;
+        break;
+      case 3:
+        obj.page = <ActivationSuccess />;
+        obj.btn.text = "Finish and go back to dashboard";
+        obj.btn.variant = "outlined";
+        obj.btn.action = () => navigate("/dashboard");
+        break;
     }
 
     return obj;
@@ -59,38 +59,36 @@ const ActivateKey = (props) => {
 
   return (
     <>
-    <Grid item container direction="column" {...props}>
-      {details.page}
-      <Stack direction="row-reverse" justifyContent="space-between" mt={2}>
-        <Button
-          id="continue-btn"
-          variant={details.btn.variant}
-          style={{ maxWidth: "30vh" }}
-          onClick={details.btn.action}
-        >
-          <Typography id="continue-btn-text" variant="caption">
-            {details.btn.text}
-          </Typography>
-        </Button>
-        {count > 1 && count < 3 && (
-          <Button
-            id="back-btn"
-            variant="outlined"
-            size="small"
-            onClick={() => {
-              setCount(count - 1);
-            }}
-          >
-            <Typography id="back-btn-text" variant="caption">
-              Go Back
-            </Typography>
-          </Button>
-        )}
-      </Stack>
-    </Grid>
-  </>
-);
+      <Grid item container direction="column" {...props}>
+        {details.page}
+        <div style={{ width: "57%" }}>
+          <Stack direction="row-reverse" justifyContent="space-between" mt={2}>
+            <Button
+              id="continue-btn"
+              variant={details.btn.variant}
+              style={{ maxWidth: "35vh", fontWeight: "bold" }}
+              onClick={details.btn.action}
+              size="small"
+            >
+              {details.btn.text}
+            </Button>
+            {count > 1 && count < 3 && (
+              <Button
+                id="back-btn"
+                variant="outlined"
+                size="small"
+                onClick={() => {
+                  setCount(0);
+                }}
+              >
+                Go Back
+              </Button>
+            )}
+          </Stack>
+        </div>
+      </Grid>
+    </>
+  );
+};
 
-}
-
-export default ActivateKey
+export default ActivateKey;

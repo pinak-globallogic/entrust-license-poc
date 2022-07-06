@@ -47,8 +47,8 @@ export const FileUpload = ({
   imageButton = false,
   hoverLabel = "Drag 'n' drop some files here, or click to select files",
   dropLabel = "Drop file here",
-  width = "600px",
-  height = "100px",
+  width = "400px",
+  height = "80px",
   backgroundColor = "#f4f4f4",
   image: {
     url = logo,
@@ -137,7 +137,7 @@ export const FileUpload = ({
               height={height}
               width={width}
               className={classes.iconText}
-              sx={{ border: "3px dashed grey" }}
+              sx={{ border: "3px dashed grey", outline: "#ffffff solid 10px" }}
               margin="50px 0px"
             >
               <Typography>{labelText}</Typography>
