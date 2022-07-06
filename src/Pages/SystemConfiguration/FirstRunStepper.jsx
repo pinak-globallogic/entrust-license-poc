@@ -6,8 +6,8 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import DatabaseDetails from "./DatabaseDetails";
-import UserAuthDetails from "./UserAuthDetails";
+import DatabaseDetails from "Pages/SystemConfiguration/DatabaseDetails";
+import UserAuthDetails from "Pages/SystemConfiguration/UserAuthDetails";
 import { useNavigate } from "react-router-dom";
 
 const steps = ["Database Configuration", "User Authenticaion Configuration"];

@@ -14,7 +14,7 @@ const Router = () => {
       <Route path="/dashboard" element={<DashboardWrapper />} />
       <Route path="/license/generate" element={<GenerateLicenseWrapper />} />
       <Route path="/license/search" element={<SearchLicenseWrapper />} />
-      <Route path="/firstrun" element={<FirstRunWrapper />} />
+      <Route path="/system-configuration" element={<FirstRunWrapper />} />
       <Route element={<h1>Page not found</h1>} />
     </Routes>
   );

@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import ResponsiveAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
-import logo from "../../Assets/Images/entrust-logo.png";
+import logo from "Assets/Images/entrust-logo.png";
 
 const FirstRunWrapper = () => {
   return (
@@ -11,7 +11,12 @@ const FirstRunWrapper = () => {
       <ResponsiveAppBar>
         <Container>
           <Toolbar disableGutters>
-            <img src={logo} alt="entrust-logo.png" style={{ height: "40px" }} />
+            <img
+              src={logo}
+              loading="lazy"
+              alt="entrust-logo.png"
+              style={{ height: "40px" }}
+            />
           </Toolbar>
         </Container>
       </ResponsiveAppBar>
