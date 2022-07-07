@@ -8,8 +8,8 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { makeStyles } from "@mui/styles";
+import { Typography } from "@mui/material";
 
 function createData(name, value) {
   return { name, value };
@@ -29,14 +29,8 @@ const rows = [
 ];
 const FeatureCard = ({ data }) => {
   const useStyles = makeStyles({
-    tableCell: {
-      border: 0,
-    },
     outerContainer: {
-      height: 200,
-    },
-    innerContainer: {
-      minWidth: 280,
+      maxHeight: 100,
     },
   });
   const classes = useStyles();
@@ -47,22 +41,17 @@ const FeatureCard = ({ data }) => {
         <Grid item container xs direction="column">
           <CustomCardRow title="Edition" value={data.edition} />
           <Grid item>
-            <TableContainer
-              component={Paper}
-              className={classes.outerContainer}
-            >
-              <Table
-                className={classes.innerContainer}
-                arialabel="simple table"
-                size="small"
-              >
+            <TableContainer className={classes.outerContainer}>
+              <Table arialabel="simple table" size="small">
                 <TableBody>
                   {rows.map((row) => (
-                    <TableRow key={row.name} className={classes.tableCell}>
+                    <TableRow key={row.name}>
                       <TableCell component="th" scope="row">
-                        {row.name}
+                        <Typography variant="caption">{row.name}</Typography>
                       </TableCell>
-                      <TableCell align="right">{row.value}</TableCell>
+                      <TableCell align="right">
+                        <Typography variant="caption">{row.value}</Typography>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

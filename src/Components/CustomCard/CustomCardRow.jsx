@@ -5,21 +5,27 @@ import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
+const styles = {
+  chip: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "start",
+    fontSize: "0.75em",
+  },
+  chipDefaultIcon: {
+    color: "#F3DEF3 !important",
+  },
+};
+
 const CustomCardRow = ({
   title,
   value,
-  icon = (
-    <CheckCircleIcon
-      sx={{
-        color: "#F3DEF3 !important",
-      }}
-    />
-  ),
+  icon = <CheckCircleIcon sx={styles.chipDefaultIcon} />,
   disabled = false,
   ...props
 }) => {
   return (
-    <Box mb={props.mb || 2} {...props}>
+    <Box mb={props.mb || 1} {...props}>
       <Grid
         xs
         item
@@ -38,11 +44,7 @@ const CustomCardRow = ({
             onDelete={() => ""}
             variant={disabled ? "filled" : "outlined"}
             size="small"
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "start",
-            }}
+            sx={styles.chip}
           />
         </Grid>
       </Grid>

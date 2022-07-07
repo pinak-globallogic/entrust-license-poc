@@ -79,12 +79,7 @@ const Login = ({ showMessage }) => {
   };
 
   return (
-    <Content
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      pt={10}
-    >
+    <Content direction="column" justifyContent="center" alignItems="center">
       <Grid
         item
         container
@@ -94,15 +89,31 @@ const Login = ({ showMessage }) => {
         className={classes.card}
       >
         <Grid item container justifyContent="center" alignItems="center" xs={3}>
-          <img src={Logo} alt="Entrust Logo" width={210} loading="lazy"/>
+          <img src={Logo} alt="Entrust Logo" width={210} loading="lazy" />
         </Grid>
-        <Divider className={classes.divider} sx={{ borderBottomWidth: 1, borderColor:"#87189D" }} />
-        <Typography id="login-title" variant="h5" gutterBottom component="div" className={classes.title}>
+        <Divider
+          className={classes.divider}
+          sx={{ borderBottomWidth: 1, borderColor: "#87189D" }}
+        />
+        <Typography
+          id="login-title"
+          variant="h5"
+          gutterBottom
+          component="div"
+          className={classes.title}
+        >
           Internal Licensing App
         </Typography>
 
         <Grid xs item container direction="column" className={classes.content}>
-          <Grid item container direction="column" justifyContent="center" alignItems="center" xs={3}>
+          <Grid
+            item
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            xs={3}
+          >
             <Grid item>
               <Typography id="login-subtitle" variant="subtitle2" gutterBottom>
                 Sign in into your account
@@ -119,7 +130,10 @@ const Login = ({ showMessage }) => {
           >
             <Grid item mb={2}>
               <FormControl variant="filled">
-                <InputLabel htmlFor="filled-adornment-username"> User Name </InputLabel>
+                <InputLabel htmlFor="filled-adornment-username">
+                  {" "}
+                  User Name{" "}
+                </InputLabel>
                 <FilledInput
                   id="username"
                   className={classes.inputBox}
@@ -131,7 +145,10 @@ const Login = ({ showMessage }) => {
             </Grid>
             <Grid item>
               <FormControl variant="filled">
-                <InputLabel htmlFor="filled-adornment-password"> Password </InputLabel>
+                <InputLabel htmlFor="filled-adornment-password">
+                  {" "}
+                  Password{" "}
+                </InputLabel>
                 <FilledInput
                   id="password"
                   className={classes.inputBox}
@@ -146,7 +163,11 @@ const Login = ({ showMessage }) => {
                         onClick={handleClickShowPassword}
                         edge="end"
                       >
-                        {loginData.showPassword ? (<VisibilityOff />) : (<Visibility />)}
+                        {loginData.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   }
@@ -163,7 +184,12 @@ const Login = ({ showMessage }) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Button id="login" variant="contained" size="small" onClick={onSubmit} >
+            <Button
+              id="login"
+              variant="contained"
+              size="small"
+              onClick={onSubmit}
+            >
               Log in
             </Button>
           </Grid>

@@ -4,7 +4,7 @@ import GenerateLicenseWizard from "./GenerateLicenseWizard";
 
 const GenerateLicenseWrapper = () => {
   return (
-    <Content pt={5}>
+    <Content pt={2}>
       <GenerateLicenseWizard xs={8} />
       <LicenseDetails xs />
     </Content>

@@ -3,7 +3,7 @@ import { styled } from "@mui/styles";
 
 const CustomCard = styled(Card)(() => ({
   width: "313px",
-  marginBottom: "3vh",
+  marginBottom: "1vh",
 }));
 
 export default CustomCard;

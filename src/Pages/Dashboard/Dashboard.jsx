@@ -171,7 +171,7 @@ const Dashboard = (props) => {
         <Grid item mb={2}>
           <Typography variant="h4">Dashboard</Typography>
         </Grid>
-        <Grid item mb={6}>
+        <Grid item mb={5}>
           <Grid xs>
             <Typography variant="caption">
               Welcome to the Internal Licensing Tool. This is your Dashboard,
@@ -185,12 +185,11 @@ const Dashboard = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12} columnSpacing={4}>
+        <Grid container xs columnSpacing={3}>
           {cards.map((card) => (
             <CardWrapper
               key={card.key}
-              mb={4}
-              mr={3}
+              mb={5}
               onSubmitButton={getMethodName(card)}
               data={card}
             />

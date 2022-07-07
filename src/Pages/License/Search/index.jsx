@@ -4,7 +4,7 @@ import SearchLicenseDetails from "./Details/SearchLicenseDetails";
 
 const SearchLicenseWrapper = () => {
   return (
-    <Content pt={5}>
+    <Content>
       <SearchLicense />
       <SearchLicenseDetails />
     </Content>
