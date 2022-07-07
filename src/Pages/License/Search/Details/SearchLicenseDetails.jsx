@@ -9,11 +9,12 @@ import ProductKeyInformationCard from "./ProductKeyInformationCard";
 import { useSelector } from "react-redux";
 
 const SearchLicenseDetails = () => {
+  const licenseDetails = useSelector(
+    (state) => state.searchLicense.licenseDetails
+  );
 
-  const licenseDetails = useSelector((state) => state.searchLicense.licenseDetails);
-  
   return (
-    <Grid sx={{ pl: 5}}>
+    <Grid sx={{ pl: 5 }}>
       <CustomCard style={{ width: "37vw", height: "22vw" }}>
         <CustomCardContent>
           <Grid item>
@@ -100,10 +101,9 @@ const SearchLicenseDetails = () => {
       </CustomCard>
       <CustomCard style={{ width: "37vw", height: "26vw" }}>
         <CustomCardContent>
-        <ProductKeyInformationCard />
+          <ProductKeyInformationCard />
         </CustomCardContent>
       </CustomCard>
-
     </Grid>
   );
 };
