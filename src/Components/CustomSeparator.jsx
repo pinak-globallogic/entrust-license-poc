@@ -22,9 +22,9 @@ navMap.set("/license/generate", {
   title: "Generate Product Key",
 });
 navMap.set("/key/modify", {
-  nav: true,
-  content: true,
-  title: "License Key Modification",
+    nav: true,
+    content: true,
+      title: "License Key Modification",
 });
 
 navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
@@ -49,7 +49,7 @@ export default function CustomSeparator() {
     </Typography>,
     data.nav && data.content && (
       <Typography id="header-nav2" key="2" color="white">
-        {data.title}
+        {data.subtitle}
       </Typography>
       ),
   ];
