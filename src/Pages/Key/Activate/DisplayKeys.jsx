@@ -1,30 +1,44 @@
-import React from "react";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+
+import {
+  MenuItem,
+  FormControl,
+  Select,
+  Button,
+  Grid,
+  Stack,
+  Typography,
+  OutlinedInput,
+} from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ReportProblemIcon from "@mui/icons-material/ReportProblem";
+import { makeStyles } from "@mui/styles";
+
 import DataGridCustom from "Components/DataGrid";
 import { CustomCard, CustomCardContent } from "Utilty";
-import ReportProblemIcon from "@mui/icons-material/ReportProblem";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import InfoIcon from "@mui/icons-material/Info";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ProductKeyInformationCard from "Pages/License/Search/ProductKeyInformationCard";
+import CustomerInfo from "./CustomerInfo";
+import DetailKeyInfo from "./DetailKeyInfo";
+import { setActivateKeyDetails } from "Redux/Slices/activateKey";
+
+const useStyles = makeStyles({
+  dropdown: {
+    backgroundColor: "#fff",
+    border: "1px",
+    outline: "#fff solid 5px",
+  },
+});
 
 const DisplayKeys = () => {
-  const [age, setAge] = React.useState("");
+  const dispatch = useDispatch();
+  const activateKey = useSelector((state) => state.activateKey);
+
   const [gridData, setGridData] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  const classes = useStyles();
 
   useEffect(() => {
     loadLicense();
@@ -43,7 +57,7 @@ const DisplayKeys = () => {
     {
       field: "status",
       headerName: "Status",
-      width: 75,
+      width: 60,
       sortable: false,
       renderCell: (params) =>
         params.row.status === "Activated" ? (
@@ -55,31 +69,31 @@ const DisplayKeys = () => {
     {
       field: "productKey",
       headerName: "License Key",
-      width: 160,
+      width: 150,
       editable: false,
     },
     {
       field: "feature",
       headerName: "Feature",
-      width: 100,
+      width: 120,
       editable: false,
     },
     {
       field: "company",
       headerName: "Company",
-      width: 145,
+      width: 100,
       editable: false,
     },
     {
       field: "orderId",
       headerName: "Order ID",
       sortable: false,
-      width: 120,
+      width: 100,
     },
     {
       field: "serverResponse",
       headerName: "Server Response",
-      width: 125,
+      width: 120,
       editable: false,
       renderCell: (params) =>
         params.row.status === "Activated" ? null : "Inactive",
@@ -113,55 +127,66 @@ const DisplayKeys = () => {
   };
 
   return (
-    <Grid container>
+    <Grid container pr={3}>
       <Grid item xs={7}>
         <CustomCard>
           <CustomCardContent>
             <Grid item mb={1}>
-              <Typography id="licenseID-title" variant="h6">
+              <Typography id="licenseID-title" variant="h5">
                 License Server ID
               </Typography>
             </Grid>
             <Grid item mb={1}>
-              <Typography id="licenseID-subtitle" variant="caption">
+              <Typography id="licenseID-subtitle" variant="subtitle1">
                 Insert the License server ID the product keys should be linked
                 to.
               </Typography>
             </Grid>
             <Grid item mb={8}>
               <FormControl sx={{ width: "40ch" }}>
-                <OutlinedInput value="23456-234567890-123456789-123456" />
+                <OutlinedInput
+                  value={activateKey.licenseServerID}
+                  onChange={(event) =>
+                    dispatch(
+                      setActivateKeyDetails({
+                        ...activateKey,
+                        licenseServerID: event.target.value,
+                      })
+                    )
+                  }
+                />
               </FormControl>
             </Grid>
             <Grid item mb={1}>
-              <Typography id="version-title" variant="h6">
+              <Typography id="version-title" variant="h5">
                 Protocol Version
               </Typography>
             </Grid>
             <Grid item mb={1}>
-              <Typography id="version-subtitle" variant="caption">
+              <Typography id="version-subtitle" variant="subtitle1">
                 Select the protocol version
               </Typography>
             </Grid>
             <Grid item mb={8}>
               <FormControl sx={{ minWidth: 70 }} size="small">
                 <Select
-                  value={age}
-                  onChange={handleChange}
+                  value={activateKey.protocolVersion}
+                  onChange={(event) =>
+                    dispatch(
+                      setActivateKeyDetails({
+                        ...activateKey,
+                        protocolVersion: event.target.value,
+                      })
+                    )
+                  }
                   displayEmpty
-                  inputProps={{ "aria-label": "Without label" }}
-                  style={{
-                    backgroundColor: "#fff",
-                    border: "1px",
-                    outline: "#ffffff solid 5px",
-                  }}
+                  className={classes.dropdown}
                 >
-                  <MenuItem value="">
-                    <em>1</em>
+                  <MenuItem value={1}>
+                   1
                   </MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -172,7 +197,7 @@ const DisplayKeys = () => {
                   justifyContent="space-between"
                   alignItems="center"
                 >
-                  <Typography id="option1-subtitle" variant="caption">
+                  <Typography id="option1-subtitle" variant="subtitle1">
                     Below you&apos;ll find a list of the product keys that
                     should be activated with the license server. <br />
                     If a key doesn&apos;t exist you can proceed with activation.{" "}
@@ -183,7 +208,6 @@ const DisplayKeys = () => {
                 </Stack>
               </div>
             </Grid>
-
             <Grid item>
               <div style={{ height: 360 }}>
                 <DataGridCustom
@@ -197,7 +221,10 @@ const DisplayKeys = () => {
           </CustomCardContent>
         </CustomCard>
       </Grid>
-      <ProductKeyInformationCard />
+      <Grid item xs={5}>
+        <CustomerInfo />
+        <DetailKeyInfo />
+      </Grid>
     </Grid>
   );
 };

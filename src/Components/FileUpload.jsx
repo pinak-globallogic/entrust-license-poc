@@ -1,8 +1,8 @@
 import React from "react";
+
 import { Box, Typography } from "@mui/material";
-import clsx from "clsx";
-import logo from "Assets/Images/entrust-logo.png";
 import { makeStyles } from "@mui/styles";
+import clsx from "clsx";
 
 const useStyle = makeStyles({
   root: {
@@ -19,15 +19,15 @@ const useStyle = makeStyles({
       opacity: 0.3,
     },
   },
-  noMouseEvent: {
-    pointerEvents: "none",
-  },
-  iconText: {
+  box: {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
-    position: "absolute",
+    margin: "50px 0px",
+    backgroundColor: "#FBFBFB",
+    border: "2px dashed #CFD2CF",
+    outline: "#fff solid 10px",
   },
   hidden: {
     display: "none",
@@ -44,23 +44,15 @@ const useStyle = makeStyles({
 
 export const FileUpload = ({
   accept,
-  imageButton = false,
+  imageButton = true,
   hoverLabel = "Drag 'n' drop some files here, or click to select files",
   dropLabel = "Drop file here",
-  width = "400px",
+  width = "450px",
   height = "80px",
-  backgroundColor = "#f4f4f4",
-  image: {
-    url = logo,
-    imageStyle = {
-      height: "inherit",
-    },
-  } = {},
   onChange,
   onDrop,
 }) => {
   const classes = useStyle();
-  const [imageUrl, setImageUrl] = React.useState(url);
   const [labelText, setLabelText] = React.useState(hoverLabel);
   const [isDragOver, setIsDragOver] = React.useState(false);
   const [isMouseOver, setIsMouseOver] = React.useState(false);
@@ -90,18 +82,11 @@ export const FileUpload = ({
       stopDefaults(e);
       setLabelText(hoverLabel);
       setIsDragOver(false);
-      if (imageButton && e.dataTransfer.files[0]) {
-        setImageUrl(URL.createObjectURL(e.dataTransfer.files[0]));
-      }
       onDrop(e);
     },
   };
 
   const handleChange = (event) => {
-    if (imageButton && event.target.files[0]) {
-      setImageUrl(URL.createObjectURL(event.target.files[0]));
-    }
-
     onChange(event);
   };
 
@@ -120,30 +105,11 @@ export const FileUpload = ({
         {...dragEvents}
         className={clsx(classes.root, isDragOver && classes.onDragOver)}
       >
-        <Box
-          width={width}
-          height={height}
-          bgcolor={backgroundColor}
-          className={classes.noMouseEvent}
-        >
-          {imageButton && (
-            <Box position="absolute" height={height} width={width}>
-              <img alt="file upload" src={imageUrl} style={imageStyle} />
-            </Box>
-          )}
-
-          {(!imageButton || isDragOver || isMouseOver) && (
-            <Box
-              height={height}
-              width={width}
-              className={classes.iconText}
-              sx={{ border: "3px dashed grey", outline: "#ffffff solid 10px" }}
-              margin="50px 0px"
-            >
-              <Typography>{labelText}</Typography>
-            </Box>
-          )}
-        </Box>
+        {(imageButton || isDragOver || isMouseOver) && (
+          <Box height={height} width={width} className={classes.box}>
+            <Typography>{labelText}</Typography>
+          </Box>
+        )}
       </label>
     </>
   );

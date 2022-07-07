@@ -16,7 +16,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { makeStyles } from "@mui/styles";
 
 import CustomSeparator from "../../Components/CustomSeparator";
-import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import { LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
 import { setLoginDetails } from "Redux/Slices/loginSlice";
 
 const useStyles = makeStyles({
@@ -56,12 +56,11 @@ navMap.set("/license/generate", {
   nav: true,
   content: true,
 });
-navMap.set("/key/activate", {
+navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,
   content: true,
 });
-
-navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
+navMap.set(ACTIVATE_KEY_ROUTE, {
   nav: true,
   content: true,
 });

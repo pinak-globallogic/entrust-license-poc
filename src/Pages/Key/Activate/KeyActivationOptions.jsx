@@ -1,10 +1,9 @@
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { FileUpload } from "Components/FileUpload";
-
-import { CustomCard, CustomCardContent } from "Utilty";
-
 import { useSelector, useDispatch } from "react-redux";
+
+import { Grid, Typography } from "@mui/material";
+
+import { FileUpload } from "Components/FileUpload";
+import { CustomCard, CustomCardContent } from "Utilty";
 import { setActivateKeyDetails } from "Redux/Slices/activateKey";
 
 const KeyActivationOptions = ({ countSetter }) => {
@@ -40,26 +39,26 @@ const KeyActivationOptions = ({ countSetter }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <Grid item mb={1}>
-          <Typography id="option1-title" variant="h6">
+        <Grid item mb={3}>
+          <Typography id="option1-title" variant="h5">
             Activation file upload
           </Typography>
         </Grid>
         <Grid item mb={3}>
-          <Typography id="option1-subtitle" variant="caption">
+          <Typography id="option1-subtitle" variant="subtitle1">
             Upload an activation file to start the activation process.
           </Typography>
         </Grid>
-        <Grid item mb={15}>
+        <Grid item mb={8}>
           <FileUpload {...fileUploadProp} />
         </Grid>
-        <Grid item mb={1}>
-          <Typography id="option2-title" variant="h6">
+        <Grid item mb={3}>
+          <Typography id="option2-title" variant="h5">
             Manual activation
           </Typography>
         </Grid>
         <Grid item mb={3}>
-          <Typography id="option2-subtitle" variant="caption">
+          <Typography id="option2-subtitle" variant="subtitle1">
             If you have no activation file, you can manually input the license
             server id and product keys <br />
             on the next page.

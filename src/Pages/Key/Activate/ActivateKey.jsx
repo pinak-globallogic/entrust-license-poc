@@ -1,20 +1,18 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
+import {Grid, Stack, Button} from "@mui/material";
+
 import ActivationSuccess from "./ActivationSuccess";
 import DisplayKeys from "./DisplayKeys";
 import FileUploadDetail from "./FileUploadDetail";
 import KeyActivationOptions from "./KeyActivationOptions";
 
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-
 const ActivateKey = (props) => {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
-  // make wrapper function to give child
+  // wrapper function for count 
   const wrapperSetCount = useCallback(
     (val) => {
       setCount(val);
@@ -34,7 +32,7 @@ const ActivateKey = (props) => {
     switch (count) {
       case 0:
         obj.page = <KeyActivationOptions countSetter={wrapperSetCount} />;
-        obj.btn.text = "Continue manualy without activation file";
+        obj.btn.text = "Continue manually without activation file";
         obj.btn.variant = "outlined";
         obj.btn.action = () => setCount(2);
         break;
@@ -59,20 +57,20 @@ const ActivateKey = (props) => {
 
   return (
     <>
-      <Grid item container direction="column" {...props}>
+      <Grid item container direction="column" {...props} pt={6}>
         {details.page}
-        <div style={{ width: "57%" }}>
+        <div style={{ width: "56%" }}>
           <Stack direction="row-reverse" justifyContent="space-between" mt={2}>
             <Button
               id="continue-btn"
               variant={details.btn.variant}
-              style={{ maxWidth: "35vh", fontWeight: "bold" }}
+              style={{ maxWidth: "25vh", fontWeight: "bold" }}
               onClick={details.btn.action}
               size="small"
             >
               {details.btn.text}
             </Button>
-            {count > 1 && count < 3 && (
+            {count == 2 && (
               <Button
                 id="back-btn"
                 variant="outlined"

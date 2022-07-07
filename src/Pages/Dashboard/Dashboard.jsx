@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
 import { CustomCard } from "../../Utilty";
-import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import { LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
 
 const cards = [
   {
@@ -111,7 +111,7 @@ const Dashboard = (props) => {
   };
 
   const onActivateKey = () => {
-    navigate("/key/activate");
+    navigate(ACTIVATE_KEY_ROUTE);
   };
 
   const onGenerateNewProductKey = () => {

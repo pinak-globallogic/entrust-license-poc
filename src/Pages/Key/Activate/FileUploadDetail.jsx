@@ -1,10 +1,8 @@
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Chip from "@mui/material/Chip";
+import { useSelector, useDispatch } from "react-redux";
+
+import {Grid, Typography, Chip} from "@mui/material";
 
 import { CustomCard, CustomCardContent } from "Utilty";
-
-import { useSelector, useDispatch } from "react-redux";
 import { setActivateKeyDetails } from "Redux/Slices/activateKey";
 
 const FileUploadDetail = ({ countSetter }) => {
@@ -12,7 +10,6 @@ const FileUploadDetail = ({ countSetter }) => {
   const activateKey = useSelector((state) => state.activateKey);
 
   const handleDelete = () => {
-    console.info("You clicked the delete icon.");
     countSetter(0);
     dispatch(setActivateKeyDetails({ ...activateKey, uploadFile: null }));
   };
@@ -20,18 +17,18 @@ const FileUploadDetail = ({ countSetter }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <Grid item mb={1}>
-          <Typography id="option1-title" variant="h6">
+        <Grid item mb={3}>
+          <Typography id="option1-title" variant="h5">
             Activation file upload
           </Typography>
         </Grid>
         <Grid item mb={8}>
-          <Typography id="option1-subtitle" variant="caption">
-            Upload an activation file to start the activation process.
+          <Typography id="option1-subtitle" variant="subtitle1">
+            Upload an activation file to start the activation process
           </Typography>
         </Grid>
         <Grid item>
-          <Typography id="option2-subtitle" variant="caption">
+          <Typography id="option2-subtitle" variant="subtitle1">
             You have uploaded the following file:
           </Typography>
         </Grid>
@@ -39,7 +36,7 @@ const FileUploadDetail = ({ countSetter }) => {
           <Chip
             label={activateKey.uploadFile}
             variant="outlined"
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: "#fff" }}
             onDelete={handleDelete}
           />
         </Grid>

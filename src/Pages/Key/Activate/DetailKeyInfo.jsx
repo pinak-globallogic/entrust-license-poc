@@ -1,19 +1,24 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import { CustomCard, CustomCardContent } from "Utilty";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
+
+import {
+  Box,
+  Button,
+  ClickAwayListener,
+  Typography,
+  Tab,
+  Tabs,
+  Paper,
+  Table,
+  TableRow,
+  TableHead,
+  TableContainer,
+  TableCell,
+  TableBody,
+} from "@mui/material";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+
+import { CustomCard, CustomCardContent } from "Utilty";
 
 function createData(fieldName, intVal, stringVal) {
   return { fieldName, intVal, stringVal };
@@ -79,21 +84,20 @@ const DetailKeyInfo = () => {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <CustomCard>
-        <CustomCardContent style={{backgroundColor:"#fff"}} sx={{mt:2}}>
+        <CustomCardContent style={{ backgroundColor: "#fff" }} sx={{ mt: 2 }}>
           <Button
             variant="text"
             onClick={handleClick}
             startIcon={<ArrowDropDownIcon />}
             style={{
               color: "black",
-              width: "80ch",
               justifyContent: "flex-start",
+              textTransform: "none",
             }}
           >
-            Detail Product Key Information.
+            <Typography variant="h6">Detail Product Key Information</Typography>
           </Button>
           {open ? (
-
             <Box sx={{ width: "100%" }}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs
@@ -152,7 +156,6 @@ const DetailKeyInfo = () => {
                 ACTIVITY LOG
               </TabPanel>
             </Box>
-
           ) : null}
         </CustomCardContent>
       </CustomCard>

@@ -6,6 +6,7 @@ import SearchLicenseWrapper from "Pages/License/Search";
 import KeyActivationWrapper from "Pages/Key/Activate";
 
 export const LICENSE_SEARCH_PAGE_ROUTE = "/license/search";
+export const ACTIVATE_KEY_ROUTE = "/key/activate";
 
 const Router = () => {
   return (
@@ -14,7 +15,7 @@ const Router = () => {
       <Route path="/dashboard" element={<DashboardWrapper />} />
       <Route path="/license/generate" element={<GenerateLicenseWrapper />} />
       <Route path="/license/search" element={<SearchLicenseWrapper />} />
-      <Route path="/key/activate" element={<KeyActivationWrapper />} />
+      <Route path={ACTIVATE_KEY_ROUTE} element={<KeyActivationWrapper />} />
       <Route element={<h1>Page not found</h1>} />
     </Routes>
   );

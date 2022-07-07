@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import { LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
 
 const title = "CANCEL AND GO BACK TO DASHBOARD";
 const link = "/dashboard";
@@ -22,15 +22,15 @@ navMap.set("/license/generate", {
   title,
   link,
 });
-navMap.set("/key/activate", {
-  nav: true,
-  content: true,
-});
 navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,
   content: true,
   title,
   link,
+});
+navMap.set(ACTIVATE_KEY_ROUTE, {
+  nav: true,
+  content: true,
 });
 
 const Sidenav = (props) => {
