@@ -167,7 +167,7 @@ const Dashboard = (props) => {
   };
 
   return (
-    <Grid item container direction="column" pb={10} {...props}>
+    <Grid item container direction="column" {...props}>
       <CustomCard>
         <Grid item mb={2}>
           <Typography variant="h4">Dashboard</Typography>
@@ -190,7 +190,8 @@ const Dashboard = (props) => {
           {cards.map((card) => (
             <CardWrapper
               key={card.key}
-              mb={5}
+              mb={4}
+              mr={3}
               onSubmitButton={getMethodName(card)}
               data={card}
             />
