@@ -25,7 +25,6 @@ navMap.set("/key/modify", {
   nav: true,
   content: true,
   title: "License Key Modification",
-  keyValue: "1234",
 });
 
 navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
