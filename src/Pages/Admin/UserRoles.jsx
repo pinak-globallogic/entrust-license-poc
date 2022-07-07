@@ -8,7 +8,6 @@ import {
   GridToolbarContainer,
   GridToolbarFilterButton,
 } from "@mui/x-data-grid";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
@@ -293,15 +292,14 @@ const UserRoles = () => {
 
   const getRoles = () => {
     setLoading(true);
-    axios("https://getdata.free.beeceptor.com/getData")
+    // TODO - Replace with real Api
+    /*axios("https://getdata.free.beeceptor.com/getData")
       .then((response) => {
         setLoading(false);
         setGridData(response.data);
-      })
-      .catch(() => {
-        setLoading(false);
-        setGridData(sampleGridData);
-      });
+      })*/
+    setLoading(false);
+    setGridData(sampleGridData);
   };
 
   useEffect(() => {
