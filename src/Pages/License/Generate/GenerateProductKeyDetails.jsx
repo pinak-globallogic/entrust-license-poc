@@ -20,25 +20,31 @@ const GenerateProductKeyDetails = () => {
 
   const data = [
     {
-      id: "01",
+      id: "01.",
       key: "1234-1234-1234",
     },
     {
-      id: "02",
+      id: "02.",
       key: "2222-3333-4444",
-      },
+    },
+    {
+      id: "03.",
+      key: "4444-5555-6666",
+    },
   ];
 
   return (
     <div>
       <CustomCard>
         <CustomCardContent>
-          <Grid item container xs pt={2}>
-            <Grid item mb={1} marginRight="10px">
-              <CheckCircleIcon color="primary" fontSize="large"/>
-            </Grid>
-            <Grid item mb={3}>
-              <Typography variant="h5">Key successfully created.</Typography>
+          <Grid item container direction="column" xs pt={2}>
+            <Grid item container>
+              <Grid item mb={1} marginRight="10px">
+                <CheckCircleIcon color="primary" fontSize="large" />
+              </Grid>
+              <Grid item mb={3}>
+                <Typography variant="h5">Key successfully created.</Typography>
+              </Grid>
             </Grid>
             <Grid item mb={4}>
               <Typography variant="caption">

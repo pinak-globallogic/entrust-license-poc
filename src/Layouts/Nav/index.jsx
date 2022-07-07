@@ -2,7 +2,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import AdminNav from "./AdminNav";
 
 const title = "CANCEL AND GO BACK TO DASHBOARD";
 const link = "/dashboard";
@@ -33,18 +34,34 @@ navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   link,
 });
 
+navMap.set(ADMIN_PANEL_PAGE_ROUTE, {
+  nav: true,
+  content: true,
+  title,
+  link,
+});
+
 const Sidenav = (props) => {
   const location = useLocation();
   const [data, setData] = useState(navMap.get("/"));
+  const [isAdmin, setAdmin] = useState(false);
 
   useEffect(() => {
     setData(navMap.get(location.pathname) || navMap.get("/"));
+    // check admin by URL
+    setAdmin(location.pathname === ADMIN_PANEL_PAGE_ROUTE ? true : false);
   }, [location]);
 
   return (
     <>
       {data.nav && (
-        <Grid item container direction="column" {...props}>
+        <Grid
+          item
+          container
+          direction="column"
+          {...props}
+          style={isAdmin ? { backgroundColor: "white" } : {}}
+        >
           {data.content && (
             <Link to="/dashboard" style={{ textDecoration: "none" }}>
               <Grid
@@ -66,9 +83,7 @@ const Sidenav = (props) => {
                     color="primary"
                     fontWeight={600}
                     lineHeight={0}
-                  >
-                    {" "}
-                    BACK TO
+                  > BACK TO       
                   </Typography>
                   <Typography
                     variant="caption"
@@ -84,6 +99,7 @@ const Sidenav = (props) => {
               </Grid>
             </Link>
           )}
+          {isAdmin && <AdminNav />}
         </Grid>
       )}
     </>
