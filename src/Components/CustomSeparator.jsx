@@ -5,7 +5,7 @@ import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 const navMap = new Map();
 navMap.set("/", {
@@ -52,9 +52,7 @@ export default function CustomSeparator() {
   return (
     <Stack spacing={2}>
       <Breadcrumbs
-        separator={
-          <NavigateNextIcon fontSize="small" style={{ color: "white" }} />
-        }
+        separator={<ArrowRightIcon style={{ color: "white" }} />}
         aria-label="breadcrumb"
       >
         {breadcrumbs}
