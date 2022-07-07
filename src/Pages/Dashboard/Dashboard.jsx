@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
 import { CustomCard } from "../../Utilty";
-import { LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
+import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
 
 const cards = [
   {
@@ -129,8 +129,7 @@ const Dashboard = (props) => {
   };
 
   const onAdminPanel = () => {
-    window.alert("Feature not implemented yet..");
-    //navigate("/");
+    navigate(ADMIN_PANEL_PAGE_ROUTE);
   };
 
   const goToDashBord = () => {
@@ -166,7 +165,7 @@ const Dashboard = (props) => {
   };
 
   return (
-    <Grid item container direction="column" pb={10} {...props}>
+    <Grid item container direction="column" {...props}>
       <CustomCard>
         <Grid item mb={2}>
           <Typography variant="h4">Dashboard</Typography>
@@ -185,11 +184,12 @@ const Dashboard = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12}>
+        <Grid container xs={12} columnSpacing={4}>
           {cards.map((card) => (
             <CardWrapper
               key={card.key}
-              mb={5}
+              mb={4}
+              mr={3}
               onSubmitButton={getMethodName(card)}
               data={card}
             />

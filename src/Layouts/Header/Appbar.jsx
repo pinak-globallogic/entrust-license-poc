@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import logo from "../../Assets/Images/entrust-logo.png";
+import logo from "Assets/Images/entrust-logo.png";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -15,8 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { makeStyles } from "@mui/styles";
 
-import CustomSeparator from "../../Components/CustomSeparator";
-import { LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
+import CustomSeparator from "./CustomSeparator";
+import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
 import { setLoginDetails } from "Redux/Slices/loginSlice";
 
 const useStyles = makeStyles({
@@ -61,6 +61,10 @@ navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   content: true,
 });
 navMap.set(ACTIVATE_KEY_ROUTE, {
+  nav: true,
+  content: true,
+});
+navMap.set(ADMIN_PANEL_PAGE_ROUTE, {
   nav: true,
   content: true,
 });

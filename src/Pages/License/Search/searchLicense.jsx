@@ -2,7 +2,7 @@ import { Box, Button, Grid, TextField } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import axios from "axios";
 
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 import DataGridCustom from "Components/DataGrid";
@@ -11,6 +11,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Stack from "@mui/material/Stack";
+import { useDispatch, useSelector } from "react-redux";
+import { updateLicenseDetails } from "Redux/Slices/searchLicenseSlice";
 
 const formatDateFromMilliSeconds = (dateMilliSeconds) => {
   var date = new Date(Number(dateMilliSeconds)),
@@ -53,6 +55,31 @@ const SearchLicense = () => {
     setSelectionModel(newSelectedModel);
   };
 
+  const licenseDetails = useSelector(
+    (state) => state.searchLicense.licenseDetails
+  );
+  const dispatch = useDispatch();
+
+  const setSelectedLicenseDetails = (event) => {
+    let selectedData = gridData.filter((value) => {
+      return value.id == event.target.value;
+    });
+    dispatch(
+      updateLicenseDetails({
+        ...licenseDetails,
+        productKey: selectedData[0].productKey,
+        featureId: selectedData[0].feature,
+        company: selectedData[0].company,
+        orderNo: selectedData[0].orderId,
+        // to be added when these fields are available in grid json
+        // expirationDate: selectedData[0].expirationDate,
+        // rehostCount:selectedData[0].rehostCount,
+        // limit:selectedData[0].limit,
+        // licenseServerId: document.getElementById("licenseServerId").value,
+      })
+    );
+  };
+
   const columns = [
     {
       field: "id",
@@ -60,7 +87,11 @@ const SearchLicense = () => {
       width: 50,
       sortable: false,
       renderCell: (params) => (
-        <Radio checked={selectionModel[0] === params.id} value={params.id}/>
+        <Radio
+          checked={selectionModel[0] === params.id}
+          value={params.id}
+          onChange={setSelectedLicenseDetails}
+        />
       ),
     },
     {
@@ -245,7 +276,7 @@ const SearchLicense = () => {
           </Button>
         </Box>
       </Grid>
-      <Grid xs={12} marginTop={5} style={{ height: 500}}>
+      <Grid xs={12} marginTop={5} style={{ height: 500 }}>
         <DataGridCustom
           columns={columns}
           rows={gridData}

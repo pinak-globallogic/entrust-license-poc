@@ -4,7 +4,7 @@ import Content from "Layouts/Content/Content";
 const DashboardWrapper = () => {
   return (
     <Content pt={5}>
-      <Dashboard xs={7} />
+      <Dashboard lg={10} xl={7} />
     </Content>
   );
 };

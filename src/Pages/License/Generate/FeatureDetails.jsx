@@ -17,6 +17,8 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import NativeSelect from "@mui/material/NativeSelect";
 import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { updateFeature } from "Redux/Slices/generateLicenseSlice";
 
 const useStyles = makeStyles({
   tableCell: {
@@ -57,9 +59,12 @@ const licenseKeys = ["Plus", "Professional", "Enterprise"];
 
 const FeatureDetails = (props) => {
   const classes = useStyles();
-  const [alignment, setAlignment] = useState("Professional");
+  const feature = useSelector((state) => state.generateLicense.feature);
+  const dispatch = useDispatch();
+  const [alignment, setAlignment] = useState(feature.edition);
   const changeProductKey = (event) => {
     setAlignment(event.target.value);
+    dispatch(updateFeature({ ...feature, edition: event.target.value }));
   };
 
   return (
