@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
 import { CustomCard } from "../../Utilty";
-import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 
 const cards = [
   {
@@ -130,8 +130,7 @@ const Dashboard = (props) => {
   };
 
   const onAdminPanel = () => {
-    window.alert("Feature not implemented yet..");
-    //navigate("/");
+    navigate(ADMIN_PANEL_PAGE_ROUTE);
   };
 
   const goToDashBord = () => {
@@ -186,7 +185,7 @@ const Dashboard = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12}>
+        <Grid container xs={12} columnSpacing={4}>
           {cards.map((card) => (
             <CardWrapper
               key={card.key}

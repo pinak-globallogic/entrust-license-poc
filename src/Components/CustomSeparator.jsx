@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
@@ -26,6 +26,12 @@ navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
   nav: true,
   content: true,
   title: "License Key Explorer",
+});
+
+navMap.set(ADMIN_PANEL_PAGE_ROUTE, {
+  nav: true,
+  content: true,
+  title: "Admin Area",
 });
 
 export default function CustomSeparator() {
