@@ -49,7 +49,7 @@ export default function CustomSeparator() {
     </Typography>,
     data.nav && data.content && (
       <Typography id="header-nav2" key="2" color="white">
-        {data.subtitle}
+        {data.title}
       </Typography>
       ),
   ];
