@@ -4,6 +4,15 @@ import { CustomCard, CustomCardContent } from "Utilty";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+} from "@mui/material";
 
 const GenerateProductKeyDetails = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -20,15 +29,15 @@ const GenerateProductKeyDetails = () => {
 
   const data = [
     {
-      id: "01.",
+      id: "01",
       key: "1234-1234-1234",
     },
     {
-      id: "02.",
+      id: "02",
       key: "2222-3333-4444",
     },
     {
-      id: "03.",
+      id: "03",
       key: "4444-5555-6666",
     },
   ];
@@ -55,21 +64,58 @@ const GenerateProductKeyDetails = () => {
           </Grid>
           <br />
           <Grid>
-            <table bgcolor="white" cellSpacing="35">
-              <tbody>
-                {data.map((item, i) => (
-                  <tr key={i}>
-                    <td>{item.id}</td>
-                    <td>{item.key}</td>
-                    <td>
-                      <ContentCopyIcon
-                        onClick={() => copyToClipBoard(item.key)}
-                      ></ContentCopyIcon>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <Grid container columnSpacing={2}>
+              <TableContainer sx={{ maxWidth: 300 }} component={Paper}>
+                <Table aria-label="simple table" size="small">
+                  <TableBody aria-label="simple table" size="small">
+                    {data.map((item, i) => (
+                      <TableRow key={i} align="left">
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          align="left"
+                          style={{
+                            color: "black",
+                            background: "white",
+                            border: "white",
+                          }}
+                        >
+                          {item.id}
+                        </TableCell>
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          align="left"
+                          style={{
+                            color: "black",
+                            background: "white",
+                            border: "white",
+                          }}
+                        >
+                          {item.key}
+                        </TableCell>
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          align="left"
+                          style={{
+                            color: "black",
+                            background: "white",
+                            border: "white",
+                          }}
+                        >
+                          <IconButton>
+                            <ContentCopyIcon
+                              onClick={() => copyToClipBoard(item.key)}
+                            ></ContentCopyIcon>
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
           </Grid>
         </CustomCardContent>
       </CustomCard>
