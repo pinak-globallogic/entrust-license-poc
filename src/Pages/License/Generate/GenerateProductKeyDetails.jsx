@@ -11,7 +11,7 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableRow,
+  TableRow
 } from "@mui/material";
 
 const GenerateProductKeyDetails = () => {
