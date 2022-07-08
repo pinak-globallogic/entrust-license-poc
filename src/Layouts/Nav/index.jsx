@@ -23,7 +23,7 @@ navMap.set("/license/generate", {
   title,
   link,
 });
-navMap.set("/key/modify", {
+navMap.set("/license/modify", {
   nav: true,
   content: true,
 });

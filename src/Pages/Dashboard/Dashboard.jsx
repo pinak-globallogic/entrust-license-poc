@@ -125,7 +125,7 @@ const Dashboard = (props) => {
   };
 
   const onModifyProductKey = () => {
-    navigate("/key/modify");
+    navigate("/license/modify");
   };
 
   const onAdminPanel = () => {

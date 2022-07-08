@@ -21,7 +21,7 @@ navMap.set("/license/generate", {
   content: true,
   title: "Generate Product Key",
 });
-navMap.set("/key/modify", {
+navMap.set("/license/modify", {
     nav: true,
     content: true,
       title: "License Key Modification",

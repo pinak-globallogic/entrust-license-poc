@@ -78,9 +78,9 @@ const GenerateProductKeyDetails = () => {
             <Grid container columnSpacing={2}>
               <TableContainer sx={{ maxWidth: 300 }} component={Paper}>
                 <Table aria-label="simple table" size="small">
-                  <TableBody aria-label="simple table" size="small">
+                  <TableBody aria-label="simple table" size="small" border="white">
                     {data.map((item, i) => (
-                      <TableRow key={i} align="left" className={classes.tableCell}>
+                      <TableRow key={i} align="left" className={classes.tableCell} >
                         <TableCell
                           component="th"
                           scope="row"
