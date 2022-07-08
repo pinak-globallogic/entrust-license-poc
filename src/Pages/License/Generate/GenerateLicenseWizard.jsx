@@ -21,7 +21,7 @@ const noOfKeys = (keyAmount) => {
   return keyAmount;
 };
 
-const GenerateLicense = (props) => {
+const GenerateLicenseWizard = (props) => {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
   const state = useSelector((state) => state.generateLicense);
@@ -106,4 +106,4 @@ const GenerateLicense = (props) => {
   );
 };
 
-export default GenerateLicense;
+export default GenerateLicenseWizard;

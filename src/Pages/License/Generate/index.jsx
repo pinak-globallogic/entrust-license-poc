@@ -1,11 +1,11 @@
 import Content from "Layouts/Content/Content";
 import LicenseDetails from "../Details";
-import GenerateLicense from "./GenerateLicense";
+import GenerateLicenseWizard from "./GenerateLicenseWizard";
 
 const GenerateLicenseWrapper = () => {
   return (
-    <Content pt={5}>
-      <GenerateLicense xs={8} />
+    <Content pt={2}>
+      <GenerateLicenseWizard xs={8} />
       <LicenseDetails xs />
     </Content>
   );

@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 
 const CustomCardHeader = ({ title, ...props }) => {
   return (
-    <Box mb={2}>
+    <Box mb={1.5}>
       <Grid item container xs alignItems="center" {...props} mb={0.5}>
         <Grid item xs>
           <Typography variant="caption">{title}</Typography>
