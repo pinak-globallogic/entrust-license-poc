@@ -6,7 +6,7 @@ import SearchLicenseWrapper from "Pages/License/Search";
 import AdminPanelWrapper from "Pages/Admin";
 export const LICENSE_SEARCH_PAGE_ROUTE = "/license/search";
 export const ADMIN_PANEL_PAGE_ROUTE = "/license/admin";
-import ModifyProductKeyWrapper from "../Pages/License/ModifyProductKey";
+import ModifyLicenseWrapper from "../Pages/License/Modify";
 
 import FirstRunWrapper from "../Pages/SystemConfiguration/FirstRunWrapper";
 
@@ -19,7 +19,7 @@ const Router = () => {
       <Route path="/license/search" element={<SearchLicenseWrapper />} />
       <Route path="/system-configuration" element={<FirstRunWrapper />} />
       <Route path={ADMIN_PANEL_PAGE_ROUTE} element={<AdminPanelWrapper />} />
-      <Route path="/key/modify" element={<ModifyProductKeyWrapper />} />
+      <Route path="/license/modify" element={<ModifyLicenseWrapper />} />
       <Route element={<h1>Page not found</h1>} />
     </Routes>
   );

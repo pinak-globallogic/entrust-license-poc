@@ -6,13 +6,22 @@ import { useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
+import { makeStyles } from "@mui/styles";
 import {
   Table,
   TableBody,
   TableCell,
   TableContainer,
-  TableRow
+  TableRow,
 } from "@mui/material";
+
+const useStyles = makeStyles({
+  tableCell: {
+    color: "black",
+    background: "white",
+    border: "white",
+  },
+});
 
 const GenerateProductKeyDetails = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -42,7 +51,9 @@ const GenerateProductKeyDetails = () => {
     },
   ];
 
+  const classes = useStyles();
   return (
+    
     <div>
       <CustomCard>
         <CustomCardContent>
@@ -69,16 +80,11 @@ const GenerateProductKeyDetails = () => {
                 <Table aria-label="simple table" size="small">
                   <TableBody aria-label="simple table" size="small">
                     {data.map((item, i) => (
-                      <TableRow key={i} align="left">
+                      <TableRow key={i} align="left" className={classes.tableCell}>
                         <TableCell
                           component="th"
                           scope="row"
                           align="left"
-                          style={{
-                            color: "black",
-                            background: "white",
-                            border: "white",
-                          }}
                         >
                           {item.id}
                         </TableCell>
@@ -86,11 +92,6 @@ const GenerateProductKeyDetails = () => {
                           component="th"
                           scope="row"
                           align="left"
-                          style={{
-                            color: "black",
-                            background: "white",
-                            border: "white",
-                          }}
                         >
                           {item.key}
                         </TableCell>
@@ -98,11 +99,6 @@ const GenerateProductKeyDetails = () => {
                           component="th"
                           scope="row"
                           align="left"
-                          style={{
-                            color: "black",
-                            background: "white",
-                            border: "white",
-                          }}
                         >
                           <IconButton>
                             <ContentCopyIcon

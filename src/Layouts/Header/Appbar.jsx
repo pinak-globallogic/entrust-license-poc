@@ -56,7 +56,7 @@ navMap.set("/license/generate", {
   nav: true,
   content: true,
 });
-navMap.set("/key/modify", {
+navMap.set("/license/modify", {
     nav: true,
     content: true,
   });
