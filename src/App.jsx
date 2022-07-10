@@ -1,12 +1,7 @@
-import Router from "./Routes/index";
-import LayoutWrapper from "./Layouts/index";
+import LayoutWrapper from "Layouts";
 
 const App = () => {
-  return (
-    <LayoutWrapper>
-      <Router />
-    </LayoutWrapper>
-  );
+  return <LayoutWrapper />;
 };
 
 export default App;

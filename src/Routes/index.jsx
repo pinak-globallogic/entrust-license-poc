@@ -4,22 +4,36 @@ import DashboardWrapper from "Pages/Dashboard/index";
 import GenerateLicenseWrapper from "Pages/License/Generate/index";
 import SearchLicenseWrapper from "Pages/License/Search";
 import AdminPanelWrapper from "Pages/Admin";
-export const LICENSE_SEARCH_PAGE_ROUTE = "/license/search";
-export const ADMIN_PANEL_PAGE_ROUTE = "/license/admin";
+import FirstRunWrapper from "Pages/SystemConfiguration/FirstRunWrapper";
+import ProtectedRoute from "./ProtectedRoute";
 
-import FirstRunWrapper from "../Pages/SystemConfiguration/FirstRunWrapper";
+export const ROUTE_HOME = "/";
+export const ROUTE_LICENSE_DASHBOARD = "/license/dashboard";
+export const ROUTE_LICENSE_GENERATE = "/license/generate";
+export const ROUTE_LICENSE_SEARCH = "/license/search";
+export const ROUTE_ADMIN_PANEL = "/license/admin";
+export const ROUTE_FIRST_RUN = "/system-configuration";
 
 const Router = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<Login />} />
-      <Route path="/dashboard" element={<DashboardWrapper />} />
-      <Route path="/license/generate" element={<GenerateLicenseWrapper />} />
-      <Route path="/license/search" element={<SearchLicenseWrapper />} />
-      <Route path="/system-configuration" element={<FirstRunWrapper />} />
-      <Route path={ADMIN_PANEL_PAGE_ROUTE} element={<AdminPanelWrapper />} />
+      {/* Public routes */}
+      <Route exact path={ROUTE_HOME} element={<Login />} />
+      <Route path={ROUTE_FIRST_RUN} element={<FirstRunWrapper />} />
       <Route element={<h1>Page not found</h1>} />
+
+      {/* Protected routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path={ROUTE_LICENSE_DASHBOARD} element={<DashboardWrapper />} />
+        <Route
+          path={ROUTE_LICENSE_GENERATE}
+          element={<GenerateLicenseWrapper />}
+        />
+        <Route path={ROUTE_LICENSE_SEARCH} element={<SearchLicenseWrapper />} />
+        <Route path={ROUTE_ADMIN_PANEL} element={<AdminPanelWrapper />} />
+      </Route>
     </Routes>
   );
 };
+
 export default Router;

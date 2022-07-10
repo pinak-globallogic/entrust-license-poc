@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import {
+  ROUTE_ADMIN_PANEL,
+  ROUTE_LICENSE_DASHBOARD,
+  ROUTE_LICENSE_SEARCH,
+} from "Routes";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
@@ -12,7 +16,7 @@ navMap.set("/", {
   nav: false,
   content: false,
 });
-navMap.set("/dashboard", {
+navMap.set("/license", {
   nav: false,
   content: false,
 });
@@ -22,13 +26,13 @@ navMap.set("/license/generate", {
   title: "Generate Product Key",
 });
 
-navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
+navMap.set(ROUTE_LICENSE_SEARCH, {
   nav: true,
   content: true,
   title: "License Key Explorer",
 });
 
-navMap.set(ADMIN_PANEL_PAGE_ROUTE, {
+navMap.set(ROUTE_ADMIN_PANEL, {
   nav: true,
   content: true,
   title: "Admin Area",
@@ -44,7 +48,10 @@ export default function CustomSeparator() {
 
   const breadcrumbs = [
     <Typography id="header-nav1" key="1">
-      <Link to="/dashboard" style={{ color: "white", textDecoration: "none" }}>
+      <Link
+        to={ROUTE_LICENSE_DASHBOARD}
+        style={{ color: "white", textDecoration: "none" }}
+      >
         Internal Licensing Tools
       </Link>
     </Typography>,

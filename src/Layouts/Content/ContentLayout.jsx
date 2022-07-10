@@ -2,11 +2,16 @@ import Grid from "@mui/material/Grid";
 import Content from "./Content";
 import Sidenav from "../Nav/index";
 
+const layoutStyle = {
+  height: "calc(100vh - 64px)",
+  marginTop: "64px",
+};
+
 const ContentLayout = (props) => {
   return (
-    <Grid item container>
+    <Grid item container style={layoutStyle}>
       <Sidenav xs={1.7} />
-      <Content xs {...props} />
+      <Content xs pt={0} {...props} />
     </Grid>
   );
 };

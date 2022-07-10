@@ -5,17 +5,18 @@ const initialState = {
   role: "Fulfillment",
 };
 
-export const loginSlice = createSlice({
-  name: "login",
+export const authSlice = createSlice({
+  name: "auth",
   initialState,
   reducers: {
-    setLoginDetails: (state, action) => {
+    updateLogin: (state, action) => {
       state.name = action.payload.name;
       state.role = action.payload.role;
     },
+    updateLogout: () => initialState,
   },
 });
 
-export const { setLoginDetails } = loginSlice.actions;
+export const { updateLogin, updateLogout } = authSlice.actions;
 
-export default loginSlice.reducer;
+export default authSlice.reducer;
