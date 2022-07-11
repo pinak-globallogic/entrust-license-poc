@@ -1,4 +1,3 @@
-//import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -37,7 +36,7 @@ const GenerateLicenseWizard = (props) => {
       btn: {
         text: "continue",
         variant: "contained",
-        action: () => //setCount(count + 1),
+        action: () => 
         dispatch(
           updateActivePage({
             ...activePage,
@@ -102,7 +101,6 @@ const GenerateLicenseWizard = (props) => {
               size="small"
               disabled={btnDisabled}
               onClick={() => {
-               // setCount(count - 1);
                dispatch(
                 updateActivePage({
                   ...activePage,
