@@ -10,7 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import KeyIcon from "@mui/icons-material/Key";
 
 const useStyles = makeStyles({
-  content: { mb: 3, minHeight: 200 },
+  content: { minHeight: 210 },
   disableCard: { opacity: 0.5, pointerEvents: "none" },
 });
 

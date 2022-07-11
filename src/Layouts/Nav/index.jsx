@@ -2,58 +2,65 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
+import {
+  ROUTE_ADMIN_PANEL,
+  ROUTE_LICENSE_GENERATE,
+  ROUTE_LICENSE_DASHBOARD,
+  ROUTE_LICENSE_SEARCH,
+  ROUTE_HOME,
+  ROUTE_LICENSE_MODIFY,
+  ROUTE_LICENSE_ACTIVATE,
+} from "Routes";
 import AdminNav from "./AdminNav";
 
 const title = "CANCEL AND GO BACK TO DASHBOARD";
-const link = "/dashboard";
 
 const navMap = new Map();
-navMap.set("/", {
-  nav: false,
+navMap.set(ROUTE_HOME, {
   content: false,
 });
-navMap.set("/dashboard", {
-  nav: true,
+navMap.set(ROUTE_LICENSE_DASHBOARD, {
   content: false,
 });
-navMap.set("/license/generate", {
-  nav: true,
+navMap.set(ROUTE_LICENSE_GENERATE, {
   content: true,
   title,
-  link,
 });
-navMap.set(LICENSE_SEARCH_PAGE_ROUTE, {
-  nav: true,
+navMap.set(ROUTE_LICENSE_SEARCH, {
   content: true,
   title,
-  link,
 });
-navMap.set(ACTIVATE_KEY_ROUTE, {
-  nav: true,
-  content: true,
-});
-navMap.set(ADMIN_PANEL_PAGE_ROUTE, {
-  nav: true,
+
+navMap.set(ROUTE_ADMIN_PANEL, {
   content: true,
   title,
-  link,
 });
+
+navMap.set(ROUTE_LICENSE_ACTIVATE, {
+  content: true,
+  title,
+});
+
+navMap.set(ROUTE_LICENSE_MODIFY, {
+  content: true,
+  title,
+});
+
 
 const Sidenav = (props) => {
   const location = useLocation();
-  const [data, setData] = useState(navMap.get("/"));
+  const [data, setData] = useState(navMap.get(ROUTE_HOME));
   const [isAdmin, setAdmin] = useState(false);
 
   useEffect(() => {
-    setData(navMap.get(location.pathname) || navMap.get("/"));
+    setData(navMap.get(location.pathname) || navMap.get(ROUTE_HOME));
     // check admin by URL
-    setAdmin(location.pathname === ADMIN_PANEL_PAGE_ROUTE ? true : false);
+    setAdmin(location.pathname === ROUTE_ADMIN_PANEL ? true : false);
   }, [location]);
 
   return (
     <>
-      {data.nav && (
+      {ROUTE_HOME !== location.pathname && (
         <Grid
           item
           container
@@ -62,7 +69,10 @@ const Sidenav = (props) => {
           style={isAdmin ? { backgroundColor: "white" } : {}}
         >
           {data.content && (
-            <Link to="/dashboard" style={{ textDecoration: "none" }}>
+            <Link
+              to={ROUTE_LICENSE_DASHBOARD}
+              style={{ textDecoration: "none" }}
+            >
               <Grid
                 item
                 container
@@ -82,7 +92,9 @@ const Sidenav = (props) => {
                     color="primary"
                     fontWeight={600}
                     lineHeight={0}
-                  > BACK TO       
+                  >
+                    {" "}
+                    BACK TO
                   </Typography>
                   <Typography
                     variant="caption"
@@ -90,7 +102,9 @@ const Sidenav = (props) => {
                     color="primary"
                     fontWeight={600}
                     lineHeight={0}
-                  > DASHBOARD
+                  >
+                    {" "}
+                    DASHBOARD
                   </Typography>
                 </Grid>
               </Grid>

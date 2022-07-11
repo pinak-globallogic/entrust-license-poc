@@ -3,7 +3,13 @@ import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
 import { CustomCard } from "../../Utilty";
-import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE, ACTIVATE_KEY_ROUTE } from "Routes";
+import {
+  ROUTE_ADMIN_PANEL,
+  ROUTE_LICENSE_GENERATE,
+  ROUTE_LICENSE_SEARCH,
+  ROUTE_LICENSE_MODIFY,
+  ROUTE_LICENSE_ACTIVATE
+} from "Routes";
 
 const cards = [
   {
@@ -107,11 +113,11 @@ const Dashboard = (props) => {
   const navigate = useNavigate();
 
   const onCreateNewProductKey = () => {
-    navigate("/license/generate");
+    navigate(ROUTE_LICENSE_GENERATE);
   };
 
   const onActivateKey = () => {
-    navigate(ACTIVATE_KEY_ROUTE);
+    navigate(ROUTE_LICENSE_ACTIVATE);
   };
 
   const onGenerateNewProductKey = () => {
@@ -120,20 +126,19 @@ const Dashboard = (props) => {
   };
 
   const onSearchProductKey = () => {
-    navigate(LICENSE_SEARCH_PAGE_ROUTE);
+    navigate(ROUTE_LICENSE_SEARCH);
   };
 
   const onModifyProductKey = () => {
-    window.alert("Feature not implemented yet..");
-    //navigate("/");
+    navigate(ROUTE_LICENSE_MODIFY);
   };
 
   const onAdminPanel = () => {
-    navigate(ADMIN_PANEL_PAGE_ROUTE);
+    navigate(ROUTE_ADMIN_PANEL);
   };
 
   const goToDashBord = () => {
-    navigate("/dashboard");
+    navigate("/license");
   };
 
   const getMethodName = (card) => {
@@ -170,7 +175,7 @@ const Dashboard = (props) => {
         <Grid item mb={2}>
           <Typography variant="h4">Dashboard</Typography>
         </Grid>
-        <Grid item mb={6}>
+        <Grid item mb={5}>
           <Grid xs>
             <Typography variant="caption">
               Welcome to the Internal Licensing Tool. This is your Dashboard,
@@ -184,12 +189,11 @@ const Dashboard = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12} columnSpacing={4}>
+        <Grid container xs columnSpacing={3}>
           {cards.map((card) => (
             <CardWrapper
               key={card.key}
-              mb={4}
-              mr={3}
+              mb={5}
               onSubmitButton={getMethodName(card)}
               data={card}
             />

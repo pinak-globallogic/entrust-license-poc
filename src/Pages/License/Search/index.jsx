@@ -1,10 +1,10 @@
 import Content from "Layouts/Content/Content";
-import SearchLicense from "./searchLicense";
 import SearchLicenseDetails from "./Details/SearchLicenseDetails";
+import SearchLicense from "./searchLicense";
 
 const SearchLicenseWrapper = () => {
   return (
-    <Content pt={5}>
+    <Content>
       <SearchLicense />
       <SearchLicenseDetails />
     </Content>

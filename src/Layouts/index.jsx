@@ -1,17 +1,15 @@
-import Grid from "@mui/material/Grid";
-import Header from "./Header/index";
 import ContentLayout from "./Content/ContentLayout";
+import Header from "./Header";
+import Router from "Routes";
 
-const style = {
-  layout: { minHeight: "100%" },
-};
-
-const LayoutWrapper = (props) => {
+const LayoutWrapper = () => {
   return (
-    <Grid container direction="column" sx={style.layout}>
+    <>
       <Header />
-      <ContentLayout {...props} />
-    </Grid>
+      <ContentLayout>
+        <Router />
+      </ContentLayout>
+    </>
   );
 };
 

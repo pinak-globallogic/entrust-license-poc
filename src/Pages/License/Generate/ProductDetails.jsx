@@ -97,7 +97,7 @@ const ProductDetails = () => {
         <CustomCardContent>
           <Grid item mb={1}>
             <Typography id="product-info-title" variant="h6">
-              Specify product
+              Specify Product
             </Typography>
           </Grid>
           <Grid item mb={2}>

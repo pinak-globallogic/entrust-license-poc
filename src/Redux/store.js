@@ -1,14 +1,40 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import authSlice from "./Slices/authSlice";
+import customCardSlice from "./Slices/customCardSlice";
 import generateLicenseSlice from "./Slices/generateLicenseSlice";
-import loginSlice from "./Slices/loginSlice";
 import searchLicenseSlice from "./Slices/searchLicenseSlice";
 import activateKey from "./Slices/activateKey";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+import { createLogger } from "redux-logger";
+
+const authPersistConfig = {
+  key: "auth",
+  storage,
+};
+
+const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authSlice),
+  generateLicense: generateLicenseSlice,
+  searchLicense: searchLicenseSlice,
+  customCard: customCardSlice,
+  activateKey: activateKey,
+});
+
+const isDevEnvironment = process.env.NODE_ENV === "development";
+
+const middlewares = [];
+
+if (isDevEnvironment) {
+  const logger = createLogger({
+    duration: true,
+    diff: true,
+  });
+  middlewares.push(logger);
+}
 
 export const store = configureStore({
-  reducer: {
-    login: loginSlice,
-    generateLicense: generateLicenseSlice,
-    searchLicense: searchLicenseSlice,
-    activateKey: activateKey,
-  },
+  reducer: rootReducer,
+  middleware: middlewares,
+  devTools: isDevEnvironment,
 });
