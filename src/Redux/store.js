@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authSlice from "./Slices/authSlice";
+import customCardSlice from "./Slices/customCardSlice";
 import generateLicenseSlice from "./Slices/generateLicenseSlice";
 import searchLicenseSlice from "./Slices/searchLicenseSlice";
 import storage from "redux-persist/lib/storage";
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authSlice),
   generateLicense: generateLicenseSlice,
   searchLicense: searchLicenseSlice,
+  customCard: customCardSlice
 });
 
 const isDevEnvironment = process.env.NODE_ENV === "development";
