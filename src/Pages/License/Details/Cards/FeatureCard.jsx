@@ -10,6 +10,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
+import Collapse from "@mui/material/Collapse";
+import { useSelector } from "react-redux";
+import Divider from "@mui/material/Divider";
 
 function createData(name, value) {
   return { name, value };
@@ -34,30 +37,34 @@ const FeatureCard = ({ data }) => {
     },
   });
   const classes = useStyles();
+  const cardState = useSelector((state) => state.customCard.featureCard);
   return (
     <CustomCard>
       <CustomCardContent>
         <CustomCardHeader title="Features" />
         <Grid item container xs direction="column">
-          <CustomCardRow title="Edition" value={data.edition} />
-          <Grid item>
-            <TableContainer className={classes.outerContainer}>
-              <Table arialabel="simple table" size="small">
-                <TableBody>
-                  {rows.map((row) => (
-                    <TableRow key={row.name}>
-                      <TableCell component="th" scope="row">
-                        <Typography variant="caption">{row.name}</Typography>
-                      </TableCell>
-                      <TableCell align="right">
-                        <Typography variant="caption">{row.value}</Typography>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Grid>
+          <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
+          <Divider sx={{ borderBottomWidth: 2, mb:1 }} />
+            <CustomCardRow title="Edition" value={data.edition} />
+            <Grid item>
+              <TableContainer className={classes.outerContainer}>
+                <Table arialabel="simple table" size="small">
+                  <TableBody>
+                    {rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          <Typography variant="caption">{row.name}</Typography>
+                        </TableCell>
+                        <TableCell align="right">
+                          <Typography variant="caption">{row.value}</Typography>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
+          </Collapse>
         </Grid>
       </CustomCardContent>
     </CustomCard>
