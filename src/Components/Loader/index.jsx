@@ -1,5 +1,5 @@
 import Content from "Layouts/Content/Content";
-import "Styles/loaderStyles.css";
+import "Styles/loader.css";
 
 const Loader = () => {
   return (
