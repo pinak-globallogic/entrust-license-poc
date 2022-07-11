@@ -53,7 +53,6 @@ const GenerateProductKeyDetails = () => {
 
   const classes = useStyles();
   return (
-    
     <div>
       <CustomCard>
         <CustomCardContent>
@@ -78,28 +77,24 @@ const GenerateProductKeyDetails = () => {
             <Grid container columnSpacing={2}>
               <TableContainer sx={{ maxWidth: 300 }} component={Paper}>
                 <Table aria-label="simple table" size="small">
-                  <TableBody aria-label="simple table" size="small" border="white">
+                  <TableBody
+                    aria-label="simple table"
+                    size="small"
+                    border="white"
+                  >
                     {data.map((item, i) => (
-                      <TableRow key={i} align="left" className={classes.tableCell} >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          align="left"
-                        >
+                      <TableRow
+                        key={i}
+                        align="left"
+                        className={classes.tableCell}
+                      >
+                        <TableCell component="th" scope="row" align="left">
                           {item.id}
                         </TableCell>
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          align="left"
-                        >
+                        <TableCell component="th" scope="row" align="left">
                           {item.key}
                         </TableCell>
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          align="left"
-                        >
+                        <TableCell component="th" scope="row" align="left">
                           <IconButton>
                             <ContentCopyIcon
                               onClick={() => copyToClipBoard(item.key)}

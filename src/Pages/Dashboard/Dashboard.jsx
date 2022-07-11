@@ -3,7 +3,11 @@ import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
 import { CustomCard } from "../../Utilty";
-import { ADMIN_PANEL_PAGE_ROUTE, LICENSE_SEARCH_PAGE_ROUTE } from "Routes";
+import {
+  ROUTE_ADMIN_PANEL,
+  ROUTE_LICENSE_GENERATE,
+  ROUTE_LICENSE_SEARCH,
+} from "Routes";
 
 const cards = [
   {
@@ -107,7 +111,7 @@ const Dashboard = (props) => {
   const navigate = useNavigate();
 
   const onCreateNewProductKey = () => {
-    navigate("/license/generate");
+    navigate(ROUTE_LICENSE_GENERATE);
   };
 
   const onActivateKey = () => {
@@ -121,7 +125,7 @@ const Dashboard = (props) => {
   };
 
   const onSearchProductKey = () => {
-    navigate(LICENSE_SEARCH_PAGE_ROUTE);
+    navigate(ROUTE_LICENSE_SEARCH);
   };
 
   const onModifyProductKey = () => {
@@ -129,11 +133,11 @@ const Dashboard = (props) => {
   };
 
   const onAdminPanel = () => {
-    navigate(ADMIN_PANEL_PAGE_ROUTE);
+    navigate(ROUTE_ADMIN_PANEL);
   };
 
   const goToDashBord = () => {
-    navigate("/dashboard");
+    navigate("/license");
   };
 
   const getMethodName = (card) => {

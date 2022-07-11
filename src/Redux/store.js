@@ -1,12 +1,31 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import authSlice from "./Slices/authSlice";
 import generateLicenseSlice from "./Slices/generateLicenseSlice";
-import loginSlice from "./Slices/loginSlice";
 import searchLicenseSlice from "./Slices/searchLicenseSlice";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+import logger from "redux-logger";
+
+const authPersistConfig = {
+  key: "auth",
+  storage,
+};
+const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authSlice),
+  generateLicense: generateLicenseSlice,
+  searchLicense: searchLicenseSlice,
+});
+
+const isDevEnvironment = process.env.NODE_ENV === "development";
+
+const middlewares = [];
+
+if (isDevEnvironment) {
+  middlewares.push(logger);
+}
 
 export const store = configureStore({
-  reducer: {
-    login: loginSlice,
-    generateLicense: generateLicenseSlice,
-    searchLicense: searchLicenseSlice,
-  },
+  reducer: rootReducer,
+  middleware: middlewares,
+  devTools: isDevEnvironment,
 });

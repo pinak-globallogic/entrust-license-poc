@@ -20,7 +20,8 @@ import FormControl from "@mui/material/FormControl";
 import Logo from "Assets/Images/entrust-logo.png";
 import { withSnackbar } from "Components/Snackbar";
 import Content from "Layouts/Content/Content";
-import { setLoginDetails } from "Redux/Slices/loginSlice";
+import { ROUTE_LICENSE_DASHBOARD } from "Routes";
+import { updateLogin } from "Redux/Slices/authSlice";
 
 const useStyles = makeStyles({
   card: {
@@ -69,17 +70,21 @@ const Login = ({ showMessage }) => {
 
   const onSubmit = () => {
     if (loginData.username === "admin" && loginData.password === "admin") {
-      dispatch(
-        setLoginDetails({ name: loginData.username, role: "Fulfillment" })
-      );
-      navigate("/dashboard");
+      const data = { name: loginData.username, role: "Fulfillment" };
+      dispatch(updateLogin(data));
+      navigate(ROUTE_LICENSE_DASHBOARD);
     } else {
       showMessage("Incorrect user credentials.");
     }
   };
 
   return (
-    <Content direction="column" justifyContent="center" alignItems="center">
+    <Content
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      pt={0}
+    >
       <Grid
         item
         container

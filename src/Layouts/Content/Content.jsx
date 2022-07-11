@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 
 const Content = (props) => {
   return (
-    <Grid item container direction="row" pt={3} {...props}>
+    <Grid item container pt={props.pt | 5} {...props}>
       {props.children}
     </Grid>
   );

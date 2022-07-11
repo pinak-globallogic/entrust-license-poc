@@ -13,6 +13,7 @@ import LimitationDetails from "./LimitationDetails";
 import OptionalDetails from "./OptionalDetails";
 import { Typography } from "@mui/material";
 import GenerateProductKeyDetails from "./GenerateProductKeyDetails";
+import { ROUTE_LICENSE_DASHBOARD } from "Routes";
 
 const noOfKeys = (keyAmount) => {
   if (keyAmount < 1) {
@@ -59,7 +60,7 @@ const GenerateLicenseWizard = (props) => {
       case 5:
         obj.btn.text = "Finish and go back to dashboard";
         obj.btn.variant = "outlined";
-        obj.btn.action = () => navigate("/dashboard");
+        obj.btn.action = () => navigate(ROUTE_LICENSE_DASHBOARD);
         obj.page = <GenerateProductKeyDetails />;
         break;
     }
