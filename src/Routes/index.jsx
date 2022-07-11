@@ -1,8 +1,7 @@
-import Loader from "Components/Loader";
-import { Suspense } from "react";
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import Loader from "Components/Loader";
 
 // Routes constants
 export const ROUTE_HOME = "/";
