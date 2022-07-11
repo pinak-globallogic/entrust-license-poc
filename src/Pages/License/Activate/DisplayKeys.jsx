@@ -22,7 +22,7 @@ import DataGridCustom from "Components/DataGrid";
 import { CustomCard, CustomCardContent } from "Utilty";
 import CustomerInfo from "./CustomerInfo";
 import DetailKeyInfo from "./DetailKeyInfo";
-import { setActivateKeyDetails } from "Redux/Slices/activateKey";
+import { setActivateKeyDetails } from "Redux/Slices/activateKeySlice";
 
 const useStyles = makeStyles({
   dropdown: {

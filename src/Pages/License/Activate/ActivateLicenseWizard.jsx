@@ -1,18 +1,19 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import {Grid, Stack, Button} from "@mui/material";
+import { Grid, Stack, Button } from "@mui/material";
 
 import ActivationSuccess from "./ActivationSuccess";
 import DisplayKeys from "./DisplayKeys";
 import FileUploadDetail from "./FileUploadDetail";
 import KeyActivationOptions from "./KeyActivationOptions";
+import { ROUTE_LICENSE_DASHBOARD } from "Routes";
 
 const ActivateLicenseWizard = (props) => {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
-  // wrapper function for count 
+  // wrapper function for count
   const wrapperSetCount = useCallback(
     (val) => {
       setCount(val);
@@ -46,7 +47,7 @@ const ActivateLicenseWizard = (props) => {
         obj.page = <ActivationSuccess />;
         obj.btn.text = "Finish and go back to dashboard";
         obj.btn.variant = "outlined";
-        obj.btn.action = () => navigate("/dashboard");
+        obj.btn.action = () => navigate(ROUTE_LICENSE_DASHBOARD);
         break;
     }
 
@@ -57,7 +58,7 @@ const ActivateLicenseWizard = (props) => {
 
   return (
     <>
-      <Grid item container direction="column" {...props} pt={6}>
+      <Grid item container direction="column" {...props}>
         {details.page}
         <div style={{ width: "56%" }}>
           <Stack direction="row-reverse" justifyContent="space-between" mt={2}>

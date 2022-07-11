@@ -4,7 +4,7 @@ import { Grid, Typography } from "@mui/material";
 
 import { FileUpload } from "Components/FileUpload";
 import { CustomCard, CustomCardContent } from "Utilty";
-import { setActivateKeyDetails } from "Redux/Slices/activateKey";
+import { setActivateKeyDetails } from "Redux/Slices/activateKeySlice";
 
 const KeyActivationOptions = ({ countSetter }) => {
   const dispatch = useDispatch();
