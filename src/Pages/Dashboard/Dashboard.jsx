@@ -6,7 +6,8 @@ import { CustomCard } from "../../Utilty";
 import {
   ROUTE_ADMIN_PANEL,
   ROUTE_LICENSE_GENERATE,
-  ROUTE_LICENSE_SEARCH,
+    ROUTE_LICENSE_SEARCH,
+    ROUTE_LICENSE_MODIFY
 } from "Routes";
 
 const cards = [
@@ -129,7 +130,7 @@ const Dashboard = (props) => {
   };
 
   const onModifyProductKey = () => {
-    navigate("/license/modify");
+    navigate(ROUTE_LICENSE_MODIFY);
   };
 
   const onAdminPanel = () => {

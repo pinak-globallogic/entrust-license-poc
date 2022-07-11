@@ -32,9 +32,9 @@ const Router = () => {
           element={<GenerateLicenseWrapper />}
         />
         <Route path={ROUTE_LICENSE_SEARCH} element={<SearchLicenseWrapper />} />
-              <Route path={ROUTE_ADMIN_PANEL} element={<AdminPanelWrapper />} />
-              <Route path={ROUTE_LICENSE_MODIFY} element={<ModifyLicenseWrapper />} />
+        <Route path={ROUTE_ADMIN_PANEL} element={<AdminPanelWrapper />} />
       </Route>
+      <Route path={ROUTE_LICENSE_MODIFY} element={<ModifyLicenseWrapper />} />
     </Routes>
   );
 };
