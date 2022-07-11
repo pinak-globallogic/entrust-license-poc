@@ -1,6 +1,5 @@
 import Grid from "@mui/material/Grid";
-import Content from "./Content";
-import Sidenav from "../Nav/index";
+import ApplicationContextProvider from "./ApplicationContextProvider";
 
 const layoutStyle = {
   height: "calc(100vh - 64px)",
@@ -10,8 +9,7 @@ const layoutStyle = {
 const ContentLayout = (props) => {
   return (
     <Grid item container style={layoutStyle}>
-      <Sidenav xs={1.7} />
-      <Content xs pt={0} {...props} />
+      <ApplicationContextProvider {...props}></ApplicationContextProvider>
     </Grid>
   );
 };

@@ -307,9 +307,9 @@ const UserRoles = () => {
   }, []);
 
   return (
-    <Grid container marginLeft={6} pt={1} rowSpacing={5}>
+    <Grid container marginLeft={6} pt={2} rowSpacing={5}>
       <Grid item xs={12}>
-        <Box sx={{ width: "100%" }} pt={5}>
+        <Box sx={{ width: "100%" }} mt={7}>
           <Typography variant="h5" gutterBottom component="div">
             User Roles
           </Typography>

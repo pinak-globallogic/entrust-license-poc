@@ -1,5 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { AppContext } from "Layouts/Content/ApplicationContextProvider";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -51,6 +53,7 @@ const Sidenav = (props) => {
   const location = useLocation();
   const [data, setData] = useState(navMap.get(ROUTE_HOME));
   const [isAdmin, setAdmin] = useState(false);
+  const [adminComponent, setAdminComponent] = useContext(AppContext);
 
   useEffect(() => {
     setData(navMap.get(location.pathname) || navMap.get(ROUTE_HOME));
@@ -110,7 +113,12 @@ const Sidenav = (props) => {
               </Grid>
             </Link>
           )}
-          {isAdmin && <AdminNav />}
+          {isAdmin && (
+            <AdminNav
+              setAdminComponent={setAdminComponent}
+              adminComponent={adminComponent}
+            />
+          )}
         </Grid>
       )}
     </>
