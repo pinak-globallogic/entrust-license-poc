@@ -5,17 +5,18 @@ import generateLicenseSlice from "./Slices/generateLicenseSlice";
 import searchLicenseSlice from "./Slices/searchLicenseSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
-import logger from "redux-logger";
+import { createLogger } from "redux-logger";
 
 const authPersistConfig = {
   key: "auth",
   storage,
 };
+
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authSlice),
   generateLicense: generateLicenseSlice,
   searchLicense: searchLicenseSlice,
-  customCard: customCardSlice
+  customCard: customCardSlice,
 });
 
 const isDevEnvironment = process.env.NODE_ENV === "development";
@@ -23,6 +24,10 @@ const isDevEnvironment = process.env.NODE_ENV === "development";
 const middlewares = [];
 
 if (isDevEnvironment) {
+  const logger = createLogger({
+    duration: true,
+    diff: true,
+  });
   middlewares.push(logger);
 }
 
