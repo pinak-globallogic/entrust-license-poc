@@ -38,6 +38,7 @@ const DisplayKeys = () => {
 
   const [gridData, setGridData] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
+  const [isInfoOpen, setInfoOpen] = useState(false);
   const classes = useStyles();
 
   useEffect(() => {
@@ -103,8 +104,21 @@ const DisplayKeys = () => {
       headerName: "",
       width: 75,
       editable: false,
-      renderCell: () => (
-        <Button variant="outlined" color="primary" size="small">
+      renderCell: (params) => (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          onClick={() => {
+            dispatch(
+              setActivateKeyDetails({
+                ...activateKey,
+                keyID: params.row.productKey,
+              })
+            );
+            setInfoOpen((prev) => !prev);
+          }}
+        >
           <InfoIcon />
         </Button>
       ),
@@ -182,9 +196,7 @@ const DisplayKeys = () => {
                   displayEmpty
                   className={classes.dropdown}
                 >
-                  <MenuItem value={1}>
-                   1
-                  </MenuItem>
+                  <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
                 </Select>
@@ -223,7 +235,11 @@ const DisplayKeys = () => {
       </Grid>
       <Grid item xs={5}>
         <CustomerInfo />
-        <DetailKeyInfo />
+        <DetailKeyInfo
+          isInfoOpen={isInfoOpen}
+          setInfoOpen={setInfoOpen}
+          keyID={activateKey.keyID}
+        />
       </Grid>
     </Grid>
   );

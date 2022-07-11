@@ -8,7 +8,7 @@ import DisplayKeys from "./DisplayKeys";
 import FileUploadDetail from "./FileUploadDetail";
 import KeyActivationOptions from "./KeyActivationOptions";
 
-const ActivateKey = (props) => {
+const ActivateLicenseWizard = (props) => {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
@@ -89,4 +89,4 @@ const ActivateKey = (props) => {
   );
 };
 
-export default ActivateKey;
+export default ActivateLicenseWizard;

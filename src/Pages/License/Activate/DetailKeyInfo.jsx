@@ -65,20 +65,20 @@ function a11yProps(index) {
   };
 }
 
-const DetailKeyInfo = () => {
+const DetailKeyInfo = ({isInfoOpen, setInfoOpen, keyID}) => {
   const [value, setValue] = React.useState(2);
+  console.log(keyID);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
-    setOpen((prev) => !prev);
+    setInfoOpen((prev) => !prev);
   };
 
   const handleClickAway = () => {
-    setOpen(false);
+    setInfoOpen(false);
   };
 
   return (
@@ -97,7 +97,7 @@ const DetailKeyInfo = () => {
           >
             <Typography variant="h6">Detail Product Key Information</Typography>
           </Button>
-          {open ? (
+          {isInfoOpen ? (
             <Box sx={{ width: "100%" }}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs

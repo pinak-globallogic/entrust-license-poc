@@ -4,10 +4,10 @@ import DashboardWrapper from "Pages/Dashboard/index";
 import GenerateLicenseWrapper from "Pages/License/Generate/index";
 import SearchLicenseWrapper from "Pages/License/Search";
 import AdminPanelWrapper from "Pages/Admin";
-import KeyActivationWrapper from "Pages/Key/Activate";
+import KeyActivationWrapper from "Pages/License/Activate";
 export const LICENSE_SEARCH_PAGE_ROUTE = "/license/search";
 export const ADMIN_PANEL_PAGE_ROUTE = "/license/admin";
-export const ACTIVATE_KEY_ROUTE = "/key/activate";
+export const ACTIVATE_KEY_ROUTE = "/license/activate";
 
 import FirstRunWrapper from "../Pages/SystemConfiguration/FirstRunWrapper";
 

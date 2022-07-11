@@ -75,7 +75,7 @@ const ActivationSuccess = () => {
               </Grid>
             </Grid>
             <Grid item mb={8}>
-              <Typography id="success-subtitle" variant="caption">
+              <Typography id="success-subtitle" variant="subtitle1">
                 Each license key has been attached to provided license server
                 ID.
               </Typography>
@@ -86,7 +86,7 @@ const ActivationSuccess = () => {
               </Typography>
             </Grid>
             <Grid item mb={1}>
-              <Typography id="export-subtitle" variant="caption">
+              <Typography id="export-subtitle" variant="subtitle1">
                 Export the corresponding activation file
               </Typography>
             </Grid>
@@ -101,7 +101,7 @@ const ActivationSuccess = () => {
               />
             </Grid>
             <Grid item mb={1}>
-              <Typography id="keyList-subtitle" variant="caption">
+              <Typography id="keyList-subtitle" variant="subtitle1">
                 The following keys were successfully activated.
               </Typography>
             </Grid>
