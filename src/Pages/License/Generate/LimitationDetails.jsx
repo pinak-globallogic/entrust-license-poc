@@ -7,6 +7,7 @@ import Radio from "@mui/material/Radio";
 import { useSelector, useDispatch } from "react-redux";
 import { updateLimitation } from "Redux/Slices/generateLicenseSlice";
 import { CustomCard, CustomCardContent } from "Utilty";
+import { useState } from "react";
 
 const EXPIRYDAYS = "Expiry in days:";
 const NOEXPIRY = "No expiry Date";
@@ -15,6 +16,7 @@ const SPECIFICDATE = "Specific date";
 const LimitationDetails = () => {
   const limitation = useSelector((state) => state.generateLicense.limitation);
   const dispatch = useDispatch();
+  const [disableLimitCount, setDisableLimitCount] = useState(true);
 
   const radioHandler = (e) => {
     dispatch(updateLimitation({ ...limitation, select: e.target.value }));
@@ -26,6 +28,15 @@ const LimitationDetails = () => {
 
   const onExpirationChange = (e) => {
     dispatch(updateLimitation({ ...limitation, expiration: e.target.value }));
+  };
+
+  const onSiteLicenseCheckboxChange = (event) => {
+    if (event.target.checked) {
+      setDisableLimitCount(true);
+    }
+    else{
+      setDisableLimitCount(false);
+    }
   };
 
   return (
@@ -42,6 +53,7 @@ const LimitationDetails = () => {
         <Grid item container xs pt={1}>
           <Grid item mr={5}>
             <TextField
+              id="limitCount"
               label="Limit Count"
               variant="outlined"
               size="small"
@@ -53,11 +65,17 @@ const LimitationDetails = () => {
               required
               value={limitation.limitCount}
               onChange={onLimitCountChange}
+              disabled={disableLimitCount}
             />
           </Grid>
           <Grid item pr={1}>
             <FormControlLabel
-              control={<Checkbox defaultChecked />}
+              control={
+                <Checkbox
+                  defaultChecked
+                  onChange={() => onSiteLicenseCheckboxChange(event)}
+                />
+              }
               label="Site license or unlimited"
             />
           </Grid>
@@ -116,13 +134,13 @@ const LimitationDetails = () => {
               <Grid item xs pr={2}>
                 <TextField
                   disabled={limitation.select !== SPECIFICDATE}
-                  defaultValue={new Date().toISOString().slice(0,10)}
+                  defaultValue={new Date().toISOString().slice(0, 10)}
                   inputProps={{
                     min: new Date().toISOString().slice(0, 10),
                   }}
                   variant="outlined"
-                  label="Birthday"
-                  placeholder="Birthday"
+                  label="Expiration Date"
+                  placeholder="Expiration Date"
                   type="date"
                   size="small"
                   InputLabelProps={{
