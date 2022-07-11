@@ -4,6 +4,7 @@ import {
   ROUTE_ADMIN_PANEL,
   ROUTE_LICENSE_DASHBOARD,
   ROUTE_LICENSE_SEARCH,
+  ROUTE_LICENSE_ACTIVATE,
 } from "Routes";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
@@ -42,6 +43,12 @@ navMap.set(ROUTE_ADMIN_PANEL, {
   content: true,
   title: "Admin Area",
 });
+navMap.set(ROUTE_LICENSE_ACTIVATE, {
+  nav: true,
+  content: true,
+  title: "License Key Activation",
+});
+
 
 export default function CustomSeparator() {
   const location = useLocation();
