@@ -8,6 +8,7 @@ import {
   ROUTE_LICENSE_DASHBOARD,
   ROUTE_LICENSE_SEARCH,
   ROUTE_HOME,
+  ROUTE_LICENSE_MODIFY,
 } from "Routes";
 import AdminNav from "./AdminNav";
 
@@ -30,6 +31,11 @@ navMap.set(ROUTE_LICENSE_SEARCH, {
 });
 
 navMap.set(ROUTE_ADMIN_PANEL, {
+  content: true,
+  title,
+});
+
+navMap.set(ROUTE_LICENSE_MODIFY, {
   content: true,
   title,
 });

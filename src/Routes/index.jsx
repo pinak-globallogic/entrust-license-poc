@@ -6,6 +6,7 @@ import SearchLicenseWrapper from "Pages/License/Search";
 import AdminPanelWrapper from "Pages/Admin";
 import FirstRunWrapper from "Pages/SystemConfiguration/FirstRunWrapper";
 import ProtectedRoute from "./ProtectedRoute";
+import ModifyLicenseWrapper from "../Pages/License/Modify";
 
 export const ROUTE_HOME = "/";
 export const ROUTE_LICENSE_DASHBOARD = "/license/dashboard";
@@ -13,6 +14,7 @@ export const ROUTE_LICENSE_GENERATE = "/license/generate";
 export const ROUTE_LICENSE_SEARCH = "/license/search";
 export const ROUTE_ADMIN_PANEL = "/license/admin";
 export const ROUTE_FIRST_RUN = "/system-configuration";
+export const ROUTE_LICENSE_MODIFY = "/license/modify";
 
 const Router = () => {
   return (
@@ -32,6 +34,7 @@ const Router = () => {
         <Route path={ROUTE_LICENSE_SEARCH} element={<SearchLicenseWrapper />} />
         <Route path={ROUTE_ADMIN_PANEL} element={<AdminPanelWrapper />} />
       </Route>
+      <Route path={ROUTE_LICENSE_MODIFY} element={<ModifyLicenseWrapper />} />
     </Routes>
   );
 };
