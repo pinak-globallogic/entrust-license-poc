@@ -67,7 +67,6 @@ const CustomCardHeader = ({ title, ...props }) => {
   };
 
   const navigateToPage = (cardTitle) => {
-
     if (cardTitle === "Customer") {
       dispatch(
         updateActivePage({
@@ -103,7 +102,7 @@ const CustomCardHeader = ({ title, ...props }) => {
   };
 
   return (
-    <Box mb={1.5} sx={{ height: 30 }}>
+    <Box>
       <Grid item container xs alignItems="center" {...props} mb={0.5}>
         <Grid item xs>
           {title === "Customer" && (
