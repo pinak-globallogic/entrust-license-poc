@@ -50,9 +50,9 @@ const Audit = () => {
   };
 
   return (
-    <Grid container marginLeft={6} pt={2} rowSpacing={5}>
+    <Grid container marginLeft={6} mt={0}  rowSpacing={4}>
       <Grid item xs={12}>
-        <Box sx={{ width: "100%" }} mt={7}>
+        <Box sx={{ width: "100%" }}>
           <Typography variant="h5" gutterBottom component="div">
             Activity Log
           </Typography>

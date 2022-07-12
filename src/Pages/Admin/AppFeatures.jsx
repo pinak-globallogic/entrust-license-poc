@@ -1,10 +1,10 @@
-import {Box, Grid, Typography} from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 const AppFeatures = () => {
   return (
-    <Grid container marginLeft={6} pt={2} rowSpacing={5}>
+    <Grid container marginLeft={6} mt={0} rowSpacing={4}>
       <Grid item xs={12}>
-        <Box sx={{ width: "100%" }} pt={5}>
+        <Box sx={{ width: "100%" }}>
           <Typography variant="h5" gutterBottom component="div">
             App Defined Features
           </Typography>
