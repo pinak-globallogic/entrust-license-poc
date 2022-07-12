@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
@@ -18,6 +19,7 @@ import {
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 import { CustomCard, CustomCardContent } from "Utilty";
+import { updateKey } from "Redux/Slices/activateKeySlice";
 
 function createData(fieldName, intVal, stringVal) {
   return { fieldName, intVal, stringVal };
@@ -64,16 +66,23 @@ function a11yProps(index) {
   };
 }
 
-const DetailKeyInfo = ({ isInfoOpen, setInfoOpen, keyID }) => {
+const DetailKeyInfo = () => {
+  const dispatch = useDispatch();
+  const key = useSelector((state) => state.activateKey.key);
   const [value, setValue] = React.useState(2);
-  console.log(keyID);
+  console.log(key.id);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleClick = () => {
-    setInfoOpen((prev) => !prev);
+    dispatch(
+      updateKey({
+        ...key,
+        showKeyDetails: !key.showKeyDetails,
+      })
+    );
   };
 
   return (
@@ -89,9 +98,11 @@ const DetailKeyInfo = ({ isInfoOpen, setInfoOpen, keyID }) => {
             textTransform: "none",
           }}
         >
-          <Typography variant="h6">Detail Product Key Information</Typography>
+          <Typography variant="subtitle1">
+            Detail Product Key Information
+          </Typography>
         </Button>
-        {isInfoOpen ? (
+        {key.showKeyDetails ? (
           <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <Tabs

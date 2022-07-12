@@ -6,12 +6,12 @@ const CustomerInfo = () => {
   return (
     <CustomCard>
       <CustomCardContent style={{ backgroundColor: "#fff" }}>
-        <Typography variant="h6">Customer Information</Typography>
+        <Typography variant="subtitle1">Customer Information</Typography>
         <Divider sx={{ borderBottomWidth: 2, m: 2 }} />
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, maxWidth: "20ch" },
+            "& .MuiTextField-root": { maxWidth: "20ch" },
           }}
           noValidate
           autoComplete="off"
@@ -51,8 +51,16 @@ const CustomerInfo = () => {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                id="address"
-                label="Address"
+                id="addressLine1"
+                label="Address Line 1"
+                defaultValue="Input text"
+                size="small"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="addressLine2"
+                label="Address Line 2"
                 defaultValue="Input text"
                 size="small"
               />

@@ -3,38 +3,39 @@ import { useSelector, useDispatch } from "react-redux";
 import { Grid, Typography, Chip } from "@mui/material";
 
 import { CustomCard, CustomCardContent } from "Utilty";
-import { setActivateKeyDetails } from "Redux/Slices/activateKeySlice";
+import {updateLicense, updateActivePage} from "Redux/Slices/activateKeySlice";
 
-const FileUploadDetail = ({ countSetter }) => {
+const FileUploadDetail = () => {
   const dispatch = useDispatch();
-  const activateKey = useSelector((state) => state.activateKey);
+  const license = useSelector((state) => state.activateKey.license);
+  const activePage = useSelector((state) => state.activateKey.activePage);
 
   const handleDelete = () => {
-    countSetter(0);
-    dispatch(setActivateKeyDetails({ ...activateKey, uploadFile: null }));
+    dispatch(updateLicense({ ...license, uploadFile: null }));
+    dispatch(updateActivePage({...activePage, number: 0}));
   };
 
   return (
     <CustomCard>
       <CustomCardContent>
-        <Grid item mb={3}>
-          <Typography id="option1-title" variant="h5">
+        <Grid item mb={1}>
+          <Typography id="option1-title" variant="h6">
             Activation file upload
           </Typography>
         </Grid>
-        <Grid item mb={8}>
-          <Typography id="option1-subtitle" variant="subtitle1">
+        <Grid item mb={7}>
+          <Typography id="option1-subtitle" variant="caption">
             Upload an activation file to start the activation process
           </Typography>
         </Grid>
-        <Grid item>
-          <Typography id="option2-subtitle" variant="subtitle1">
+        <Grid item mb={1}>
+          <Typography id="option2-subtitle" variant="caption">
             You have uploaded the following file:
           </Typography>
         </Grid>
-        <Grid item mb={10}>
+        <Grid item mb={22}>
           <Chip
-            label={activateKey.uploadFile}
+            label={license.uploadFile}
             variant="outlined"
             style={{ backgroundColor: "#fff" }}
             onDelete={handleDelete}

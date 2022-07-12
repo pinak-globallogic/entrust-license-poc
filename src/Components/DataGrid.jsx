@@ -30,6 +30,7 @@ const DataGridCustom = (props) => {
         props.setSelectionModel(newSelectionModel);
       }}
       hideFooterSelectedRowCount
+      rowHeight={42}
       style={{backgroundColor:"#fff"}}
     />
   );

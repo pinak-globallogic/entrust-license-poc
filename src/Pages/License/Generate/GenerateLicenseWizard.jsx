@@ -68,7 +68,15 @@ const GenerateLicenseWizard = (props) => {
       case 5:
         obj.btn.text = "Finish and go back to dashboard";
         obj.btn.variant = "outlined";
-        obj.btn.action = () => navigate(ROUTE_LICENSE_DASHBOARD);
+        obj.btn.action = () => {
+          navigate(ROUTE_LICENSE_DASHBOARD);
+          dispatch(
+            updateActivePage({
+              ...activePage,
+              number: 0,
+            })
+          )
+        }
         obj.page = <GenerateProductKeyDetails />;
         break;
     }

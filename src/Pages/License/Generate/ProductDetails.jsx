@@ -18,14 +18,16 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const onChangeProductDetails = (e, property) => {
-    let changedValues;
-    const value = e.target.value;
+    let changedValues, value;
+
     if ("name" === property) {
+      value = e.target.textContent;
       changedValues = {
-        name: value.split(", ")[0],
-        productItemNo: value.split(", ")[1],
+        name: value.split(",")[0],
+        productItemNo: value.split(",")[1],
       };
     } else {
+      value = e.target.value;
       changedValues = { [property]: value };
     }
 
