@@ -70,7 +70,7 @@ const ActivationSuccess = () => {
               </Grid>
               <Grid item mb={3}>
                 <Typography id="success-title" variant="h5">
-                  Activation successfull
+                  Activation successful
                 </Typography>
               </Grid>
             </Grid>

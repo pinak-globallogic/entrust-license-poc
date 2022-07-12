@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import {Grid, Typography, Chip} from "@mui/material";
+import { Grid, Typography, Chip } from "@mui/material";
 
 import { CustomCard, CustomCardContent } from "Utilty";
-import { setActivateKeyDetails } from "Redux/Slices/activateKey";
+import { setActivateKeyDetails } from "Redux/Slices/activateKeySlice";
 
 const FileUploadDetail = ({ countSetter }) => {
   const dispatch = useDispatch();

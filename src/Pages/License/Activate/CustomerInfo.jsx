@@ -6,9 +6,7 @@ const CustomerInfo = () => {
   return (
     <CustomCard>
       <CustomCardContent style={{ backgroundColor: "#fff" }}>
-        <Typography variant="h6">
-          Customer Information
-        </Typography>
+        <Typography variant="h6">Customer Information</Typography>
         <Divider sx={{ borderBottomWidth: 2, m: 2 }} />
         <Box
           component="form"
