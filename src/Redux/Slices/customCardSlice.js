@@ -26,8 +26,10 @@ const initialState = {
     expanded: true,
   },
   activePage: {
-    number: 0
-  }
+    number: 0,
+    modifyLicenseWizard: 0,
+    activateLicenseWizard: 0,
+  },
 };
 
 export const customCardSlice = createSlice({

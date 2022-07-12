@@ -13,7 +13,7 @@ import {
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import WarningIcon from "@mui/icons-material/Warning";
 
-const SaveServerId = () => {
+const ReviewProductKeyStep = () => {
   return (
     <CustomCard>
       <CustomCardContent>
@@ -94,4 +94,4 @@ const SaveServerId = () => {
   );
 };
 
-export default SaveServerId;
+export default ReviewProductKeyStep;

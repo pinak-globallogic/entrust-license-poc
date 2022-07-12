@@ -17,8 +17,7 @@ import { updateProductInformationCardState } from "Redux/Slices/customCardSlice"
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
-
-const CustomCardHeader = (details,...props) => {
+const CustomCardHeader = (details, ...props) => {
   const customerCardExpanded = useSelector(
     (state) => state.customCard.customerCard
   );
@@ -90,11 +89,9 @@ const CustomCardHeader = (details,...props) => {
         })
       );
     }
- 
   };
 
   const navigateToPage = (cardTitle) => {
-
     if (cardTitle === "Customer") {
       dispatch(
         updateActivePage({
@@ -127,35 +124,39 @@ const CustomCardHeader = (details,...props) => {
         })
       );
     }
+    if (cardTitle === "License Server") {
+      dispatch(
+        updateActivePage({
+          ...activePage,
+          modifyLicenseWizard: 2,
+        })
+      );
+    }
   };
 
   return (
     <Box>
       <Grid item container xs alignItems="center" {...props} mb={0.5}>
         <Grid item xs>
-            <IconButton
-              onClick={() => expandCollapseCard(details.title.id)}
-              aria-label="expand"
-              size="small"
-            >
-              {details.title.expanded ? (
-                <ArrowDropDown />
-              ) : (
-                <ArrowDropUpIcon />
-              )}
-            </IconButton>
+          <IconButton
+            onClick={() => expandCollapseCard(details.title.id)}
+            aria-label="expand"
+            size="small"
+          >
+            {details.title.expanded ? <ArrowDropDown /> : <ArrowDropUpIcon />}
+          </IconButton>
           <Typography variant="caption">{details.title.name}</Typography>
         </Grid>
         <Grid item xs display="flex" justifyContent="end">
-            <Button
-              variant="contained"
-              size="small"
-              color="secondary"
-              sx={{ minWidth: "2rem" }}
-              onClick={() => navigateToPage(details.title.name)}
-            >
-              <EditIcon sx={{ fontSize: "1rem" }} />
-            </Button>
+          <Button
+            variant="contained"
+            size="small"
+            color="secondary"
+            sx={{ minWidth: "2rem" }}
+            onClick={() => navigateToPage(details.title.name)}
+          >
+            <EditIcon sx={{ fontSize: "1rem" }} />
+          </Button>
         </Grid>
       </Grid>
     </Box>

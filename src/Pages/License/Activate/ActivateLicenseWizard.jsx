@@ -8,11 +8,11 @@ import DisplayKeys from "./DisplayKeys";
 import FileUploadDetail from "./FileUploadDetail";
 import KeyActivationOptions from "./KeyActivationOptions";
 import { ROUTE_LICENSE_DASHBOARD } from "Routes";
-import { updateActivePage } from "Redux/Slices/activateKeySlice";
+import { updateActivePage } from "Redux/Slices/customCardSlice";
 
 const ActivateLicenseWizard = (props) => {
-  const activePage = useSelector((state) => state.activateKey.activePage);
-  const count = activePage.number;
+  const activePage = useSelector((state) => state.customCard.activePage);
+  const count = activePage.activateLicenseWizard;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ const ActivateLicenseWizard = (props) => {
           dispatch(
             updateActivePage({
               ...activePage,
-              number: activePage.number + 1,
+              activateLicenseWizard: activePage.activateLicenseWizard + 1,
             })
           ),
       },
@@ -40,7 +40,7 @@ const ActivateLicenseWizard = (props) => {
           dispatch(
             updateActivePage({
               ...activePage,
-              number: 2,
+              activateLicenseWizard: 2,
             })
           );
         };
@@ -60,7 +60,7 @@ const ActivateLicenseWizard = (props) => {
           dispatch(
             updateActivePage({
               ...activePage,
-              number: 0,
+              activateLicenseWizard: 0,
             })
           );
         };
@@ -100,7 +100,7 @@ const ActivateLicenseWizard = (props) => {
                 dispatch(
                   updateActivePage({
                     ...activePage,
-                    number: 0,
+                    activateLicenseWizard: 0,
                   })
                 );
               }}

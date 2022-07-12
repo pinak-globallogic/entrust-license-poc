@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 
-const InputProductKey = () => {
+const InputProductKeyStep = () => {
   return (
     <CustomCard>
       <CustomCardContent>
@@ -26,4 +26,4 @@ const InputProductKey = () => {
   );
 };
 
-export default InputProductKey;
+export default InputProductKeyStep;

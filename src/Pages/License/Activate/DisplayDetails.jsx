@@ -5,8 +5,8 @@ import CustomerInfo from "./CustomerInfo";
 import DetailKeyInfo from "./DetailKeyInfo";
 
 const DisplayDetails = (props) => {
-  const activePage = useSelector((state) => state.activateKey.activePage);
-  const count = activePage.number;
+  const activePage = useSelector((state) => state.customCard.activePage);
+  const count = activePage.activateLicenseWizard;
 
   return (
     <Grid

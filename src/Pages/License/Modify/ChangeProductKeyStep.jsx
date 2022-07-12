@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 
-const ModifyServerId = () => {
+const ChangeProductKeyStep = () => {
   return (
     <CustomCard>
       <CustomCardContent>
@@ -50,4 +50,4 @@ const ModifyServerId = () => {
   );
 };
 
-export default ModifyServerId;
+export default ChangeProductKeyStep;

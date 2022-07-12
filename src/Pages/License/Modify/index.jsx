@@ -6,7 +6,7 @@ const ModifyProductKeyWrapper = () => {
   return (
     <Content>
       <ModifyProductKeyWizard xs={8} />
-     <SideCardDetails xs/>
+      <SideCardDetails xs />
     </Content>
   );
 };

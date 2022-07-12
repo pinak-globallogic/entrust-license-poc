@@ -2,7 +2,7 @@ import { CustomCard, CustomCardContent } from "Utilty";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-const EditProductKey = () => {
+const SelectCategoryStep = () => {
   return (
     <CustomCard>
       <CustomCardContent>
@@ -22,4 +22,4 @@ const EditProductKey = () => {
   );
 };
 
-export default EditProductKey;
+export default SelectCategoryStep;
