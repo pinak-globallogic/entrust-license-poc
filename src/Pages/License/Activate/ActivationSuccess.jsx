@@ -6,8 +6,6 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import DataGridCustom from "Components/DataGrid";
-import CustomerInfo from "./CustomerInfo";
-import DetailKeyInfo from "./DetailKeyInfo";
 import { CustomCard, CustomCardContent } from "Utilty";
 
 const ActivationSuccess = () => {
@@ -60,68 +58,61 @@ const ActivationSuccess = () => {
   };
 
   return (
-    <Grid container pr={5}>
-      <Grid item xs={7}>
-        <CustomCard>
-          <CustomCardContent>
-            <Grid item container>
-              <Grid item mb={1} marginRight="10px">
-                <CheckCircleIcon color="primary" fontSize="large" />
-              </Grid>
-              <Grid item mb={3}>
-                <Typography id="success-title" variant="h5">
-                  Activation successful
-                </Typography>
-              </Grid>
+    <Grid container direction="column">
+      <CustomCard>
+        <CustomCardContent>
+          <Grid item container>
+            <Grid item mb={1} marginRight="10px">
+              <CheckCircleIcon color="primary" fontSize="large" />
             </Grid>
-            <Grid item mb={8}>
-              <Typography id="success-subtitle" variant="subtitle1">
-                Each license key has been attached to provided license server
-                ID.
+            <Grid item mb={3}>
+              <Typography id="success-title" variant="h6">
+                Activation successful
               </Typography>
             </Grid>
-            <Grid item mb={1}>
-              <Typography id="export-title" variant="h5">
-                Export activation file
-              </Typography>
-            </Grid>
-            <Grid item mb={1}>
-              <Typography id="export-subtitle" variant="subtitle1">
-                Export the corresponding activation file
-              </Typography>
-            </Grid>
-            <Grid item mb={8}>
-              <Chip
-                label="EXPORT ACTIVATION FILE &nbsp;"
-                deleteIcon={<FileDownloadIcon />}
-                onDelete={() => ""}
-                variant="filled"
-                size="large"
-                color="primary"
-              />
-            </Grid>
-            <Grid item mb={1}>
-              <Typography id="keyList-subtitle" variant="subtitle1">
-                The following keys were successfully activated.
-              </Typography>
-            </Grid>
-            <Grid item>
-              <div style={{ height: 360 }}>
-                <DataGridCustom
-                  columns={columns}
-                  rows={gridData}
-                  selectionModel={selectionModel}
-                  setSelectionModel={setSelectionModelInDataGrid}
-                ></DataGridCustom>
-              </div>
-            </Grid>
-          </CustomCardContent>
-        </CustomCard>
-      </Grid>
-      <Grid item xs={5}>
-        <CustomerInfo />
-        <DetailKeyInfo />
-      </Grid>
+          </Grid>
+          <Grid item mb={8}>
+            <Typography id="success-subtitle" variant="caption">
+              Each license key has been attached to provided license server ID.
+            </Typography>
+          </Grid>
+          <Grid item mb={1}>
+            <Typography id="export-title" variant="h6">
+              Export activation file
+            </Typography>
+          </Grid>
+          <Grid item mb={1}>
+            <Typography id="export-subtitle" variant="caption">
+              Export the corresponding activation file
+            </Typography>
+          </Grid>
+          <Grid item mb={8}>
+            <Chip
+              label="EXPORT ACTIVATION FILE &nbsp;"
+              deleteIcon={<FileDownloadIcon />}
+              onDelete={() => ""}
+              variant="filled"
+              size="large"
+              color="primary"
+            />
+          </Grid>
+          <Grid item mb={1}>
+            <Typography id="keyList-subtitle" variant="caption">
+              The following keys were successfully activated.
+            </Typography>
+          </Grid>
+          <Grid item>
+            <div style={{ height: 360 }}>
+              <DataGridCustom
+                columns={columns}
+                rows={gridData}
+                selectionModel={selectionModel}
+                setSelectionModel={setSelectionModelInDataGrid}
+              ></DataGridCustom>
+            </div>
+          </Grid>
+        </CustomCardContent>
+      </CustomCard>
     </Grid>
   );
 };

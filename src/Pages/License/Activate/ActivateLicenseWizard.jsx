@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Grid, Stack, Button } from "@mui/material";
 
@@ -8,37 +8,45 @@ import DisplayKeys from "./DisplayKeys";
 import FileUploadDetail from "./FileUploadDetail";
 import KeyActivationOptions from "./KeyActivationOptions";
 import { ROUTE_LICENSE_DASHBOARD } from "Routes";
+import { updateActivePage } from "Redux/Slices/activateKeySlice";
 
 const ActivateLicenseWizard = (props) => {
-  const [count, setCount] = useState(0);
+  const activePage = useSelector((state) => state.activateKey.activePage);
+  const count = activePage.number;
   const navigate = useNavigate();
-
-  // wrapper function for count
-  const wrapperSetCount = useCallback(
-    (val) => {
-      setCount(val);
-    },
-    [setCount]
-  );
+  const dispatch = useDispatch();
 
   const renderSwitch = (count) => {
     let obj = {
       btn: {
         text: "continue",
         variant: "contained",
-        action: () => setCount(count + 1),
+        action: () =>
+          dispatch(
+            updateActivePage({
+              ...activePage,
+              number: activePage.number + 1,
+            })
+          ),
       },
       page: null,
     };
     switch (count) {
       case 0:
-        obj.page = <KeyActivationOptions countSetter={wrapperSetCount} />;
+        obj.page = <KeyActivationOptions />;
         obj.btn.text = "Continue manually without activation file";
         obj.btn.variant = "outlined";
-        obj.btn.action = () => setCount(2);
+        obj.btn.action = () => {
+          dispatch(
+            updateActivePage({
+              ...activePage,
+              number: 2,
+            })
+          );
+        };
         break;
       case 1:
-        obj.page = <FileUploadDetail countSetter={wrapperSetCount} />;
+        obj.page = <FileUploadDetail />;
         break;
       case 2:
         obj.page = <DisplayKeys />;
@@ -47,7 +55,15 @@ const ActivateLicenseWizard = (props) => {
         obj.page = <ActivationSuccess />;
         obj.btn.text = "Finish and go back to dashboard";
         obj.btn.variant = "outlined";
-        obj.btn.action = () => navigate(ROUTE_LICENSE_DASHBOARD);
+        obj.btn.action = () => {
+          navigate(ROUTE_LICENSE_DASHBOARD);
+          dispatch(
+            updateActivePage({
+              ...activePage,
+              number: 0,
+            })
+          );
+        };
         break;
     }
 
@@ -60,8 +76,8 @@ const ActivateLicenseWizard = (props) => {
     <>
       <Grid item container direction="column" {...props}>
         {details.page}
-        <div style={{ width: "56%" }}>
-          <Stack direction="row-reverse" justifyContent="space-between" mt={2}>
+        <div>
+          <Stack direction="row-reverse" justifyContent="space-between">
             <Button
               id="continue-btn"
               variant={details.btn.variant}
@@ -77,7 +93,12 @@ const ActivateLicenseWizard = (props) => {
                 variant="outlined"
                 size="small"
                 onClick={() => {
-                  setCount(0);
+                  dispatch(
+                    updateActivePage({
+                      ...activePage,
+                      number: 0,
+                    })
+                  );
                 }}
               >
                 Go Back
