@@ -68,7 +68,7 @@ const DisplayKeys = () => {
     {
       field: "productKey",
       headerName: "License Key",
-      width: 200,
+      width: 180,
       editable: false,
     },
     {
@@ -80,7 +80,7 @@ const DisplayKeys = () => {
     {
       field: "company",
       headerName: "Company",
-      width: 170,
+      width: 150,
       editable: false,
     },
     {
@@ -92,7 +92,7 @@ const DisplayKeys = () => {
     {
       field: "serverResponse",
       headerName: "Server Response",
-      width: 150,
+      width: 140,
       editable: false,
       renderCell: (params) =>
         params.row.status === "Activated" ? null : "Inactive",
@@ -139,9 +139,9 @@ const DisplayKeys = () => {
 
   return (
     <Grid container direction="column">
-      <CustomCard>
+      <CustomCard sx={{ marginBottom: 0 }}>
         <CustomCardContent>
-          <Grid item mb={1}>
+          <Grid item>
             <Typography id="licenseID-title" variant="h6">
               License Server ID
             </Typography>
@@ -152,7 +152,7 @@ const DisplayKeys = () => {
             </Typography>
           </Grid>
           <Grid>
-            <FormControl sx={{ width: "40ch" }}>
+            <FormControl sx={{ minWidth: "37ch" }}>
               <OutlinedInput
                 disabled
                 size="small"
@@ -170,9 +170,9 @@ const DisplayKeys = () => {
           </Grid>
         </CustomCardContent>
       </CustomCard>
-      <CustomCard>
+      <CustomCard sx={{ marginBottom: 0 }}>
         <CustomCardContent>
-          <Grid item mb={1}>
+          <Grid item>
             <Typography id="version-title" variant="h6">
               Protocol Version
             </Typography>
@@ -207,12 +207,13 @@ const DisplayKeys = () => {
       </CustomCard>
       <CustomCard>
         <CustomCardContent>
-          <Grid>
+          <Grid mb={4}>
             <div>
               <Stack
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
+                mr={3}
               >
                 <Typography id="option1-subtitle" variant="caption">
                   Below you&apos;ll find a list of the product keys that should

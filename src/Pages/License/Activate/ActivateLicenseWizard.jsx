@@ -73,41 +73,44 @@ const ActivateLicenseWizard = (props) => {
   const details = renderSwitch(count);
 
   return (
-    <>
-      <Grid item container direction="column" {...props}>
-        {details.page}
-        <div>
-          <Stack direction="row-reverse" justifyContent="space-between">
+    <Grid item container direction="column" {...props}>
+      {details.page}
+      <div>
+        <Stack
+          direction="row-reverse"
+          justifyContent="space-between"
+          ml={4}
+          mr={4}
+        >
+          <Button
+            id="continue-btn"
+            variant={details.btn.variant}
+            style={{ maxWidth: "25vh", fontWeight: "bold" }}
+            onClick={details.btn.action}
+            size="small"
+          >
+            {details.btn.text}
+          </Button>
+          {count == 2 && (
             <Button
-              id="continue-btn"
-              variant={details.btn.variant}
-              style={{ maxWidth: "25vh", fontWeight: "bold" }}
-              onClick={details.btn.action}
+              id="back-btn"
+              variant="outlined"
               size="small"
+              onClick={() => {
+                dispatch(
+                  updateActivePage({
+                    ...activePage,
+                    number: 0,
+                  })
+                );
+              }}
             >
-              {details.btn.text}
+              Go Back
             </Button>
-            {count == 2 && (
-              <Button
-                id="back-btn"
-                variant="outlined"
-                size="small"
-                onClick={() => {
-                  dispatch(
-                    updateActivePage({
-                      ...activePage,
-                      number: 0,
-                    })
-                  );
-                }}
-              >
-                Go Back
-              </Button>
-            )}
-          </Stack>
-        </div>
-      </Grid>
-    </>
+          )}
+        </Stack>
+      </div>
+    </Grid>
   );
 };
 
