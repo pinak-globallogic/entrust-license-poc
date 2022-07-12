@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-import { Chip, Typography, Grid } from "@mui/material";
+import { Button, Typography, Grid } from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
@@ -87,14 +87,19 @@ const ActivationSuccess = () => {
             </Typography>
           </Grid>
           <Grid item mb={8}>
-            <Chip
-              label="EXPORT ACTIVATION FILE &nbsp;"
-              deleteIcon={<FileDownloadIcon />}
-              onDelete={() => ""}
-              variant="filled"
-              size="large"
-              color="primary"
-            />
+            <Button
+              id="export-btn"
+              variant="contained"
+              startIcon={<FileDownloadIcon />}
+              onClick={
+                () => console.log("Activation File Downloaded") //ToDo: add export btn onClick
+              }
+              style={{ borderRadius: "20px" }}
+            >
+              <Typography id="export-btn-text" variant="caption">
+                Export activation file
+              </Typography>
+            </Button>
           </Grid>
           <Grid item mb={1}>
             <Typography id="keyList-subtitle" variant="caption">
