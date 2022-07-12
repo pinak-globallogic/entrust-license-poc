@@ -41,7 +41,8 @@ const FeatureCard = ({ data }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <CustomCardHeader title="Features" />
+        <CustomCardHeader title={{id: cardState.id, name: "Features",  expanded: cardState.expanded}} 
+        />
         <Grid item container xs direction="column">
           <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
           <Divider sx={{ borderBottomWidth: 2, mb:1 }} />

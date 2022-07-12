@@ -1,12 +1,12 @@
 import Content from "Layouts/Content/Content";
-import LicenseDetails from "../Details";
 import ModifyProductKeyWizard from "./ModifyProductKeyWizard";
+import SideCardDetails from "./SideCardDetails";
 
 const ModifyProductKeyWrapper = () => {
   return (
     <Content>
       <ModifyProductKeyWizard xs={8} />
-      <LicenseDetails xs />
+     <SideCardDetails xs/>
     </Content>
   );
 };
