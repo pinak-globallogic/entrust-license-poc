@@ -10,7 +10,7 @@ const layoutStyle = {
 const ContentLayout = (props) => {
   return (
     <Grid item container style={layoutStyle}>
-      <Sidenav xs={1.7} />
+      <Sidenav xs={1.5} />
       <Content xs pt={0} {...props} />
     </Grid>
   );

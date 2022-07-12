@@ -8,7 +8,7 @@ const ModifyServerId = () => {
     <CustomCard>
       <CustomCardContent>
         <Grid item mb={1}>
-          <Typography variant="h5">
+          <Typography variant="h6">
             Change associated License Server Id
           </Typography>
         </Grid>
