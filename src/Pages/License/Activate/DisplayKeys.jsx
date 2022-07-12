@@ -207,7 +207,7 @@ const DisplayKeys = () => {
       </CustomCard>
       <CustomCard>
         <CustomCardContent>
-          <Grid>
+          <Grid item mb={6}>
             <div>
               <Stack
                 direction="row"

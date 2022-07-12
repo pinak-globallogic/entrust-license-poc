@@ -77,7 +77,7 @@ const ActivateLicenseWizard = (props) => {
       <Grid item container direction="column" {...props}>
         {details.page}
         <div>
-          <Stack direction="row-reverse" justifyContent="space-between">
+          <Stack direction="row-reverse" justifyContent="space-between" mx={2}>
             <Button
               id="continue-btn"
               variant={details.btn.variant}

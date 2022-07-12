@@ -6,8 +6,10 @@ const CustomerInfo = () => {
   return (
     <CustomCard>
       <CustomCardContent style={{ backgroundColor: "#fff" }}>
-        <Typography variant="subtitle1">Customer Information</Typography>
-        <Divider sx={{ borderBottomWidth: 2, m: 2 }} />
+        <Grid mx={2}>
+          <Typography variant="subtitle1">Customer Information</Typography>
+          <Divider sx={{ borderBottomWidth: 2 }} />
+        </Grid>
         <Box
           component="form"
           sx={{
@@ -15,6 +17,7 @@ const CustomerInfo = () => {
           }}
           noValidate
           autoComplete="off"
+          mt={2}
         >
           <Grid container spacing={2}>
             <Grid item xs={6}>
