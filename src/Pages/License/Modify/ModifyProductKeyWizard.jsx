@@ -6,8 +6,11 @@ import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import InputProductKey from "./InputProductKey";
 import EditProductKey from "./EditProductKey";
-import ModifyServerId from "./ModifyServerId";
-import SaveServerId from "./SaveServerId";
+import ModifyServerId from "./ModifyProductKey";
+import SaveServerId from "./ReviewProductKey";
+import SaveServerIdPage from "./SaveProductKeyPage";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_LICENSE_DASHBOARD } from "Routes";
 
 const ModifyProductKeyWizard = (props) => {
   const [count, setCount] = useState(0);
@@ -37,10 +40,16 @@ const ModifyProductKeyWizard = (props) => {
       case 3:
         obj.page = <SaveServerId />;
         break;
+      case 4:
+        obj.page = <SaveServerIdPage />;
+        break;
     }
 
     return obj;
   };
+
+  const navigate = useNavigate();
+  const action = () => navigate(ROUTE_LICENSE_DASHBOARD);
 
   const details = renderSwitch(count);
 
@@ -73,7 +82,7 @@ const ModifyProductKeyWizard = (props) => {
                 disabled={btnDisabled}
                 onClick={details.btn.action}
               >
-                <Typography id="back-btn-text" variant="caption">
+                <Typography id="review-btn-text" variant="caption">
                   REVIEW <br /> AND SAVE CHANGES
                 </Typography>
               </Button>
@@ -82,27 +91,28 @@ const ModifyProductKeyWizard = (props) => {
           <Grid item mr={5}>
             {count === 3 && (
               <Button
-                id="revert-btn"
+                id="commit-btn"
                 variant={details.btn.variant}
                 size="small"
                 disabled={btnDisabled}
+                onClick={details.btn.action}
               >
-                <Typography id="back-btn-text" variant="caption">
+                <Typography id="commit-btn-text" variant="caption">
                   COMMIT CHANGES
                 </Typography>
               </Button>
             )}
-                  </Grid>
+          </Grid>
           <Grid item mr={5}>
             {count === 1 && (
               <Button
-                id="review-btn"
+                id="no-changes-btn"
                 variant="outlined"
                 size="small"
                 disabled={btnDisabled}
                 style={{ backgroundColor: "#FFFFFF" }}
               >
-                <Typography id="back-btn-text" variant="caption">
+                <Typography id="no-changes-btn-text" variant="caption">
                   NO CHANGES
                 </Typography>
               </Button>
@@ -119,11 +129,42 @@ const ModifyProductKeyWizard = (props) => {
                   color: "white",
                 }}
               >
-                <Typography id="back-btn-text" variant="caption">
+                <Typography id="revert-btn-text" variant="caption">
                   REVERT ALL CHANGES
                 </Typography>
               </Button>
             )}
+            <Grid container>
+              <Grid item mr={5}>
+                {count === 4 && (
+                  <Button
+                    id="review-btn"
+                    variant="outlined"
+                    size="small"
+                    disabled={btnDisabled}
+                    onClick={action}
+                  >
+                    <Typography id="finish-btn-back" variant="caption">
+                      FINISH AND GO BACK <br /> TO DASHBOARD
+                    </Typography>
+                  </Button>
+                )}
+              </Grid>
+              <Grid item mr={5}>
+                {count === 4 && (
+                  <Button
+                    id="revert-btn"
+                    variant={details.btn.variant}
+                    size="small"
+                    disabled={btnDisabled}
+                  >
+                    <Typography id="continue-activation" variant="caption">
+                      CONTINUE <br /> WITH ACTIVATION
+                    </Typography>
+                  </Button>
+                )}
+              </Grid>
+            </Grid>
           </Grid>
         </Stack>
       </Grid>
