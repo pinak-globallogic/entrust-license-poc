@@ -15,7 +15,7 @@ const LimitationCard = ({ data }) => {
     <div>
       <CustomCard>
         <CustomCardContent>
-          <CustomCardHeader title="Limitations" />
+          <CustomCardHeader title={{id: cardState.id, name: "Limitations", expanded: cardState.expanded}}  />
           <Grid item container xs direction="column">
             <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
             <Divider sx={{ borderBottomWidth: 2, mb:1 }} />

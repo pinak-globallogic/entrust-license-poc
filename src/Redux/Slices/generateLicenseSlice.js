@@ -19,6 +19,11 @@ const initialState = {
     expiration: "",
     select: "No expiry Date",
   },
+  licenseServer: {
+    licenseServerId: "32224-32224-32224-32224-32224-32224"
+  },
+  miscellaneous: {
+  },
   optionalComment: "",
   keyAmount: "1",
   error: "",
@@ -49,6 +54,12 @@ export const generateLicenseSlice = createSlice({
       state.optionalComment = action.payload.optionalComment;
       state.error = action.payload.error;
     },
+    updateLicenseServer: (state, action) => {
+      state.licenseServer = action.payload;
+    },
+    updateMiscellaneous: (state, action) => {
+      state.miscellaneous = action.payload;
+    },
   },
 });
 
@@ -59,6 +70,8 @@ export const {
   updateFeature,
   updateLimitation,
   updateOptionalDetails,
+  updateLicenseServer,
+  updateMiscellaneous,
 } = generateLicenseSlice.actions;
 
 export default generateLicenseSlice.reducer;
