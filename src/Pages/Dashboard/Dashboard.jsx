@@ -8,6 +8,7 @@ import {
   ROUTE_LICENSE_GENERATE,
   ROUTE_LICENSE_SEARCH,
   ROUTE_LICENSE_MODIFY,
+  ROUTE_LICENSE_ACTIVATE
 } from "Routes";
 
 const cards = [
@@ -116,8 +117,7 @@ const Dashboard = (props) => {
   };
 
   const onActivateKey = () => {
-    window.alert("Feature not implemented yet..");
-    // navigate("/");
+    navigate(ROUTE_LICENSE_ACTIVATE);
   };
 
   const onGenerateNewProductKey = () => {

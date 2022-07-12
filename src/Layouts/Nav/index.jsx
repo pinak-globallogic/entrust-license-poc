@@ -9,6 +9,7 @@ import {
   ROUTE_LICENSE_SEARCH,
   ROUTE_HOME,
   ROUTE_LICENSE_MODIFY,
+  ROUTE_LICENSE_ACTIVATE,
 } from "Routes";
 import AdminNav from "./AdminNav";
 
@@ -35,10 +36,16 @@ navMap.set(ROUTE_ADMIN_PANEL, {
   title,
 });
 
+navMap.set(ROUTE_LICENSE_ACTIVATE, {
+  content: true,
+  title,
+});
+
 navMap.set(ROUTE_LICENSE_MODIFY, {
   content: true,
   title,
 });
+
 
 const Sidenav = (props) => {
   const location = useLocation();
