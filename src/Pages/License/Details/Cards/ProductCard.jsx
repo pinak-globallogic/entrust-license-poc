@@ -12,7 +12,7 @@ const ProductCard = ({ data }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <CustomCardHeader title="Order Information" />
+        <CustomCardHeader title={{id: cardState.id, name: "Order Information", expanded: cardState.expanded}}  />
         <Grid item container xs direction="column">
         <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
         <Divider sx={{ borderBottomWidth: 2, mb:1 }} />
