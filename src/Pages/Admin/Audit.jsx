@@ -102,7 +102,7 @@ const Audit = () => {
   };
 
   return (
-    <Grid container marginLeft={6} rowSpacing={4} mt={1}>
+    <Grid container marginLeft={6} rowSpacing={4}>
       <Grid item xs={12}>
         <Box sx={{ width: "100%" }}>
           <Typography variant="h5" gutterBottom component="div">
@@ -161,7 +161,9 @@ const Audit = () => {
             </TabPanel>
           </Box>
           <TabPanel value={value} index={1}>
-            LOGINS
+            <Grid container sx={{minHeight : 300}}>
+
+			</Grid>
           </TabPanel>
         </Box>
       </Grid>
