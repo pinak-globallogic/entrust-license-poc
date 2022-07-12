@@ -8,8 +8,10 @@ import {
   ROUTE_LICENSE_GENERATE,
   ROUTE_LICENSE_SEARCH,
   ROUTE_LICENSE_MODIFY,
-  ROUTE_LICENSE_ACTIVATE
+  ROUTE_LICENSE_ACTIVATE,
 } from "Routes";
+import { useContext } from "react";
+import { AppContext } from "Layouts/Content/ApplicationContextProvider";
 
 const cards = [
   {
@@ -111,6 +113,7 @@ const cards = [
 
 const Dashboard = (props) => {
   const navigate = useNavigate();
+  const [adminComponent, setAdminComponent] = useContext(AppContext);
 
   const onCreateNewProductKey = () => {
     navigate(ROUTE_LICENSE_GENERATE);
@@ -134,6 +137,7 @@ const Dashboard = (props) => {
   };
 
   const onAdminPanel = () => {
+    if (adminComponent != 0) setAdminComponent(0);
     navigate(ROUTE_ADMIN_PANEL);
   };
 

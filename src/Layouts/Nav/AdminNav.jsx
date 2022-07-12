@@ -1,7 +1,7 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AppsIcon from "@mui/icons-material/Apps";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import FaceIcon from "@mui/icons-material/Face";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import LoginIcon from "@mui/icons-material/Login";
@@ -50,7 +50,7 @@ const AdminNav = ({ setAdminComponent, adminComponent }) => {
             fontWeight: "medium",
           }}
         />
-        {openUR ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        {openUR ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
       </ListItemButton>
       <Collapse in={openUR} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -95,7 +95,7 @@ const AdminNav = ({ setAdminComponent, adminComponent }) => {
             variant: "body2",
           }}
         />
-        {openAudit ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        {openAudit ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
       </ListItemButton>
       <Collapse in={openAudit} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
