@@ -1,8 +1,12 @@
+import { useSelector } from "react-redux";
+
 import { CustomCard, CustomCardContent } from "Utilty";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 const SavedProductKeyStep = () => {
+  const key = useSelector((state) => state.modifyKey.productKey);
+
   return (
     <CustomCard>
       <CustomCardContent>
@@ -11,7 +15,7 @@ const SavedProductKeyStep = () => {
         </Grid>
         <Grid item mb={2}>
           <Typography variant="caption">
-            Product Key 234234-234234-234234 was updated
+            Product Key {key.id} was updated
           </Typography>
         </Grid>
       </CustomCardContent>

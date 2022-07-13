@@ -1,9 +1,16 @@
+import { useSelector, useDispatch } from "react-redux";
+
 import { CustomCard, CustomCardContent } from "Utilty";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 
+import { updateKeyToModify } from "Redux/Slices/modifyKeySlice";
+
 const InputProductKeyStep = () => {
+  const dispatch = useDispatch();
+  const key = useSelector((state) => state.modifyKey.productKey);
+
   return (
     <CustomCard>
       <CustomCardContent>
@@ -18,7 +25,20 @@ const InputProductKeyStep = () => {
 
         <Grid item container xs pt={1}>
           <Grid item mr={5}>
-            <TextField label="Product Key" variant="outlined" size="small" />
+            <TextField
+              label="Product Key"
+              variant="outlined"
+              size="small"
+              value={key.id}
+              onChange={(event) =>
+                dispatch(
+                  updateKeyToModify({
+                    ...key,
+                    id: event.target.value,
+                  })
+                )
+              }
+            />
           </Grid>
         </Grid>
       </CustomCardContent>

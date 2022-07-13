@@ -3,16 +3,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { Grid, Typography, Chip } from "@mui/material";
 
 import { CustomCard, CustomCardContent } from "Utilty";
-import {updateLicense, updateActivePage} from "Redux/Slices/activateKeySlice";
+import { updateLicense } from "Redux/Slices/activateKeySlice";
+import { updateActivePage } from "Redux/Slices/customCardSlice";
 
 const FileUploadDetail = () => {
   const dispatch = useDispatch();
   const license = useSelector((state) => state.activateKey.license);
-  const activePage = useSelector((state) => state.activateKey.activePage);
+  const activePage = useSelector((state) => state.customCard.activePage);
 
   const handleDelete = () => {
     dispatch(updateLicense({ ...license, uploadFile: null }));
-    dispatch(updateActivePage({...activePage, number: 0}));
+    dispatch(
+      updateActivePage({
+        ...activePage,
+        activateLicenseWizard: 0,
+      })
+    );
   };
 
   return (

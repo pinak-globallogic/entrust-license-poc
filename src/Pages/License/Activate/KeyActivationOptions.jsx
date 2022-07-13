@@ -4,12 +4,13 @@ import { Grid, Typography } from "@mui/material";
 
 import { FileUpload } from "Components/FileUpload";
 import { CustomCard, CustomCardContent } from "Utilty";
-import {updateLicense, updateActivePage} from "Redux/Slices/activateKeySlice";
+import { updateLicense } from "Redux/Slices/activateKeySlice";
+import { updateActivePage } from "Redux/Slices/customCardSlice";
 
 const KeyActivationOptions = () => {
   const dispatch = useDispatch();
   const license = useSelector((state) => state.activateKey.license);
-  const activePage = useSelector((state) => state.activateKey.activePage);
+  const activePage = useSelector((state) => state.customCard.activePage);
 
   const fileUploadProp = {
     accept: "image/*",
@@ -22,7 +23,12 @@ const KeyActivationOptions = () => {
             uploadFile: event.target.files[0].name,
           })
         );
-        dispatch(updateActivePage({ ...activePage, number: 1 }));
+        dispatch(
+          updateActivePage({
+            ...activePage,
+            activateLicenseWizard: 1,
+          })
+        );
       }
     },
     onDrop: () => {
@@ -33,7 +39,12 @@ const KeyActivationOptions = () => {
           uploadFile: event.dataTransfer.files[0].name,
         })
       );
-      dispatch(updateActivePage({ ...activePage, number: 1 }));
+      dispatch(
+        updateActivePage({
+          ...activePage,
+          activateLicenseWizard: 1,
+        })
+      );
     },
   };
 

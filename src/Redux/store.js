@@ -4,6 +4,7 @@ import customCardSlice from "./Slices/customCardSlice";
 import generateLicenseSlice from "./Slices/generateLicenseSlice";
 import searchLicenseSlice from "./Slices/searchLicenseSlice";
 import activateKeySlice from "./Slices/activateKeySlice";
+import modifyKeySlice from "./Slices/modifyKeySlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { createLogger } from "redux-logger";
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   searchLicense: searchLicenseSlice,
   customCard: customCardSlice,
   activateKey: activateKeySlice,
+  modifyKey: modifyKeySlice,
 });
 
 const isDevEnvironment = process.env.NODE_ENV === "development";
