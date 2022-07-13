@@ -3,9 +3,9 @@ import Typography from "@mui/material/Typography";
 import { AppContext } from "Layouts/Content/ApplicationContextProvider";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { updateActivePage } from "Redux/Slices/customCardSlice";
+import { resetActivePage } from "Redux/Slices/customCardSlice";
 import {
   ROUTE_ADMIN_PANEL,
   ROUTE_LICENSE_GENERATE,
@@ -50,24 +50,12 @@ navMap.set(ROUTE_LICENSE_MODIFY, {
   title,
 });
 
-
 const Sidenav = (props) => {
   const location = useLocation();
   const [data, setData] = useState(navMap.get(ROUTE_HOME));
   const [isAdmin, setAdmin] = useState(false);
   const [adminComponent, setAdminComponent] = useContext(AppContext);
-  const activePage = useSelector((state) => state.customCard.activePage);
   const dispatch = useDispatch();
-  
-  //update active page number for generate product key screen
-  const resetActivePage = () =>{
-    dispatch(
-      updateActivePage({
-        ...activePage,
-        number: 0,
-      })
-    );
-  }
 
   useEffect(() => {
     setData(navMap.get(location.pathname) || navMap.get(ROUTE_HOME));
@@ -89,7 +77,7 @@ const Sidenav = (props) => {
             <Link
               to={ROUTE_LICENSE_DASHBOARD}
               style={{ textDecoration: "none" }}
-              onClick={resetActivePage}
+              onClick={() => dispatch(resetActivePage())}
             >
               <Grid
                 item

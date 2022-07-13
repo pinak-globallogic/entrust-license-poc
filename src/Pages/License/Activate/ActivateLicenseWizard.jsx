@@ -8,7 +8,10 @@ import DisplayKeys from "./DisplayKeys";
 import FileUploadDetail from "./FileUploadDetail";
 import KeyActivationOptions from "./KeyActivationOptions";
 import { ROUTE_LICENSE_DASHBOARD } from "Routes";
-import { updateActivePage } from "Redux/Slices/customCardSlice";
+import {
+  resetActivePage,
+  updateActivePage,
+} from "Redux/Slices/customCardSlice";
 
 const ActivateLicenseWizard = (props) => {
   const activePage = useSelector((state) => state.customCard.activePage);
@@ -57,12 +60,7 @@ const ActivateLicenseWizard = (props) => {
         obj.btn.variant = "outlined";
         obj.btn.action = () => {
           navigate(ROUTE_LICENSE_DASHBOARD);
-          dispatch(
-            updateActivePage({
-              ...activePage,
-              activateLicenseWizard: 0,
-            })
-          );
+          dispatch(resetActivePage());
         };
         break;
     }

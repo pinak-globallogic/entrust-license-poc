@@ -12,7 +12,10 @@ import LimitationDetails from "./LimitationDetails";
 import OptionalDetails from "./OptionalDetails";
 import { Typography } from "@mui/material";
 import GenerateProductKeyDetails from "./GenerateProductKeyDetails";
-import { updateActivePage } from "Redux/Slices/customCardSlice";
+import {
+  resetActivePage,
+  updateActivePage,
+} from "Redux/Slices/customCardSlice";
 import { ROUTE_LICENSE_DASHBOARD } from "Routes";
 
 const noOfKeys = (keyAmount) => {
@@ -24,11 +27,11 @@ const noOfKeys = (keyAmount) => {
 
 const GenerateLicenseWizard = (props) => {
   const state = useSelector((state) => state.generateLicense);
-  const activePage = useSelector((state) => state.customCard.activePage)
+  const activePage = useSelector((state) => state.customCard.activePage);
   const count = activePage.number;
   const navigate = useNavigate();
-  const dispatch =useDispatch();
-  
+  const dispatch = useDispatch();
+
   const btnDisabled = state.error;
 
   const renderSwitch = (count) => {
@@ -36,13 +39,13 @@ const GenerateLicenseWizard = (props) => {
       btn: {
         text: "continue",
         variant: "contained",
-        action: () => 
-        dispatch(
-          updateActivePage({
-            ...activePage,
-            number: activePage.number+1,
-          })
-        )
+        action: () =>
+          dispatch(
+            updateActivePage({
+              ...activePage,
+              number: activePage.number + 1,
+            })
+          ),
       },
       page: null,
     };
@@ -70,13 +73,8 @@ const GenerateLicenseWizard = (props) => {
         obj.btn.variant = "outlined";
         obj.btn.action = () => {
           navigate(ROUTE_LICENSE_DASHBOARD);
-          dispatch(
-            updateActivePage({
-              ...activePage,
-              number: 0,
-            })
-          )
-        }
+          dispatch(resetActivePage());
+        };
         obj.page = <GenerateProductKeyDetails />;
         break;
     }
@@ -109,12 +107,12 @@ const GenerateLicenseWizard = (props) => {
               size="small"
               disabled={btnDisabled}
               onClick={() => {
-               dispatch(
-                updateActivePage({
-                  ...activePage,
-                  number: activePage.number-1,
-                })
-              )
+                dispatch(
+                  updateActivePage({
+                    ...activePage,
+                    number: activePage.number - 1,
+                  })
+                );
               }}
             >
               <Typography id="back-btn-text" variant="caption">
