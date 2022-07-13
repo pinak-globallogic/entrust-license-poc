@@ -23,7 +23,7 @@ const initialState = {
   },
   miscellaneousCard: {
     id: 5,
-    expanded: true,
+    expanded: false,
   },
   activePage: {
     number: 0,

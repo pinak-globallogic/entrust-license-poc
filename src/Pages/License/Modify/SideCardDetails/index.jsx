@@ -12,6 +12,7 @@ const SideCardDetails = (props) => {
   const state = useSelector((state) => state.generateLicense);
   const activePage = useSelector((state) => state.customCard.activePage);
   const count = activePage.modifyLicenseWizard;
+  const licenseServerState = useSelector((state) => state.modifyKey);
 
   return (
     <>
@@ -25,7 +26,7 @@ const SideCardDetails = (props) => {
           {...props}
         >
           
-          <LicenseServerCard data={state.licenseServer}/>
+          <LicenseServerCard data={licenseServerState.licenseDetails}/>
           <ProductCard data={state.product} />
           <FeatureCard data={state.feature} />
           <LimitationCard data={state.limitation} />

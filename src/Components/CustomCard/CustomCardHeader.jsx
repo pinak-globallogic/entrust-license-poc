@@ -91,7 +91,7 @@ const CustomCardHeader = (details, ...props) => {
     }
   };
 
-  const navigateToPage = (cardTitle) => {
+  const navigateToPage = (cardTitle,id) => {
     if (cardTitle === "Customer") {
       dispatch(
         updateActivePage({
@@ -99,6 +99,11 @@ const CustomCardHeader = (details, ...props) => {
           number: 0,
         })
       );
+
+      if(!customerCardExpanded.expanded){
+        expandCollapseCard(id);
+      }
+
     }
     if (cardTitle === "Order Information") {
       dispatch(
@@ -107,6 +112,10 @@ const CustomCardHeader = (details, ...props) => {
           number: 1,
         })
       );
+
+      if(!productInformationCardExpanded.expanded){
+        expandCollapseCard(id);
+      }
     }
     if (cardTitle === "Features") {
       dispatch(
@@ -115,6 +124,10 @@ const CustomCardHeader = (details, ...props) => {
           number: 2,
         })
       );
+
+      if(!featureCardExpanded.expanded){
+        expandCollapseCard(id);
+      }
     }
     if (cardTitle === "Limitations") {
       dispatch(
@@ -123,6 +136,10 @@ const CustomCardHeader = (details, ...props) => {
           number: 3,
         })
       );
+
+      if(!limitationCardExpanded.expanded){
+        expandCollapseCard(id);
+      }
     }
     if (cardTitle === "License Server") {
       dispatch(
@@ -131,8 +148,13 @@ const CustomCardHeader = (details, ...props) => {
           modifyLicenseWizard: 2,
         })
       );
+
+      if(!licenseServerCardExpanded.expanded){
+        expandCollapseCard(id);
+      }
     }
   };
+
 
   return (
     <Box>
@@ -153,7 +175,7 @@ const CustomCardHeader = (details, ...props) => {
             size="small"
             color="secondary"
             sx={{ minWidth: "2rem" }}
-            onClick={() => navigateToPage(details.title.name)}
+            onClick={() => navigateToPage(details.title.name, details.title.id)}
           >
             <EditIcon sx={{ fontSize: "1rem" }} />
           </Button>
