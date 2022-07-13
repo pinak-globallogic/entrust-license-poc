@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
-import { withStyles } from "@material-ui/core";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
@@ -16,7 +15,7 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
-import MuiTableCell from "@material-ui/core/TableCell";
+import { TableCell } from "@mui/material";
 
 const useStyles = makeStyles({
   root: {
@@ -28,12 +27,6 @@ const useStyles = makeStyles({
     border: 0,
   },
 });
-
-const TableCell = withStyles({
-  root: {
-    borderBottom: "none",
-  },
-})(MuiTableCell);
 
 const ExpandableTableRow = ({ children, expandRowData, ...otherProps }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);

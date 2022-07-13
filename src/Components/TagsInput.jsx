@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import Chip from "@material-ui/core/Chip";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import Downshift from "downshift";
+import { makeStyles } from "@mui/styles";
+import { Chip, TextField } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   chip: {
@@ -90,7 +89,6 @@ export default function TagsInput({ ...props }) {
                       label={item}
                       className={classes.chip}
                       onDelete={handleDelete(item)}
-                      
                     />
                   )),
                   onBlur,
@@ -99,11 +97,10 @@ export default function TagsInput({ ...props }) {
                     onChange(event);
                   },
                   onFocus,
-                }
-			}
+                }}
                 {...other}
                 {...inputProps}
-				color="primary"
+                color="primary"
               />
             </div>
           );
