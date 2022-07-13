@@ -25,8 +25,8 @@ import { updateLogin } from "Redux/Slices/authSlice";
 
 const useStyles = makeStyles({
   card: {
-    width: "500px !important",
-    minHeight: "460px",
+    width: "560px !important",
+    minHeight: "500px",
     background: "#fff",
     boxShadow:
       "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
@@ -132,6 +132,7 @@ const Login = ({ showMessage }) => {
             alignItems="center"
             direction="column"
             xs={6}
+            mb={3}
           >
             <Grid item mb={2}>
               <FormControl variant="filled">
@@ -184,7 +185,6 @@ const Login = ({ showMessage }) => {
             xs
             item
             container
-            marginTop="10px"
             direction="column"
             justifyContent="center"
             alignItems="center"

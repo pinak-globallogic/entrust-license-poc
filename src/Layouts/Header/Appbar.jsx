@@ -128,12 +128,11 @@ export default function AppBar() {
                         "aria-labelledby": "basic-button",
                       }}
                     >
-                      <MenuItem className={classes.heading2}>
-                        <Link
-                          to="/"
-                          onClick={handleLogout}
-                          style={{ textDecoration: "none" }}
-                        >
+                      <MenuItem
+                        className={classes.heading2}
+                        onClick={handleLogout}
+                      >
+                        <Link to="/" style={{ textDecoration: "none" }}>
                           <LogoutIcon
                             fontSize="small"
                             style={{ verticalAlign: "sub" }}
