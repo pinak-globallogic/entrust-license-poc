@@ -10,23 +10,29 @@ import { useSelector } from "react-redux";
 
 const SideCardDetails = (props) => {
   const state = useSelector((state) => state.generateLicense);
+  const activePage = useSelector((state) => state.customCard.activePage);
+  const count = activePage.modifyLicenseWizard;
 
   return (
-    <Grid
-      item
-      container
-      direction="column"
-      alignItems="center"
-      justifyContent="start"
-      {...props}
-    >
-
-     <LicenseServerCard data={state.licenseServer}/>
-      <ProductCard data={state.product} />
-      <FeatureCard data={state.feature} />
-      <LimitationCard data={state.limitation} />
-      <MiscellaneousCard />
-    </Grid>
+    <>
+      {count > 0 && (
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems="center"
+          justifyContent="start"
+          {...props}
+        >
+          
+          <LicenseServerCard data={state.licenseServer}/>
+          <ProductCard data={state.product} />
+          <FeatureCard data={state.feature} />
+          <LimitationCard data={state.limitation} />
+          <MiscellaneousCard />
+        </Grid>
+      )}
+    </>
   );
 };
 
