@@ -15,8 +15,8 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 export default function CustomSeparator() {
   const location = useLocation();
-  const isKeyPresent = useSelector((state) => state.customCard.activePage).modifyLicenseWizard > 0;
-  const keyID = useSelector((state) => state.modifyKey.productKey).id;
+  const isLicensePresent = useSelector((state) => state.customCard.activePage).modifyLicenseWizard > 0;
+  const license = useSelector((state) => state.modifyKey.licenseDetails).oldLicense;
   
   const navMap = new Map();
   navMap.set("/", {
@@ -36,8 +36,8 @@ export default function CustomSeparator() {
     nav: true,
     content: true,
     title: "License Key Modification",
-    isSubtitlePresnt : isKeyPresent,
-    subtitle: keyID,
+    isSubtitlePresnt : isLicensePresent,
+    subtitle: license,
   });
 
   navMap.set(ROUTE_LICENSE_SEARCH, {
@@ -61,7 +61,7 @@ export default function CustomSeparator() {
 
   useEffect(() => {
     setData(navMap.get(location.pathname) || navMap.get("/"));
-  }, [location, isKeyPresent, keyID]);
+  }, [location, isLicensePresent, license]);
 
   const breadcrumbs = [
     <Typography id="header-nav1" key="1">
