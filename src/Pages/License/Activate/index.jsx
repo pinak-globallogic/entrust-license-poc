@@ -1,10 +1,12 @@
-import Content from "Layouts/Content/Content";
+import DisplayDetails from "./DisplayDetails";
 import ActivateLicenseWizard from "./ActivateLicenseWizard";
+import Content from "Layouts/Content/Content";
 
 const ActivateLicenseWrapper = () => {
   return (
-    <Content>
-      <ActivateLicenseWizard />
+    <Content pt={2}>
+      <ActivateLicenseWizard xs={7} />
+      <DisplayDetails xs />
     </Content>
   );
 };

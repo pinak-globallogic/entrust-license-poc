@@ -12,7 +12,7 @@ const ApplicationContextProvider = (props) => {
     <AppContext.Provider
       value={[adminComponent, setAdminComponent]}
     >
-      <Sidenav xs={1.7} />
+      <Sidenav xs={1.4} />
       <Content xs pt={0} {...props} />
     </AppContext.Provider>
   );

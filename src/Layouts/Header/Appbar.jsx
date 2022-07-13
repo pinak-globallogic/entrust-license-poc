@@ -60,6 +60,7 @@ export default function AppBar() {
 
   const handleLogout = () => {
     dispatch(updateLogout());
+    setAnchorEl(null);
   };
 
   return (

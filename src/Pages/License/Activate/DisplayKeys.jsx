@@ -20,9 +20,7 @@ import { makeStyles } from "@mui/styles";
 
 import DataGridCustom from "Components/DataGrid";
 import { CustomCard, CustomCardContent } from "Utilty";
-import CustomerInfo from "./CustomerInfo";
-import DetailKeyInfo from "./DetailKeyInfo";
-import { setActivateKeyDetails } from "Redux/Slices/activateKeySlice";
+import { updateLicense, updateKey } from "Redux/Slices/activateKeySlice";
 
 const useStyles = makeStyles({
   dropdown: {
@@ -34,11 +32,11 @@ const useStyles = makeStyles({
 
 const DisplayKeys = () => {
   const dispatch = useDispatch();
-  const activateKey = useSelector((state) => state.activateKey);
+  const license = useSelector((state) => state.activateKey.license);
+  const key = useSelector((state) => state.activateKey.key);
 
   const [gridData, setGridData] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
-  const [isInfoOpen, setInfoOpen] = useState(false);
   const classes = useStyles();
 
   useEffect(() => {
@@ -70,7 +68,7 @@ const DisplayKeys = () => {
     {
       field: "productKey",
       headerName: "License Key",
-      width: 150,
+      width: 180,
       editable: false,
     },
     {
@@ -82,19 +80,19 @@ const DisplayKeys = () => {
     {
       field: "company",
       headerName: "Company",
-      width: 100,
+      width: 150,
       editable: false,
     },
     {
       field: "orderId",
       headerName: "Order ID",
       sortable: false,
-      width: 100,
+      width: 120,
     },
     {
       field: "serverResponse",
       headerName: "Server Response",
-      width: 120,
+      width: 140,
       editable: false,
       renderCell: (params) =>
         params.row.status === "Activated" ? null : "Inactive",
@@ -108,15 +106,14 @@ const DisplayKeys = () => {
         <Button
           variant="outlined"
           color="primary"
-          size="small"
           onClick={() => {
             dispatch(
-              setActivateKeyDetails({
-                ...activateKey,
-                keyID: params.row.productKey,
+              updateKey({
+                ...key,
+                id: params.row.productKey,
+                showKeyDetails: !key.showKeyDetails,
               })
             );
-            setInfoOpen((prev) => !prev);
           }}
         >
           <InfoIcon />
@@ -129,7 +126,7 @@ const DisplayKeys = () => {
       width: 75,
       editable: false,
       renderCell: () => (
-        <Button variant="outlined" color="primary" size="small">
+        <Button variant="outlined" color="primary">
           <DeleteIcon />
         </Button>
       ),
@@ -141,106 +138,108 @@ const DisplayKeys = () => {
   };
 
   return (
-    <Grid container pr={3}>
-      <Grid item xs={7}>
-        <CustomCard>
-          <CustomCardContent>
-            <Grid item mb={1}>
-              <Typography id="licenseID-title" variant="h5">
-                License Server ID
-              </Typography>
-            </Grid>
-            <Grid item mb={1}>
-              <Typography id="licenseID-subtitle" variant="subtitle1">
-                Insert the License server ID the product keys should be linked
-                to.
-              </Typography>
-            </Grid>
-            <Grid item mb={8}>
-              <FormControl sx={{ width: "40ch" }}>
-                <OutlinedInput
-                  value={activateKey.licenseServerID}
-                  onChange={(event) =>
-                    dispatch(
-                      setActivateKeyDetails({
-                        ...activateKey,
-                        licenseServerID: event.target.value,
-                      })
-                    )
-                  }
-                />
-              </FormControl>
-            </Grid>
-            <Grid item mb={1}>
-              <Typography id="version-title" variant="h5">
-                Protocol Version
-              </Typography>
-            </Grid>
-            <Grid item mb={1}>
-              <Typography id="version-subtitle" variant="subtitle1">
-                Select the protocol version
-              </Typography>
-            </Grid>
-            <Grid item mb={8}>
-              <FormControl sx={{ minWidth: 70 }} size="small">
-                <Select
-                  value={activateKey.protocolVersion}
-                  onChange={(event) =>
-                    dispatch(
-                      setActivateKeyDetails({
-                        ...activateKey,
-                        protocolVersion: event.target.value,
-                      })
-                    )
-                  }
-                  displayEmpty
-                  className={classes.dropdown}
+    <Grid container direction="column">
+      <CustomCard sx={{ marginBottom: 0 }}>
+        <CustomCardContent>
+          <Grid item>
+            <Typography id="licenseID-title" variant="h6">
+              License Server ID
+            </Typography>
+          </Grid>
+          <Grid item mb={1}>
+            <Typography id="licenseID-subtitle" variant="caption">
+              Insert the License server ID the product keys should be linked to.
+            </Typography>
+          </Grid>
+          <Grid>
+            <FormControl sx={{ minWidth: "37ch" }}>
+              <OutlinedInput
+                disabled
+                size="small"
+                value={license.licenseServerID}
+                onChange={(event) =>
+                  dispatch(
+                    updateLicense({
+                      ...license,
+                      licenseServerID: event.target.value,
+                    })
+                  )
+                }
+              />
+            </FormControl>
+          </Grid>
+        </CustomCardContent>
+      </CustomCard>
+      <CustomCard sx={{ marginBottom: 0 }}>
+        <CustomCardContent>
+          <Grid item>
+            <Typography id="version-title" variant="h6">
+              Protocol Version
+            </Typography>
+          </Grid>
+          <Grid item mb={1}>
+            <Typography id="version-subtitle" variant="caption">
+              Select the protocol version
+            </Typography>
+          </Grid>
+          <Grid>
+            <FormControl sx={{ minWidth: 70 }} size="small">
+              <Select
+                value={license.protocolVersion}
+                onChange={(event) =>
+                  dispatch(
+                    updateLicense({
+                      ...license,
+                      protocolVersion: event.target.value,
+                    })
+                  )
+                }
+                displayEmpty
+                className={classes.dropdown}
+              >
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        </CustomCardContent>
+      </CustomCard>
+      <CustomCard>
+        <CustomCardContent>
+          <Grid mb={4}>
+            <div>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                mr={3}
+              >
+                <Typography id="option1-subtitle" variant="caption">
+                  Below you&apos;ll find a list of the product keys that should
+                  be activated with the license server. <br />
+                  If a key doesn&apos;t exist you can proceed with activation.{" "}
+                </Typography>
+                <Button
+                  variant="outlined"
+                  style={{ fontWeight: "bold" }}
+                  size="small"
                 >
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item mb={8}>
-              <div>
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Typography id="option1-subtitle" variant="subtitle1">
-                    Below you&apos;ll find a list of the product keys that
-                    should be activated with the license server. <br />
-                    If a key doesn&apos;t exist you can proceed with activation.{" "}
-                  </Typography>
-                  <Button variant="outlined" style={{ fontWeight: "bold" }}>
-                    + Add Key
-                  </Button>
-                </Stack>
-              </div>
-            </Grid>
-            <Grid item>
-              <div style={{ height: 360 }}>
-                <DataGridCustom
-                  columns={columns}
-                  rows={gridData}
-                  selectionModel={selectionModel}
-                  setSelectionModel={setSelectionModelInDataGrid}
-                ></DataGridCustom>
-              </div>
-            </Grid>
-          </CustomCardContent>
-        </CustomCard>
-      </Grid>
-      <Grid item xs={5}>
-        <CustomerInfo />
-        <DetailKeyInfo
-          isInfoOpen={isInfoOpen}
-          setInfoOpen={setInfoOpen}
-          keyID={activateKey.keyID}
-        />
-      </Grid>
+                  + Add Key
+                </Button>
+              </Stack>
+            </div>
+          </Grid>
+          <Grid item>
+            <DataGridCustom
+              columns={columns}
+              rows={gridData}
+              selectionModel={selectionModel}
+              setSelectionModel={setSelectionModelInDataGrid}
+            ></DataGridCustom>
+          </Grid>
+        </CustomCardContent>
+      </CustomCard>
     </Grid>
   );
 };

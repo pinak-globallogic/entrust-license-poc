@@ -2,20 +2,34 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   customerCard: {
+    id: 0,
     expanded: true,
   },
   productInformationCard: {
+    id: 1,
     expanded: true,
   },
   featureCard: {
+    id: 2,
     expanded: true,
   },
   limitationCard: {
+    id: 3,
+    expanded: true,
+  },
+  licenseServerCard: {
+    id: 4,
+    expanded: true,
+  },
+  miscellaneousCard: {
+    id: 5,
     expanded: true,
   },
   activePage: {
-    number: 0
-  }
+    number: 0,
+    modifyLicenseWizard: 0,
+    activateLicenseWizard: 0,
+  },
 };
 
 export const customCardSlice = createSlice({
@@ -34,6 +48,12 @@ export const customCardSlice = createSlice({
     updateLimitationsCardState: (state, action) => {
       state.limitationCard = action.payload;
     },
+    updateLicenseServerCardState: (state, action) => {
+      state.licenseServerCard = action.payload;
+    },
+    updateMiscellaneousCardState: (state, action) => {
+      state.miscellaneousCard = action.payload;
+    },
     updateActivePage: (state, action) => {
       state.activePage = action.payload;
     },
@@ -47,6 +67,8 @@ export const {
   updateFeatureCardState,
   updateLimitationsCardState,
   updateActivePage,
+  updateLicenseServerCardState,
+  updateMiscellaneousCardState,
 } = customCardSlice.actions;
 
 export default customCardSlice.reducer;
