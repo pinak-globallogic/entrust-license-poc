@@ -2,8 +2,23 @@ import { CustomCard, CustomCardContent } from "Utilty";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import { useDispatch, useSelector } from "react-redux";
+import { updateLicense } from "Redux/Slices/modifyKeySlice";
 
 const ChangeProductKeyStep = () => {
+
+  const licenseServerDetails = useSelector((state) => state.modifyKey.licenseDetails);
+  const dispatch = useDispatch();
+
+  const updateNewLicenseServerId = (e) => {
+    dispatch(
+      updateLicense({
+        ...licenseServerDetails,
+        newLicense: e.target.value,
+      })
+    )
+  }
+
   return (
     <CustomCard>
       <CustomCardContent>
@@ -21,7 +36,7 @@ const ChangeProductKeyStep = () => {
               label="Old License Server ID"
               variant="outlined"
               size="small"
-              value="234234-234234-234234-234234"
+              value={licenseServerDetails.oldLicense}
               disabled="true"
             />
           </Grid>
@@ -38,11 +53,12 @@ const ChangeProductKeyStep = () => {
         <Grid item container xs pt={1}>
           <Grid item mr={5}>
             <TextField
-              label="Old License Server ID"
+              label="New License Server ID"
               variant="outlined"
               size="small"
-              value="Input text"
+              onChange={(e)=>updateNewLicenseServerId(e)}
             />
+            
           </Grid>
         </Grid>
       </CustomCardContent>

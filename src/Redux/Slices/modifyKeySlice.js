@@ -5,7 +5,7 @@ const initialState = {
     id: null,
   },
   licenseDetails: {
-    oldLicense: "",
+    oldLicense: "234234-234234-234234-234234",
     newLicense: ""
   },
 };
@@ -25,7 +25,8 @@ export const modifyKeySlice = createSlice({
 });
 
 export const { 
-    updateKeyToModify, updateLicense
+    updateKeyToModify, 
+    updateLicense,
  } = modifyKeySlice.actions;
 
 export default modifyKeySlice.reducer;
