@@ -16,7 +16,7 @@ const LicenseServerCard = ({ data }) => {
         <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
         <Divider sx={{ borderBottomWidth: 2, mb:1 }} />
         <Grid item container xs direction="column">
-            <CustomCardRow title="License Server ID" value={data.licenseServerId} mb={0} />
+            <CustomCardRow title="License Server ID" value={data.oldLicense} mb={0} />
         </Grid>
         </Collapse>
       </CustomCardContent>
