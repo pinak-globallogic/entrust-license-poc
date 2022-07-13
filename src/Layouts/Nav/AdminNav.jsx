@@ -1,7 +1,7 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AppsIcon from "@mui/icons-material/Apps";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import FaceIcon from "@mui/icons-material/Face";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import LoginIcon from "@mui/icons-material/Login";
@@ -14,13 +14,15 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+
 import { useState } from "react";
 
-const AdminNav = () => {
+const AdminNav = ({ setAdminComponent, adminComponent }) => {
   const [openUR, setOpenUR] = useState(false);
   const [openAudit, setOpenAudit] = useState(false);
 
   const handleClick = () => {
+    if (adminComponent !== 0) setAdminComponent(0);
     setOpenUR(!openUR);
   };
 
@@ -48,17 +50,17 @@ const AdminNav = () => {
             fontWeight: "medium",
           }}
         />
-        {openUR ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        {openUR ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
       </ListItemButton>
       <Collapse in={openUR} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setAdminComponent(3)}>
             <ListItemIcon>
               <AppsIcon color="primary" />
             </ListItemIcon>
             <ListItemText primary="Sub Menu 1" />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setAdminComponent(4)}>
             <ListItemIcon>
               <AppsIcon color="primary" />
             </ListItemIcon>
@@ -67,7 +69,7 @@ const AdminNav = () => {
         </List>
       </Collapse>
       <Divider />
-      <ListItemButton>
+      <ListItemButton onClick={() => setAdminComponent(1)}>
         <ListItemIcon>
           <TuneIcon color="primary" />
         </ListItemIcon>
@@ -93,11 +95,11 @@ const AdminNav = () => {
             variant: "body2",
           }}
         />
-        {openAudit ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        {openAudit ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
       </ListItemButton>
       <Collapse in={openAudit} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setAdminComponent(2)}>
             <ListItemIcon>
               <FaceIcon color="primary" />
             </ListItemIcon>

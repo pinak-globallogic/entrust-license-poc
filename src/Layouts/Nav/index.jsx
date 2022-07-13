@@ -1,5 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { AppContext } from "Layouts/Content/ApplicationContextProvider";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
@@ -53,6 +55,7 @@ const Sidenav = (props) => {
   const location = useLocation();
   const [data, setData] = useState(navMap.get(ROUTE_HOME));
   const [isAdmin, setAdmin] = useState(false);
+  const [adminComponent, setAdminComponent] = useContext(AppContext);
   const activePage = useSelector((state) => state.customCard.activePage);
   const dispatch = useDispatch();
   
@@ -125,7 +128,12 @@ const Sidenav = (props) => {
               </Grid>
             </Link>
           )}
-          {isAdmin && <AdminNav />}
+          {isAdmin && (
+            <AdminNav
+              setAdminComponent={setAdminComponent}
+              adminComponent={adminComponent}
+            />
+          )}
         </Grid>
       )}
     </>

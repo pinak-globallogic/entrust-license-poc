@@ -1,12 +1,12 @@
 import { Box, Grid, Typography } from "@mui/material";
 
-const AppFeatures = () => {
+const SubMenu1 = () => {
   return (
     <Grid container marginLeft={6} rowSpacing={4}>
       <Grid item xs={12}>
         <Box sx={{ width: "100%" }}>
           <Typography variant="h5" gutterBottom component="div">
-            App Defined Features
+            Sub Menu 1
           </Typography>
           <Typography variant="subtitle2" gutterBottom component="div">
             Description
@@ -17,4 +17,4 @@ const AppFeatures = () => {
   );
 };
 
-export default AppFeatures;
+export default SubMenu1;
