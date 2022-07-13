@@ -1,17 +1,10 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Downshift from "downshift";
-import { makeStyles } from "@mui/styles";
+
 import { Chip, TextField } from "@mui/material";
 
-const useStyles = makeStyles((theme) => ({
-  chip: {
-    margin: theme.spacing(0.25, 0.25),
-  },
-}));
-
 export default function TagsInput({ ...props }) {
-  const classes = useStyles();
   const { selectedTags, placeholder, tags, ...other } = props;
   const [inputValue, setInputValue] = React.useState("");
   const [selectedItem, setSelectedItem] = React.useState([]);
@@ -87,7 +80,6 @@ export default function TagsInput({ ...props }) {
                       key={item}
                       tabIndex={-1}
                       label={item}
-                      className={classes.chip}
                       onDelete={handleDelete(item)}
                     />
                   )),
