@@ -57,9 +57,7 @@ export const customCardSlice = createSlice({
     updateActivePage: (state, action) => {
       state.activePage = action.payload;
     },
-    resetActivePage: (state = initialState) => {
-      state.activePage = initialState.activePage;
-    },
+    resetActivePage: () => initialState,
   },
 });
 
