@@ -6,8 +6,9 @@ const initialState = {
   },
   licenseDetails: {
     oldLicense: "234234-234234-234234-234234",
-    newLicense: ""
+    newLicense: "",
   },
+  modifyLicense: true,
 };
 
 export const modifyKeySlice = createSlice({
@@ -20,6 +21,9 @@ export const modifyKeySlice = createSlice({
     updateLicense: (state,action) => {
         state.licenseDetails.oldLicense = action.payload.oldLicense;
         state.licenseDetails.newLicense = action.payload.newLicense;
+    },
+    updateModifyLicenseFlag : (state, action) => {
+        state.modifyLicense = action.modifyLicense;
     }
   },
 });

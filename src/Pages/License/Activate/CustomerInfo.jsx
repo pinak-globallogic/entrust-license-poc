@@ -1,16 +1,16 @@
-import { Box, Typography, Divider, TextField, Grid } from "@mui/material";
+import { Box, Typography, Divider,  TextField, Grid } from "@mui/material";
 
 import { CustomCard, CustomCardContent } from "Utilty";
 
-const CustomerInfo = () => {
+const CustomerInfo = (props) => {
   return (
     <Grid xs item container direction="column">
       <CustomCard>
-        <CustomCardContent style={{ backgroundColor: "#fff", paddingLeft: 25 }}>
+        <CustomCardContent style={{ backgroundColor: props.details.color, paddingLeft: 25 }}>
           <Typography variant="subtitle1">Customer Information</Typography>
-          <Divider sx={{ borderBottomWidth: 2, mb: 3 }} />
+         {props.details.isSideCard === true &&  <Divider sx={{ borderBottomWidth: 2}} /> }
           <Box component="form" noValidate autoComplete="off">
-            <Grid container xs columnSpacing={10}>
+            <Grid container xs columnSpacing={10} sx={{mt: 3 }}>
               <Grid item container xs direction="column" rowSpacing={2}>
                 <Grid item xs>
                   <TextField

@@ -37,6 +37,7 @@ const CustomCardHeader = (details, ...props) => {
     (state) => state.customCard.miscellaneousCard
   );
 
+  const modifyLicense = useSelector((state) => state.modifyKey.modifyLicense);
   const dispatch = useDispatch();
   const activePage = useSelector((state) => state.customCard.activePage);
 
@@ -91,7 +92,7 @@ const CustomCardHeader = (details, ...props) => {
     }
   };
 
-  const navigateToPage = (cardTitle,id) => {
+  const navigateToPage = (cardTitle) => {
     if (cardTitle === "Customer") {
       dispatch(
         updateActivePage({
@@ -99,10 +100,6 @@ const CustomCardHeader = (details, ...props) => {
           number: 0,
         })
       );
-
-      if(!customerCardExpanded.expanded){
-        expandCollapseCard(id);
-      }
 
     }
     if (cardTitle === "Order Information") {
@@ -112,9 +109,14 @@ const CustomCardHeader = (details, ...props) => {
           number: 1,
         })
       );
-
-      if(!productInformationCardExpanded.expanded){
-        expandCollapseCard(id);
+     // set screen for modify license page
+      if(modifyLicense){
+        dispatch(
+          updateActivePage({
+            ...activePage,
+            modifyLicenseWizard: 5,
+          })
+        );
       }
     }
     if (cardTitle === "Features") {
@@ -125,8 +127,14 @@ const CustomCardHeader = (details, ...props) => {
         })
       );
 
-      if(!featureCardExpanded.expanded){
-        expandCollapseCard(id);
+      // set screen for modify license page
+      if(modifyLicense){
+        dispatch(
+          updateActivePage({
+            ...activePage,
+            modifyLicenseWizard: 6,
+          })
+        );
       }
     }
     if (cardTitle === "Limitations") {
@@ -137,8 +145,14 @@ const CustomCardHeader = (details, ...props) => {
         })
       );
 
-      if(!limitationCardExpanded.expanded){
-        expandCollapseCard(id);
+      // set screen for modify license page
+      if(modifyLicense){
+        dispatch(
+          updateActivePage({
+            ...activePage,
+            modifyLicenseWizard: 7,
+          })
+        );
       }
     }
     if (cardTitle === "License Server") {
@@ -148,13 +162,17 @@ const CustomCardHeader = (details, ...props) => {
           modifyLicenseWizard: 2,
         })
       );
+    }
 
-      if(!licenseServerCardExpanded.expanded){
-        expandCollapseCard(id);
-      }
+    if (cardTitle === "Miscellaneous") {
+      dispatch(
+        updateActivePage({
+          ...activePage,
+          modifyLicenseWizard: 8,
+        })
+      );
     }
   };
-
 
   return (
     <Box>
@@ -175,7 +193,7 @@ const CustomCardHeader = (details, ...props) => {
             size="small"
             color="secondary"
             sx={{ minWidth: "2rem" }}
-            onClick={() => navigateToPage(details.title.name, details.title.id)}
+            onClick={() => navigateToPage(details.title.name)}
           >
             <EditIcon sx={{ fontSize: "1rem" }} />
           </Button>

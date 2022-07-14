@@ -20,7 +20,7 @@ const DisplayDetails = (props) => {
     >
       {count >= 2 && (
         <>
-          <CustomerInfo />
+          <CustomerInfo  details = {{color: "#fff",  isSideCard: true}}/>
           <DetailKeyInfo />
         </>
       )}
