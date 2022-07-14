@@ -1,13 +1,13 @@
-import CustomerDetails from "../Generate/CustomerDetails"
-import OrderNumberComponent from "../Shared Components/OrderNumberComponent"
+import CustomerDetails from "../Generate/CustomerDetails";
+import OrderNumberComponent from "../SharedComponents/OrderNumber";
 
 const OrderInformation = () => {
   return (
-    <div>
+    <>
       <CustomerDetails />
-      <OrderNumberComponent title="Order Number"/>
-    </div>
-  )
-}
+      <OrderNumberComponent title="Order Number" />
+    </>
+  );
+};
 
-export default OrderInformation
+export default OrderInformation;

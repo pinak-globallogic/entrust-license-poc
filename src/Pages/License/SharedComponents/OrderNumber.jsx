@@ -4,9 +4,8 @@ import { CustomCardContent } from "Utilty";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux";
 
-const OrderNumberComponent = (props) => {
-
-    const product = useSelector((state) => state.generateLicense.product);
+const OrderNumber = (props) => {
+  const product = useSelector((state) => state.generateLicense.product);
 
   return (
     <div>
@@ -38,4 +37,4 @@ const OrderNumberComponent = (props) => {
   );
 };
 
-export default OrderNumberComponent;
+export default OrderNumber;

@@ -17,7 +17,6 @@ import LimitationDetails from "../Generate/LimitationDetails";
 import OrderInformation from "./OrderInformation";
 import MiscellaneousInformation from "./MiscellaneousInformation";
 
-
 const ModifyProductKeyWizard = (props) => {
   const activePage = useSelector((state) => state.customCard.activePage);
   const count = activePage.modifyLicenseWizard;
@@ -40,7 +39,9 @@ const ModifyProductKeyWizard = (props) => {
         variant: "contained",
         disabled: false,
         backgroundColor: "primary",
-        action: () => {dispatchChangeStep(activePage.modifyLicenseWizard + 1)},
+        action: () => {
+          dispatchChangeStep(activePage.modifyLicenseWizard + 1);
+        },
       },
       page: null,
     };
@@ -62,7 +63,7 @@ const ModifyProductKeyWizard = (props) => {
           </>
         );
         obj.btn.variant = "outlined";
-        obj.page = <ChangeProductKeyStep/>; 
+        obj.page = <ChangeProductKeyStep />;
         break;
       case 3:
         obj.btn.text = "Commit Changes";
@@ -89,7 +90,7 @@ const ModifyProductKeyWizard = (props) => {
         obj.page = <SavedProductKeyStep />;
         break;
 
-        case 5:
+      case 5:
         obj.btn.text = (
           <>
             Review
@@ -98,13 +99,13 @@ const ModifyProductKeyWizard = (props) => {
           </>
         );
         obj.btn.variant = "outlined";
-        obj.page = <OrderInformation/>; 
+        obj.page = <OrderInformation />;
         obj.btn.action = () => {
-          dispatchChangeStep(3)
+          dispatchChangeStep(3);
         };
         break;
 
-        case 6:
+      case 6:
         obj.btn.text = (
           <>
             Review
@@ -113,41 +114,41 @@ const ModifyProductKeyWizard = (props) => {
           </>
         );
         obj.btn.variant = "outlined";
-        obj.page = <FeatureDetails/>; 
+        obj.page = <FeatureDetails />;
         obj.btn.action = () => {
-          dispatchChangeStep(3)
+          dispatchChangeStep(3);
         };
         break;
 
-        case 7:
-          obj.btn.text = (
-            <>
-              Review
-              <br />
-              And Save Changes
-            </>
-          );
-          obj.btn.variant = "outlined";
-          obj.page = <LimitationDetails/>; 
-          obj.btn.action = () => {
-            dispatchChangeStep(3)
-          };
-          break;
+      case 7:
+        obj.btn.text = (
+          <>
+            Review
+            <br />
+            And Save Changes
+          </>
+        );
+        obj.btn.variant = "outlined";
+        obj.page = <LimitationDetails />;
+        obj.btn.action = () => {
+          dispatchChangeStep(3);
+        };
+        break;
 
-          case 8:
-            obj.btn.text = (
-              <>
-                Review
-                <br />
-                And Save Changes
-              </>
-            );
-            obj.btn.variant = "outlined";
-            obj.page = <MiscellaneousInformation/>; 
-            obj.btn.action = () => {
-              dispatchChangeStep(3)
-            };
-            break;
+      case 8:
+        obj.btn.text = (
+          <>
+            Review
+            <br />
+            And Save Changes
+          </>
+        );
+        obj.btn.variant = "outlined";
+        obj.page = <MiscellaneousInformation />;
+        obj.btn.action = () => {
+          dispatchChangeStep(3);
+        };
+        break;
     }
 
     return obj;
@@ -191,7 +192,7 @@ const ModifyProductKeyWizard = (props) => {
               </Typography>
             </Button>
           )}
-          {count > 0 && count < 9 && (
+          {count > 0 && count < 9 && count !== 4 && (
             <Button
               id="back-btn"
               variant="contained"

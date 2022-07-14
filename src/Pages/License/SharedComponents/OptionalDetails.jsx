@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import { CustomCardContent } from "Utilty";
 import TextField from "@mui/material/TextField";
 
-const OptionalDetailsComponent = () => {
+const OptionalDetails = () => {
   return (
     <div>
       <CustomCardContent>
@@ -32,4 +32,4 @@ const OptionalDetailsComponent = () => {
   );
 };
 
-export default OptionalDetailsComponent;
+export default OptionalDetails;

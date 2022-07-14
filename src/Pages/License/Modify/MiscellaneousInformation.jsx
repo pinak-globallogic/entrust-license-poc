@@ -1,15 +1,13 @@
-import CustomerInfo from "../Activate/CustomerInfo"
-import OptionalDetailsComponent from "../Shared Components/OptionalDetailsComponent"
+import CustomerInfo from "../Activate/CustomerInfo";
+import OptionalDetailsComponent from "../SharedComponents/OptionalDetails";
 
 const MiscellaneousInformation = () => {
   return (
-    <div>
-       
-        <OptionalDetailsComponent />
-        <CustomerInfo  details = {{color: "",  isSideCard: false}}/>
-      
-    </div>
-  )
-}
+    <>
+      <OptionalDetailsComponent />
+      <CustomerInfo details={{ color: "", isSideCard: false }} />
+    </>
+  );
+};
 
-export default MiscellaneousInformation
+export default MiscellaneousInformation;
