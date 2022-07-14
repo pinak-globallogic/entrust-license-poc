@@ -12,7 +12,7 @@ const LicenseServerCard = ({ data }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <CustomCardHeader title={{id: cardState.id, name: "License Server", expanded: cardState.expanded}} />
+        <CustomCardHeader title={{id: cardState.id, name: "License Server", expanded: cardState.expanded, modifyLicense: data.modifyLicense}} />
         <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
         <Divider sx={{ borderBottomWidth: 2, mb:1 }} />
         <Grid item container xs direction="column">
