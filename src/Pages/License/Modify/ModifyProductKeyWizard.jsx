@@ -7,15 +7,15 @@ import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { updateActivePage } from "Redux/Slices/customCardSlice";
 import { ROUTE_LICENSE_ACTIVATE, ROUTE_LICENSE_DASHBOARD } from "Routes";
-import InputProductKeyStep from "./InputProductKeyStep";
-import SelectCategoryStep from "./SelectCategoryStep";
-import ReviewProductKeyStep from "./ReviewProductKeyStep";
-import SavedProductKeyStep from "./SavedProductKeyStep";
-import ChangeProductKeyStep from "./ChangeProductKeyStep";
+import InputProductKeyStep from "./Steps/InputProductKeyStep";
+import SelectCategoryStep from "./Steps/SelectCategoryStep";
+import ChangeProductKeyStep from "./Steps/ChangeProductKeyStep";
+import ReviewChangesStep from "./Steps/ReviewChangesStep";
+import SavedChangesStep from "./Steps/SavedChangesStep";
+import OrderInformationStep from "./Steps/OrderInformationStep";
 import FeatureDetails from "../Generate/FeatureDetails";
 import LimitationDetails from "../Generate/LimitationDetails";
-import OrderInformation from "./OrderInformation";
-import MiscellaneousInformation from "./MiscellaneousInformation";
+import MiscellaneousInformationStep from "./Steps/MiscellaneousInformationStep";
 
 const ModifyProductKeyWizard = (props) => {
   const activePage = useSelector((state) => state.customCard.activePage);
@@ -67,7 +67,7 @@ const ModifyProductKeyWizard = (props) => {
         break;
       case 3:
         obj.btn.text = "Commit Changes";
-        obj.page = <ReviewProductKeyStep />;
+        obj.page = <ReviewChangesStep />;
         break;
       case 4:
         obj.btn.text = (
@@ -87,7 +87,7 @@ const ModifyProductKeyWizard = (props) => {
           );
           navigate(ROUTE_LICENSE_ACTIVATE);
         };
-        obj.page = <SavedProductKeyStep />;
+        obj.page = <SavedChangesStep />;
         break;
 
       case 5:
@@ -99,7 +99,7 @@ const ModifyProductKeyWizard = (props) => {
           </>
         );
         obj.btn.variant = "outlined";
-        obj.page = <OrderInformation />;
+        obj.page = <OrderInformationStep />;
         obj.btn.action = () => {
           dispatchChangeStep(3);
         };
@@ -144,7 +144,7 @@ const ModifyProductKeyWizard = (props) => {
           </>
         );
         obj.btn.variant = "outlined";
-        obj.page = <MiscellaneousInformation />;
+        obj.page = <MiscellaneousInformationStep />;
         obj.btn.action = () => {
           dispatchChangeStep(3);
         };
