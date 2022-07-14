@@ -12,6 +12,8 @@ import {
 } from "Routes";
 import { useContext } from "react";
 import { AppContext } from "Layouts/Content/ApplicationContextProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { updateModifyLicenseFlag } from "Redux/Slices/modifyKeySlice";
 
 const cards = [
   {
@@ -115,8 +117,21 @@ const Dashboard = (props) => {
   const navigate = useNavigate();
   const [adminComponent, setAdminComponent] = useContext(AppContext);
 
+  const modifyKey = useSelector((state) => state.modifyKey);
+  const dispatch = useDispatch();
+
+  const resetModifyFlag = () =>{
+    dispatch(
+      updateModifyLicenseFlag({
+        ...modifyKey,
+        modifyLicense: false,
+      })
+    );
+  }
+
   const onCreateNewProductKey = () => {
     navigate(ROUTE_LICENSE_GENERATE);
+    resetModifyFlag();
   };
 
   const onActivateKey = () => {

@@ -29,9 +29,12 @@ const ModifyProductKeyWizard = (props) => {
       updateActivePage({
         ...activePage,
         modifyLicenseWizard: index,
+        modifyLicense: true,
       })
     );
+
   };
+
 
   const renderSwitch = (count) => {
     let obj = {
