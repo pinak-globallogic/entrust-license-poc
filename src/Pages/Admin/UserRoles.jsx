@@ -307,7 +307,7 @@ const UserRoles = () => {
   }, []);
 
   return (
-    <Grid container marginLeft={6} rowSpacing={4}>
+    <Grid container marginLeft={6} rowSpacing={2}>
       <Grid item xs={12}>
         <Box sx={{ width: "100%" }}>
           <Typography variant="h5" gutterBottom component="div">
@@ -339,7 +339,7 @@ const UserRoles = () => {
           </Card>
         </Box>
       </Grid>
-      <Grid container item justifyContent="flex-end" xs={10} sx={{ mb: 3 }}>
+      <Grid container item justifyContent="flex-end" xs={10} sx={{ mb: 2 }}>
         <Button variant="contained" color="primary">
           Save
         </Button>

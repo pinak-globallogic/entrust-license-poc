@@ -4,7 +4,7 @@ import SearchLicense from "./SearchLicense";
 
 const SearchLicenseWrapper = () => {
   return (
-    <Content>
+    <Content sx={{ overflow: "hidden" }}>
       <SearchLicense />
       <SearchLicenseDetails />
     </Content>

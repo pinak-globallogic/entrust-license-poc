@@ -181,7 +181,7 @@ const SearchLicense = () => {
   };
 
   return (
-    <Grid container xs={6}>
+    <Grid container xs={6} sx={{ maxHeight: "85vh" }}>
       <Grid item xs={12}>
         Input keywords to filter the database. Click Search and find the results
         below.<br></br> You can filter the database for one or more parameters.

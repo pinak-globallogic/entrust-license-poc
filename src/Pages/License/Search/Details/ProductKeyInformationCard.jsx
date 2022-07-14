@@ -16,7 +16,7 @@ import Divider from "@mui/material/Divider";
 import CustomCardContent from "Components/CustomCard/CustomCardContent";
 
 function createData(fieldName, intVal, stringVal) {
-  return { fieldName, intVal, stringVal};
+  return { fieldName, intVal, stringVal };
 }
 
 const rows = [
@@ -30,9 +30,7 @@ const rows = [
 const card = (
   <React.Fragment>
     <CardContent>
-      <Typography variant="body1">
-        Detail Product Key Information
-      </Typography>
+      <Typography variant="body1">Detail Product Key Information</Typography>
       <Divider />
     </CardContent>
   </React.Fragment>
@@ -51,7 +49,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography  variant="body1">{children}</Typography>
+          <Typography variant="body1">{children}</Typography>
         </Box>
       )}
     </div>
@@ -74,7 +72,7 @@ function a11yProps(index) {
 const ProductKeyInformationCard = () => {
   const [value, setValue] = React.useState(2);
 
-  const handleChange = (event,newValue) => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
@@ -104,7 +102,11 @@ const ProductKeyInformationCard = () => {
           </TabPanel>
           <TabPanel value={value} index={2}>
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 100 }} aria-label="simple table" size="small">
+              <Table
+                sx={{ minWidth: 100 }}
+                aria-label="simple table"
+                size="small"
+              >
                 <TableHead>
                   <TableRow>
                     <TableCell>Fieldname</TableCell>

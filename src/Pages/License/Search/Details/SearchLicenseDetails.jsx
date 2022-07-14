@@ -14,8 +14,8 @@ const SearchLicenseDetails = () => {
   );
 
   return (
-    <Grid sx={{ pl: 5 }}>
-      <CustomCard style={{ width: "37vw", height: "22vw" }}>
+    <Grid xs sx={{ pl: 5, maxHeight: "85vh" }}>
+      <CustomCard style={{ width: "37vw" }}>
         <CustomCardContent>
           <Grid item>
             <Grid item container xs alignItems="center">
@@ -99,7 +99,7 @@ const SearchLicenseDetails = () => {
           </Grid>
         </CustomCardContent>
       </CustomCard>
-      <CustomCard style={{ width: "37vw", height: "26vw" }}>
+      <CustomCard style={{ width: "37vw" }}>
         <CustomCardContent>
           <ProductKeyInformationCard />
         </CustomCardContent>
