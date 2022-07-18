@@ -28,7 +28,6 @@ const ModifyProductKeyWizard = (props) => {
       updateActivePage({
         ...activePage,
         modifyLicenseWizard: index,
-        modifyLicense: true,
       })
     );
 

@@ -120,18 +120,18 @@ const Dashboard = (props) => {
   const modifyKey = useSelector((state) => state.modifyKey);
   const dispatch = useDispatch();
 
-  const resetModifyFlag = () =>{
+  const resetModifyFlag = (value) =>{
     dispatch(
       updateModifyLicenseFlag({
         ...modifyKey,
-        modifyLicense: false,
+        modifyLicense: value,
       })
     );
   }
 
   const onCreateNewProductKey = () => {
+    resetModifyFlag(false);
     navigate(ROUTE_LICENSE_GENERATE);
-    resetModifyFlag();
   };
 
   const onActivateKey = () => {
@@ -148,6 +148,7 @@ const Dashboard = (props) => {
   };
 
   const onModifyProductKey = () => {
+    resetModifyFlag(true);
     navigate(ROUTE_LICENSE_MODIFY);
   };
 
