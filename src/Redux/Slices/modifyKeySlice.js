@@ -31,6 +31,7 @@ export const modifyKeySlice = createSlice({
 export const { 
     updateKeyToModify, 
     updateLicense,
+    updateModifyLicenseFlag,
  } = modifyKeySlice.actions;
 
 export default modifyKeySlice.reducer;
