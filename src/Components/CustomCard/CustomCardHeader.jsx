@@ -92,7 +92,7 @@ const CustomCardHeader = (details, ...props) => {
     }
   };
 
-  const navigateToPage = (cardTitle,id) => {
+  const navigateToPage = (cardTitle, id) => {
     if (cardTitle === "Customer") {
       dispatch(
         updateActivePage({
@@ -100,74 +100,75 @@ const CustomCardHeader = (details, ...props) => {
           number: 0,
         })
       );
-
-      if(!customerCardExpanded.expanded){
+      // expand card if it is in collapsed state when clicked on edit button
+      if (!customerCardExpanded.expanded) {
         expandCollapseCard(id);
       }
-
     }
     if (cardTitle === "Order Information") {
-      dispatch(
-        updateActivePage({
-          ...activePage,
-          number: 1,
-        })
-      );
-
-      if(!productInformationCardExpanded.expanded){
+      // expand card if it is in collapsed state when clicked on edit button
+      if (!productInformationCardExpanded.expanded) {
         expandCollapseCard(id);
       }
 
-     // set screen for modify license page
-      if(modifyLicense){
+      // set screen for modify license page
+      if (modifyLicense) {
         dispatch(
           updateActivePage({
             ...activePage,
             modifyLicenseWizard: 5,
           })
         );
+      } else {
+        dispatch(
+          updateActivePage({
+            ...activePage,
+            number: 1,
+          })
+        );
       }
     }
     if (cardTitle === "Features") {
-      dispatch(
-        updateActivePage({
-          ...activePage,
-          number: 2,
-        })
-      );
-
-      if(!featureCardExpanded.expanded){
+      // expand card if it is in collapsed state when clicked on edit button
+      if (!featureCardExpanded.expanded) {
         expandCollapseCard(id);
       }
-
       // set screen for modify license page
-      if(modifyLicense){
+      if (modifyLicense) {
         dispatch(
           updateActivePage({
             ...activePage,
             modifyLicenseWizard: 6,
           })
         );
+      } else {
+        dispatch(
+          updateActivePage({
+            ...activePage,
+            number: 2,
+          })
+        );
       }
     }
     if (cardTitle === "Limitations") {
-      dispatch(
-        updateActivePage({
-          ...activePage,
-          number: 3,
-        })
-      );
-
-      if(!limitationCardExpanded.expanded){
+      // expand card if it is in collapsed state when clicked on edit button
+      if (!limitationCardExpanded.expanded) {
         expandCollapseCard(id);
       }
 
       // set screen for modify license page
-      if(modifyLicense){
+      if (modifyLicense) {
         dispatch(
           updateActivePage({
             ...activePage,
             modifyLicenseWizard: 7,
+          })
+        );
+      } else {
+        dispatch(
+          updateActivePage({
+            ...activePage,
+            number: 3,
           })
         );
       }

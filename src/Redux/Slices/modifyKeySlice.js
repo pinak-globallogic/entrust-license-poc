@@ -23,7 +23,7 @@ export const modifyKeySlice = createSlice({
         state.licenseDetails.newLicense = action.payload.newLicense;
     },
     updateModifyLicenseFlag : (state, action) => {
-        state.modifyLicense = action.modifyLicense;
+        state.modifyLicense = action.payload.modifyLicense;
     }
   },
 });
