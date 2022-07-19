@@ -5,17 +5,17 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import { updateActivePage } from "Redux/Slices/customCardSlice";
-import { ROUTE_LICENSE_ACTIVATE, ROUTE_LICENSE_DASHBOARD } from "Routes";
-import InputProductKeyStep from "./Steps/InputProductKeyStep";
-import SelectCategoryStep from "./Steps/SelectCategoryStep";
-import ChangeProductKeyStep from "./Steps/ChangeProductKeyStep";
-import ReviewChangesStep from "./Steps/ReviewChangesStep";
-import SavedChangesStep from "./Steps/SavedChangesStep";
-import OrderInformationStep from "./Steps/OrderInformationStep";
-import FeatureDetails from "../Generate/FeatureDetails";
-import LimitationDetails from "../Generate/LimitationDetails";
-import MiscellaneousInformationStep from "./Steps/MiscellaneousInformationStep";
+import { updateActivePage } from "redux/slices/customCardSlice";
+import { ROUTE_LICENSE_ACTIVATE, ROUTE_LICENSE_DASHBOARD } from "routes";
+import InputProductKeyStep from "./steps/InputProductKeyStep";
+import SelectCategoryStep from "./steps/SelectCategoryStep";
+import ChangeProductKeyStep from "./steps/ChangeProductKeyStep";
+import ReviewChangesStep from "./steps/ReviewChangesStep";
+import SavedChangesStep from "./steps/SavedChangesStep";
+import OrderInformationStep from "./steps/OrderInformationStep";
+import FeatureDetails from "../generate/steps/FeatureDetails";
+import LimitationDetails from "../generate/steps/LimitationDetails";
+import MiscellaneousInformationStep from "./steps/MiscellaneousInformationStep";
 
 const ModifyProductKeyWizard = (props) => {
   const activePage = useSelector((state) => state.customCard.activePage);
@@ -30,9 +30,7 @@ const ModifyProductKeyWizard = (props) => {
         modifyLicenseWizard: index,
       })
     );
-
   };
-
 
   const renderSwitch = (count) => {
     let obj = {

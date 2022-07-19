@@ -5,8 +5,8 @@ import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 import { useSelector, useDispatch } from "react-redux";
-import { updateLimitation } from "Redux/Slices/generateLicenseSlice";
-import { CustomCard, CustomCardContent } from "Utilty";
+import { updateLimitation } from "redux/slices/generateLicenseSlice";
+import { CustomCard, CustomCardContent } from "utilty";
 import { useState } from "react";
 
 const EXPIRYDAYS = "Expiry in days:";
@@ -33,8 +33,7 @@ const LimitationDetails = () => {
   const onSiteLicenseCheckboxChange = (event) => {
     if (event.target.checked) {
       setDisableLimitCount(true);
-    }
-    else{
+    } else {
       setDisableLimitCount(false);
     }
   };

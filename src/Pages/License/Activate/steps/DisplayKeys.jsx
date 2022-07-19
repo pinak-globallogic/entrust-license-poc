@@ -18,9 +18,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 import { makeStyles } from "@mui/styles";
 
-import DataGridCustom from "Components/DataGrid";
-import { CustomCard, CustomCardContent } from "Utilty";
-import { updateLicense, updateKey } from "Redux/Slices/activateKeySlice";
+import DataGridCustom from "components/DataGrid";
+import { CustomCard, CustomCardContent } from "utilty";
+import { updateLicense, updateKey } from "redux/slices/activateKeySlice";
 
 const useStyles = makeStyles({
   dropdown: {

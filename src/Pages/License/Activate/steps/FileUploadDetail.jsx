@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Grid, Typography, Chip } from "@mui/material";
 
-import { CustomCard, CustomCardContent } from "Utilty";
-import { updateLicense } from "Redux/Slices/activateKeySlice";
-import { updateActivePage } from "Redux/Slices/customCardSlice";
+import { CustomCard, CustomCardContent } from "utilty";
+import { updateLicense } from "redux/slices/activateKeySlice";
+import { updateActivePage } from "redux/slices/customCardSlice";
 
 const FileUploadDetail = () => {
   const dispatch = useDispatch();

@@ -1,12 +1,11 @@
 import Grid from "@mui/material/Grid";
-import FeatureCard from "Pages/License/Details/Cards/FeatureCard";
-import LicenseServerCard from "Pages/License/Details/Cards/LicenseServerCard";
-import LimitationCard from "Pages/License/Details/Cards/LimitationCard";
-import MiscellaneousCard from "Pages/License/Details/Cards/MiscellaneousCard";
-import ProductCard from "Pages/License/Details/Cards/ProductCard";
+import FeatureCard from "pages/license/details/cards/FeatureCard";
+import LicenseServerCard from "pages/license/details/cards/LicenseServerCard";
+import LimitationCard from "pages/license/details/cards/LimitationCard";
+import MiscellaneousCard from "pages/license/details/cards/MiscellaneousCard";
+import ProductCard from "pages/license/details/cards/ProductCard";
 
 import { useSelector } from "react-redux";
-
 
 const SideCardDetails = (props) => {
   const state = useSelector((state) => state.generateLicense);
@@ -25,8 +24,7 @@ const SideCardDetails = (props) => {
           justifyContent="start"
           {...props}
         >
-          
-          <LicenseServerCard data={licenseServerState.licenseDetails}/>
+          <LicenseServerCard data={licenseServerState.licenseDetails} />
           <ProductCard data={state.product} />
           <FeatureCard data={state.feature} />
           <LimitationCard data={state.limitation} />

@@ -6,7 +6,7 @@ import {
   ROUTE_LICENSE_DASHBOARD,
   ROUTE_LICENSE_SEARCH,
   ROUTE_LICENSE_ACTIVATE,
-} from "Routes";
+} from "routes";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
@@ -15,9 +15,12 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 export default function CustomSeparator() {
   const location = useLocation();
-  const isLicensePresent = useSelector((state) => state.customCard.activePage).modifyLicenseWizard > 0;
-  const license = useSelector((state) => state.modifyKey.licenseDetails).oldLicense;
-  
+  const isLicensePresent =
+    useSelector((state) => state.customCard.activePage).modifyLicenseWizard > 0;
+  const license = useSelector(
+    (state) => state.modifyKey.licenseDetails
+  ).oldLicense;
+
   const navMap = new Map();
   navMap.set("/", {
     nav: false,
@@ -36,7 +39,7 @@ export default function CustomSeparator() {
     nav: true,
     content: true,
     title: "License Key Modification",
-    isSubtitlePresnt : isLicensePresent,
+    isSubtitlePresnt: isLicensePresent,
     subtitle: license,
   });
 
@@ -77,13 +80,11 @@ export default function CustomSeparator() {
         {data.title}
       </Typography>
     ),
-    data.nav &&
-      data.content &&
-      data.isSubtitlePresnt &&(
-        <Typography id="header-nav3" key="3" color="white">
-          {data.subtitle}
-        </Typography>
-      ),
+    data.nav && data.content && data.isSubtitlePresnt && (
+      <Typography id="header-nav3" key="3" color="white">
+        {data.subtitle}
+      </Typography>
+    ),
   ];
 
   return (

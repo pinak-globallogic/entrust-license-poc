@@ -4,8 +4,8 @@ import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { useSelector, useDispatch } from "react-redux";
 
-import { CustomCard, CustomCardContent } from "Utilty";
-import { updateCustomer } from "Redux/Slices/generateLicenseSlice";
+import { CustomCard, CustomCardContent } from "utilty";
+import { updateCustomer } from "redux/slices/generateLicenseSlice";
 import { useState } from "react";
 
 //ToDo: Hard coded data should be removed once API are available

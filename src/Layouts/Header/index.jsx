@@ -1,4 +1,4 @@
-import AppBar from "../Header/Appbar";
+import AppBar from "./Appbar";
 
 const Header = () => {
   return <AppBar position="fixed" />;

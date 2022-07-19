@@ -1,8 +1,8 @@
-import Content from "Layouts/Content/Content";
+import Content from "layouts/main/Content";
 import UserRoles from "./UserRoles";
 import AppFeatures from "./AppFeatures";
 import { useContext } from "react";
-import { AppContext } from "Layouts/Content/ApplicationContextProvider";
+import { AppContext } from "layouts/main/ApplicationContextProvider";
 import Audit from "./Audit";
 import SubMenu1 from "./SubMenu1";
 import SubMenu2 from "./SubMenu2";

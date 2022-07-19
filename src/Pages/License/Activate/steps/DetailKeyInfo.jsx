@@ -19,8 +19,8 @@ import {
 } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-import { CustomCard, CustomCardContent } from "Utilty";
-import { updateKey } from "Redux/Slices/activateKeySlice";
+import { CustomCard, CustomCardContent } from "utilty";
+import { updateKey } from "redux/slices/activateKeySlice";
 
 function createData(fieldName, intVal, stringVal) {
   return { fieldName, intVal, stringVal };

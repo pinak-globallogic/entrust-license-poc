@@ -18,7 +18,7 @@ import NativeSelect from "@mui/material/NativeSelect";
 import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
-import { updateFeature } from "Redux/Slices/generateLicenseSlice";
+import { updateFeature } from "redux/slices/generateLicenseSlice";
 
 const useStyles = makeStyles({
   tableCell: {

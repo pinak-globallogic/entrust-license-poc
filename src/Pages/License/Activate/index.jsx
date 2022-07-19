@@ -1,6 +1,6 @@
-import DisplayDetails from "./DisplayDetails";
+import DisplayDetails from "./steps/DisplayDetails";
 import ActivateLicenseWizard from "./ActivateLicenseWizard";
-import Content from "Layouts/Content/Content";
+import Content from "layouts/main/Content";
 
 const ActivateLicenseWrapper = () => {
   return (

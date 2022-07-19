@@ -2,9 +2,9 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-import CustomCard from "Components/CustomCard/CustomCard";
-import CustomCardContent from "Components/CustomCard/CustomCardContent";
-import CustomChip from "Components/CustomCard/CustomChip";
+import CustomCard from "components/card/CustomCard";
+import CustomCardContent from "components/card/CustomCardContent";
+import CustomChip from "components/CustomChip";
 import ProductKeyInformationCard from "./ProductKeyInformationCard";
 import { useSelector } from "react-redux";
 

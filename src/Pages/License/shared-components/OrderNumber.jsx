@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { CustomCardContent } from "Utilty";
+import { CustomCardContent } from "utilty";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux";
 

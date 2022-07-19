@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { CustomCard, CustomCardContent } from "Utilty";
+import { CustomCard, CustomCardContent } from "utilty";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 

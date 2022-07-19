@@ -5,8 +5,8 @@ import { Button, Typography, Grid } from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-import DataGridCustom from "Components/DataGrid";
-import { CustomCard, CustomCardContent } from "Utilty";
+import DataGridCustom from "components/DataGrid";
+import { CustomCard, CustomCardContent } from "utilty";
 
 const ActivationSuccess = () => {
   const [gridData, setGridData] = useState([]);

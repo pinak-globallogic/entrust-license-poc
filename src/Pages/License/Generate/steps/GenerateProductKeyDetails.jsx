@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { CustomCard, CustomCardContent } from "Utilty";
+import { CustomCard, CustomCardContent } from "utilty";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";

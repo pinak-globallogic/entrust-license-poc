@@ -1,6 +1,6 @@
-import Content from "Layouts/Content/Content";
+import Content from "layouts/main/Content";
 import ModifyProductKeyWizard from "./ModifyProductKeyWizard";
-import SideCardDetails from "./SideCardDetails";
+import SideCardDetails from "./side-card";
 
 const ModifyProductKeyWrapper = () => {
   return (

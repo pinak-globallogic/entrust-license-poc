@@ -1,5 +1,5 @@
-import Content from "Layouts/Content/Content";
-import LicenseDetails from "../Details";
+import Content from "layouts/main/Content";
+import LicenseDetails from "../details";
 import GenerateLicenseWizard from "./GenerateLicenseWizard";
 
 const GenerateLicenseWrapper = () => {

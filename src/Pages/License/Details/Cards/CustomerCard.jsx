@@ -1,8 +1,8 @@
 import Grid from "@mui/material/Grid";
-import CustomCard from "Components/CustomCard/CustomCard";
-import CustomCardContent from "Components/CustomCard/CustomCardContent";
-import CustomCardHeader from "Components/CustomCard/CustomCardHeader";
-import CustomCardRow from "Components/CustomCard/CustomCardRow";
+import CustomCard from "components/card/CustomCard";
+import CustomCardContent from "components/card/CustomCardContent";
+import CustomCardHeader from "components/card/CustomCardHeader";
+import CustomCardRow from "components/card/CustomCardRow";
 import Collapse from "@mui/material/Collapse";
 import { useSelector } from "react-redux";
 import Divider from "@mui/material/Divider";
@@ -12,12 +12,18 @@ const CustomerCard = ({ data }) => {
   return (
     <CustomCard>
       <CustomCardContent>
-        <CustomCardHeader title={{id: cardState.id, name: "Customer", expanded: cardState.expanded}} />
+        <CustomCardHeader
+          title={{
+            id: cardState.id,
+            name: "Customer",
+            expanded: cardState.expanded,
+          }}
+        />
         <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
-        <Divider sx={{ borderBottomWidth: 2, mb:1 }} />
-        <Grid item container xs direction="column">
+          <Divider sx={{ borderBottomWidth: 2, mb: 1 }} />
+          <Grid item container xs direction="column">
             <CustomCardRow title="Name" value={data.name} mb={0} />
-        </Grid>
+          </Grid>
         </Collapse>
       </CustomCardContent>
     </CustomCard>

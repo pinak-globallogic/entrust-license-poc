@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import React from "react";
 import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
-import CustomCardContent from "Components/CustomCard/CustomCardContent";
+import CustomCardContent from "components/card/CustomCardContent";
 
 function createData(fieldName, intVal, stringVal) {
   return { fieldName, intVal, stringVal };

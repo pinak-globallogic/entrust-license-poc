@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import Sidenav from "Layouts/Nav";
+import Sidenav from "layouts/navigation";
 import Content from "./Content";
 
 // creating context to manage state between side navigation bar and the main content
@@ -9,9 +9,7 @@ const ApplicationContextProvider = (props) => {
   const [adminComponent, setAdminComponent] = useState(0);
 
   return (
-    <AppContext.Provider
-      value={[adminComponent, setAdminComponent]}
-    >
+    <AppContext.Provider value={[adminComponent, setAdminComponent]}>
       <Sidenav xs={1.4} />
       <Content xs pt={0} {...props} />
     </AppContext.Provider>

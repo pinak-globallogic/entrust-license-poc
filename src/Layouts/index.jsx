@@ -1,6 +1,6 @@
-import ContentLayout from "./Content/ContentLayout";
-import Header from "./Header";
-import Router from "Routes";
+import ContentLayout from "./main";
+import Header from "./header";
+import Router from "routes";
 
 const LayoutWrapper = () => {
   return (

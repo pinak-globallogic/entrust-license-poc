@@ -10,10 +10,10 @@ import {
   updateCustomerCardState,
   updateLicenseServerCardState,
   updateMiscellaneousCardState,
-} from "Redux/Slices/customCardSlice";
-import { updateFeatureCardState } from "Redux/Slices/customCardSlice";
-import { updateLimitationsCardState } from "Redux/Slices/customCardSlice";
-import { updateProductInformationCardState } from "Redux/Slices/customCardSlice";
+} from "redux/slices/customCardSlice";
+import { updateFeatureCardState } from "redux/slices/customCardSlice";
+import { updateLimitationsCardState } from "redux/slices/customCardSlice";
+import { updateProductInformationCardState } from "redux/slices/customCardSlice";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 

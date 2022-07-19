@@ -1,5 +1,5 @@
-import Content from "Layouts/Content/Content";
-import "Styles/loader.css";
+import Content from "layouts/main/Content";
+import "styles/loader.css";
 
 const Loader = () => {
   return (

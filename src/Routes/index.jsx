@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import Loader from "Components/Loader";
+import Loader from "components/loader";
 
 // Routes constants
 export const ROUTE_HOME = "/";
@@ -14,14 +14,14 @@ export const ROUTE_LICENSE_MODIFY = "/license/modify";
 export const ROUTE_LICENSE_ACTIVATE = "/license/activate";
 
 // Lazy components
-const Login = lazy(() => import("Pages/Login"));
-const FirstRunWrapper = lazy(() => import("Pages/SystemConfiguration"));
-const DashboardWrapper = lazy(() => import("Pages/Dashboard"));
-const AdminPanelWrapper = lazy(() => import("Pages/Admin"));
-const GenerateLicenseWrapper = lazy(() => import("Pages/License/Generate"));
-const SearchLicenseWrapper = lazy(() => import("Pages/License/Search"));
-const ModifyProductKeyWrapper = lazy(() => import("Pages/License/Modify"));
-const ActivateLicenseWrapper = lazy(() => import("Pages/License/Activate"));
+const Login = lazy(() => import("pages/login"));
+const FirstRunWrapper = lazy(() => import("pages/system-configuration"));
+const DashboardWrapper = lazy(() => import("pages/dashboard"));
+const AdminPanelWrapper = lazy(() => import("pages/admin"));
+const GenerateLicenseWrapper = lazy(() => import("pages/license/generate"));
+const SearchLicenseWrapper = lazy(() => import("pages/license/search"));
+const ModifyProductKeyWrapper = lazy(() => import("pages/license/modify"));
+const ActivateLicenseWrapper = lazy(() => import("pages/license/activate"));
 
 const Router = () => {
   return (

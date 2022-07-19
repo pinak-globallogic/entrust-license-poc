@@ -1,10 +1,10 @@
 import { Box, Grid, Typography, Button } from "@mui/material";
-import TagsInput from "Components/TagsInput";
+import TagsInput from "components/TagsInput";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
-import CollapsibleTable from "Pages/Admin/CollapsibleTable";
+import CollapsibleTable from "pages/admin/CollapsibleTable";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -161,9 +161,7 @@ const Audit = () => {
             </TabPanel>
           </Box>
           <TabPanel value={value} index={1}>
-            <Grid container sx={{minHeight : 300}}>
-
-			</Grid>
+            <Grid container sx={{ minHeight: 300 }}></Grid>
           </TabPanel>
         </Box>
       </Grid>

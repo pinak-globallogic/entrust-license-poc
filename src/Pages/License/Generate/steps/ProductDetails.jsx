@@ -3,8 +3,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useSelector, useDispatch } from "react-redux";
-import { updateProduct } from "Redux/Slices/generateLicenseSlice";
-import { CustomCard, CustomCardContent } from "Utilty";
+import { updateProduct } from "redux/slices/generateLicenseSlice";
+import { CustomCard, CustomCardContent } from "utilty";
 
 //ToDo: Hard coded data should be removed once API is available
 const productIdentifierList = [

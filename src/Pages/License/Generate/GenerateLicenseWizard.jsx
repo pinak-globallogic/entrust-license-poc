@@ -5,18 +5,18 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-import CustomerDetails from "./CustomerDetails";
-import ProductDetails from "./ProductDetails";
-import FeatureDetails from "./FeatureDetails";
-import LimitationDetails from "./LimitationDetails";
-import OptionalDetails from "./OptionalDetails";
+import CustomerDetails from "./steps/CustomerDetails";
+import ProductDetails from "./steps/ProductDetails";
+import FeatureDetails from "./steps/FeatureDetails";
+import LimitationDetails from "./steps/LimitationDetails";
+import OptionalDetails from "./steps/OptionalDetails";
 import { Typography } from "@mui/material";
-import GenerateProductKeyDetails from "./GenerateProductKeyDetails";
+import GenerateProductKeyDetails from "./steps/GenerateProductKeyDetails";
 import {
   resetActivePage,
   updateActivePage,
-} from "Redux/Slices/customCardSlice";
-import { ROUTE_LICENSE_DASHBOARD } from "Routes";
+} from "redux/slices/customCardSlice";
+import { ROUTE_LICENSE_DASHBOARD } from "routes";
 
 const noOfKeys = (keyAmount) => {
   if (keyAmount < 1) {

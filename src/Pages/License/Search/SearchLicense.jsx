@@ -5,14 +5,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
-import DataGridCustom from "Components/DataGrid";
+import DataGridCustom from "components/DataGrid";
 
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
-import { updateLicenseDetails } from "Redux/Slices/searchLicenseSlice";
+import { updateLicenseDetails } from "redux/slices/searchLicenseSlice";
 
 const formatDateFromMilliSeconds = (dateMilliSeconds) => {
   var date = new Date(Number(dateMilliSeconds)),

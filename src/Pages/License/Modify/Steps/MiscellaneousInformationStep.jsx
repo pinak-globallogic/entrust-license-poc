@@ -1,5 +1,5 @@
-import CustomerInfo from "../../Activate/CustomerInfo";
-import OptionalDetails from "../../SharedComponents/OptionalDetails";
+import CustomerInfo from "../../activate/steps/CustomerInfo";
+import OptionalDetails from "../../shared-components/OptionalDetails";
 
 const MiscellaneousInformationStep = () => {
   return (

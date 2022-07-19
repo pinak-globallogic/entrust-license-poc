@@ -1,5 +1,5 @@
-import Content from "Layouts/Content/Content";
-import SearchLicenseDetails from "./Details/SearchLicenseDetails";
+import Content from "layouts/main/Content";
+import SearchLicenseDetails from "./details/SearchLicenseDetails";
 import SearchLicense from "./SearchLicense";
 
 const SearchLicenseWrapper = () => {

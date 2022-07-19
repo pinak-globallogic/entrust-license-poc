@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Grid, Stack, Button } from "@mui/material";
 
-import ActivationSuccess from "./ActivationSuccess";
-import DisplayKeys from "./DisplayKeys";
-import FileUploadDetail from "./FileUploadDetail";
-import KeyActivationOptions from "./KeyActivationOptions";
-import { ROUTE_LICENSE_DASHBOARD } from "Routes";
+import ActivationSuccess from "./steps/ActivationSuccess";
+import DisplayKeys from "./steps/DisplayKeys";
+import FileUploadDetail from "./steps/FileUploadDetail";
+import KeyActivationOptions from "./steps/KeyActivationOptions";
+import { ROUTE_LICENSE_DASHBOARD } from "routes";
 import {
   resetActivePage,
   updateActivePage,
-} from "Redux/Slices/customCardSlice";
+} from "redux/slices/customCardSlice";
 
 const ActivateLicenseWizard = (props) => {
   const activePage = useSelector((state) => state.customCard.activePage);

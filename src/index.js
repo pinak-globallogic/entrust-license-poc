@@ -3,9 +3,9 @@ import "./index.css";
 import App from "./App";
 import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
-import { theme } from "./Styles/muiTheme";
+import { theme } from "./styles/muiTheme";
 import { Provider } from "react-redux";
-import { store } from "./Redux/store";
+import { store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import persistStore from "redux-persist/es/persistStore";
 

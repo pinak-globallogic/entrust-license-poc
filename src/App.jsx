@@ -1,4 +1,4 @@
-import LayoutWrapper from "Layouts";
+import LayoutWrapper from "layouts";
 
 const App = () => {
   return <LayoutWrapper />;

@@ -1,8 +1,8 @@
 import Grid from "@mui/material/Grid";
-import CustomerCard from "./Cards/CustomerCard";
-import ProductCard from "./Cards/ProductCard";
-import FeatureCard from "./Cards/FeatureCard";
-import LimitationCard from "./Cards/LimitationCard";
+import CustomerCard from "./cards/CustomerCard";
+import ProductCard from "./cards/ProductCard";
+import FeatureCard from "./cards/FeatureCard";
+import LimitationCard from "./cards/LimitationCard";
 import { useSelector } from "react-redux";
 
 const LicenseDetails = (props) => {

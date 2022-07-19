@@ -1,5 +1,5 @@
-import CustomerDetails from "../../Generate/CustomerDetails";
-import OrderNumber from "../../SharedComponents/OrderNumber";
+import CustomerDetails from "../../generate/steps/CustomerDetails";
+import OrderNumber from "../../shared-components/OrderNumber";
 
 const OrderInformationStep = () => {
   return (

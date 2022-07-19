@@ -3,9 +3,9 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useSelector, useDispatch } from "react-redux";
 
-import { CustomCard, CustomCardContent } from "Utilty";
+import { CustomCard, CustomCardContent } from "utilty";
 import { useState } from "react";
-import { updateOptionalDetails } from "Redux/Slices/generateLicenseSlice";
+import { updateOptionalDetails } from "redux/slices/generateLicenseSlice";
 
 const OptionalDetails = () => {
   const state = useSelector((state) => state.generateLicense);

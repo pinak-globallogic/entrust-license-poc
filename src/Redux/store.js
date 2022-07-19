@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import authSlice from "./Slices/authSlice";
-import customCardSlice from "./Slices/customCardSlice";
-import generateLicenseSlice from "./Slices/generateLicenseSlice";
-import searchLicenseSlice from "./Slices/searchLicenseSlice";
-import activateKeySlice from "./Slices/activateKeySlice";
-import modifyKeySlice from "./Slices/modifyKeySlice";
+import authSlice from "./slices/authSlice";
+import customCardSlice from "./slices/customCardSlice";
+import generateLicenseSlice from "./slices/generateLicenseSlice";
+import searchLicenseSlice from "./slices/searchLicenseSlice";
+import activateKeySlice from "./slices/activateKeySlice";
+import modifyKeySlice from "./slices/modifyKeySlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { createLogger } from "redux-logger";

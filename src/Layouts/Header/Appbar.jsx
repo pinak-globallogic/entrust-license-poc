@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import logo from "Assets/Images/entrust-logo.png";
+import logo from "assets/images/entrust-logo.png";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -14,9 +14,9 @@ import MenuItem from "@mui/material/MenuItem";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { makeStyles } from "@mui/styles";
 import CustomSeparator from "./CustomSeparator";
-import { updateLogout } from "Redux/Slices/authSlice";
+import { updateLogout } from "redux/slices/authSlice";
 import { useState } from "react";
-import { ROUTE_LICENSE_DASHBOARD } from "Routes";
+import { ROUTE_LICENSE_DASHBOARD } from "routes";
 
 const useStyles = makeStyles({
   logo: {

@@ -17,11 +17,11 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 
 // Custom
-import Logo from "Assets/Images/entrust-logo.png";
-import { withSnackbar } from "Components/Snackbar";
-import Content from "Layouts/Content/Content";
-import { ROUTE_LICENSE_DASHBOARD } from "Routes";
-import { updateLogin } from "Redux/Slices/authSlice";
+import Logo from "assets/images/entrust-logo.png";
+import { withSnackbar } from "components/Snackbar";
+import Content from "layouts/main/Content";
+import { ROUTE_LICENSE_DASHBOARD } from "routes";
+import { updateLogin } from "redux/slices/authSlice";
 
 const useStyles = makeStyles({
   card: {

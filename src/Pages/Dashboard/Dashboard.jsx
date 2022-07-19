@@ -2,18 +2,18 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import CardWrapper from "./CardWrapper";
 import { useNavigate } from "react-router-dom";
-import { CustomCard } from "../../Utilty";
+import { CustomCard } from "../../utilty";
 import {
   ROUTE_ADMIN_PANEL,
   ROUTE_LICENSE_GENERATE,
   ROUTE_LICENSE_SEARCH,
   ROUTE_LICENSE_MODIFY,
   ROUTE_LICENSE_ACTIVATE,
-} from "Routes";
+} from "routes";
 import { useContext } from "react";
-import { AppContext } from "Layouts/Content/ApplicationContextProvider";
+import { AppContext } from "layouts/main/ApplicationContextProvider";
 import { useDispatch, useSelector } from "react-redux";
-import { updateModifyLicenseFlag } from "Redux/Slices/modifyKeySlice";
+import { updateModifyLicenseFlag } from "redux/slices/modifyKeySlice";
 
 const cards = [
   {
@@ -120,14 +120,14 @@ const Dashboard = (props) => {
   const modifyKey = useSelector((state) => state.modifyKey);
   const dispatch = useDispatch();
 
-  const resetModifyFlag = (value) =>{
+  const resetModifyFlag = (value) => {
     dispatch(
       updateModifyLicenseFlag({
         ...modifyKey,
         modifyLicense: value,
       })
     );
-  }
+  };
 
   const onCreateNewProductKey = () => {
     resetModifyFlag(false);

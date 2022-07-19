@@ -1,11 +1,11 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { AppContext } from "Layouts/Content/ApplicationContextProvider";
+import { AppContext } from "layouts/main/ApplicationContextProvider";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { resetActivePage } from "Redux/Slices/customCardSlice";
+import { resetActivePage } from "redux/slices/customCardSlice";
 import {
   ROUTE_ADMIN_PANEL,
   ROUTE_LICENSE_GENERATE,
@@ -14,7 +14,7 @@ import {
   ROUTE_HOME,
   ROUTE_LICENSE_MODIFY,
   ROUTE_LICENSE_ACTIVATE,
-} from "Routes";
+} from "routes";
 import AdminNav from "./AdminNav";
 
 const title = "CANCEL AND GO BACK TO DASHBOARD";
