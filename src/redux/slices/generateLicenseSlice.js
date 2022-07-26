@@ -59,6 +59,7 @@ export const generateLicenseSlice = createSlice({
     updateMiscellaneous: (state, action) => {
       state.miscellaneous = action.payload;
     },
+    resetGenerateLicenseState: () => initialState,
   },
 });
 
@@ -71,6 +72,7 @@ export const {
   updateOptionalDetails,
   updateLicenseServer,
   updateMiscellaneous,
+  resetGenerateLicenseState,
 } = generateLicenseSlice.actions;
 
 export default generateLicenseSlice.reducer;
