@@ -146,6 +146,14 @@ const SearchLicense = () => {
     },
   ];
 
+  const clearFilterRecords = () => {
+    loadLicense();
+    setProductKey("");
+    setCustomerName("");
+    setLicenseServerId("");
+    setSalesOrderNo("");
+  };
+
   const filterRecordFromGrid = () => {
     var filteredData = respData;
     if (productKey) {
@@ -194,6 +202,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="productKey"
+          value={productKey}
           onChange={(e) => {
             setProductKey(e.target.value);
           }}
@@ -208,6 +217,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="customerName"
+          value={customerName}
           onChange={(e) => setCustomerName(e.target.value)}
         />
       </Grid>
@@ -220,6 +230,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="licenseServerId"
+          value={licenseServerId}
           onChange={(e) => setLicenseServerId(e.target.value)}
         />
       </Grid>
@@ -232,6 +243,7 @@ const SearchLicense = () => {
           variant="outlined"
           fullWidth
           name="orderNo"
+          value={salesOrderNo}
           onChange={(e) => setSalesOrderNo(e.target.value)}
         />
       </Grid>
@@ -271,8 +283,18 @@ const SearchLicense = () => {
             label="SEARCH"
             id="searchLicense"
             name="searchLicense"
+            sx={{ mr: 2 }}
           >
             SEARCH
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={clearFilterRecords}
+            label="CLEAR"
+            id="clearSearch"
+            name="clearSearch"
+          >
+            CLEAR
           </Button>
         </Box>
       </Grid>

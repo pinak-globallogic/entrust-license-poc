@@ -7,7 +7,6 @@ import Radio from "@mui/material/Radio";
 import { useSelector, useDispatch } from "react-redux";
 import { updateLimitation } from "redux/slices/generateLicenseSlice";
 import { CustomCard, CustomCardContent } from "utilty";
-import { useState } from "react";
 
 const EXPIRYDAYS = "Expiry in days:";
 const NOEXPIRY = "No expiry Date";
@@ -16,10 +15,15 @@ const SPECIFICDATE = "Specific date";
 const LimitationDetails = () => {
   const limitation = useSelector((state) => state.generateLicense.limitation);
   const dispatch = useDispatch();
-  const [disableLimitCount, setDisableLimitCount] = useState(true);
 
   const radioHandler = (e) => {
-    dispatch(updateLimitation({ ...limitation, select: e.target.value }));
+    dispatch(
+      updateLimitation({
+        ...limitation,
+        select: e.target.value,
+        expiration: NOEXPIRY === e.target.value ? "" : limitation.expiration,
+      })
+    );
   };
 
   const onLimitCountChange = (e) => {
@@ -31,11 +35,13 @@ const LimitationDetails = () => {
   };
 
   const onSiteLicenseCheckboxChange = (event) => {
-    if (event.target.checked) {
-      setDisableLimitCount(true);
-    } else {
-      setDisableLimitCount(false);
-    }
+    dispatch(
+      updateLimitation({
+        ...limitation,
+        siteLicense: event.target.checked,
+        limitCount: event.target.checked ? "" : limitation.limitCount,
+      })
+    );
   };
 
   return (
@@ -64,7 +70,7 @@ const LimitationDetails = () => {
               required
               value={limitation.limitCount}
               onChange={onLimitCountChange}
-              disabled={disableLimitCount}
+              disabled={limitation.siteLicense}
             />
           </Grid>
           <Grid item pr={1}>

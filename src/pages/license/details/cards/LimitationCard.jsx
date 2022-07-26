@@ -37,7 +37,7 @@ const LimitationCard = ({ data }) => {
               />
               <CustomCardRow
                 title="Site license"
-                value={data.siteLicense}
+                value={String(data.siteLicense)}
                 mb={0}
                 disabled
                 icon={<LockIcon />}

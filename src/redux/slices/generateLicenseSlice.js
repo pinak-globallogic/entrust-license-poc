@@ -2,28 +2,27 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   customer: {
-    name: "Company ABC",
+    name: "",
   },
   product: {
-    name: "KMS Key Manager Site License",
-    salesOrderNo: "12345",
-    lineItemNo: "1.1",
-    productItemNo: "654123879",
+    name: "",
+    salesOrderNo: "",
+    lineItemNo: "",
+    productItemNo: "",
   },
   feature: {
-    edition: "Professional",
+    edition: "",
   },
   limitation: {
-    siteLicense: "false",
-    limitCount: 1,
+    siteLicense: true,
+    limitCount: "",
     expiration: "",
     select: "No expiry Date",
   },
   licenseServer: {
-    licenseServerId: "32224-32224-32224-32224-32224-32224"
+    licenseServerId: "32224-32224-32224-32224-32224-32224",
   },
-  miscellaneous: {
-  },
+  miscellaneous: {},
   optionalComment: "",
   keyAmount: "1",
   error: "",

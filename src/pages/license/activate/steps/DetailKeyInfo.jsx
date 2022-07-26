@@ -71,7 +71,6 @@ const DetailKeyInfo = () => {
   const dispatch = useDispatch();
   const key = useSelector((state) => state.activateKey.key);
   const [value, setValue] = React.useState(2);
-  console.log(key.id);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

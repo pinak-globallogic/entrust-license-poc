@@ -25,7 +25,7 @@ const ProductCard = ({ data }) => {
           <Collapse in={cardState.expanded} timeout="auto" unmountOnExit>
             <Divider sx={{ borderBottomWidth: 2, mb: 1 }} />
             <CustomCardRow title="Feature ID" value={data.productItemNo} />
-            <CustomCardRow title="Order Name" value={data.name} />
+            <CustomCardRow title="Feature Name" value={data.name} />
             <CustomCardRow title="Order Number" value={data.salesOrderNo} />
             <CustomCardRow
               title="List Item Number"

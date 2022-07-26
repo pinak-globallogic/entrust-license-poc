@@ -9,7 +9,6 @@ import { updateOptionalDetails } from "redux/slices/generateLicenseSlice";
 
 const OptionalDetails = () => {
   const state = useSelector((state) => state.generateLicense);
-  console.log(state);
   const dispatch = useDispatch();
   const [errorText, setErrorText] = useState();
 

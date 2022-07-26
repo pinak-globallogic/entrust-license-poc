@@ -113,7 +113,13 @@ const ProductDetails = () => {
             <Autocomplete
               id="product-info-autocomplete"
               disablePortal
-              value={`${product.name}, ${product.productItemNo}`}
+              value={
+                product.name
+                  ? `${product.name}${product.name ? "," : ""} ${
+                      product.productItemNo
+                    }`
+                  : ""
+              }
               options={productIdentifierList.map(
                 (option) => option.name + ", " + option.itemNo
               )}
